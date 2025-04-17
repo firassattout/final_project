@@ -1,0 +1,5 @@
+{"level":"info","message":"::1 - - [16/Apr/2025:20:29:33 +0000] \"POST /api/register HTTP/1.1\" 404 37 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"::1 - - [16/Apr/2025:20:33:36 +0000] \"POST /api/register HTTP/1.1\" 200 423 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"::1 - - [16/Apr/2025:20:34:22 +0000] \"POST /api/login HTTP/1.1\" 500 47 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"::1 - - [16/Apr/2025:20:34:46 +0000] \"POST /api/login HTTP/1.1\" 200 571 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"::1 - - [16/Apr/2025:20:41:23 +0000] \"POST /api/ads HTTP/1.1\" 201 324 \"-\" \"PostmanRuntime/7.43.0\""}
