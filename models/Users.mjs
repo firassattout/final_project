@@ -1,4 +1,3 @@
-import Joi from "joi";
 import mongoose from "mongoose";
 
 const UsersSchema = new mongoose.Schema(
@@ -7,24 +6,21 @@ const UsersSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     refreshToken: { type: String },
-    role: { type: String, required: true, default: "user" },
+    role: {
+      type: String,
+      enum: ["admin", "advertiser", "partner"],
+      required: true,
+      default: "advertiser",
+    },
+
+    state: {
+      type: String,
+      enum: ["active", "pending"],
+      required: true,
+      default: "pending",
+    },
   },
   { timestamps: true }
 );
 
 export const Users = mongoose.model("Users", UsersSchema);
-
-export function validateRegisterUser(obj) {
-  return Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-    name: Joi.string().required(),
-  }).validate(obj);
-}
-
-export function validateLoginUser(obj) {
-  return Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  }).validate(obj);
-}

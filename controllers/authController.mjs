@@ -1,12 +1,12 @@
 import asyncHandler from "express-async-handler";
 import {
+  firstRegister,
   login,
   refreshAccessToken,
-  register,
 } from "../services/authService.mjs";
 
-export const userRegister = asyncHandler(async (req, res) => {
-  const result = await register(req.body);
+export const userFirstRegister = asyncHandler(async (req, res) => {
+  const result = await firstRegister(req.body);
   res.json(result);
 });
 

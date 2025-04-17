@@ -11,8 +11,9 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 import adRoutes from "./routes/adRoutes.mjs";
 import { auth } from "./routes/authRoutes.mjs";
-const app = express();
+import { i18nMiddleware } from "./config/i18n.mjs";
 
+const app = express();
 configDotenv();
 connectDb();
 const server = createServer(app);
@@ -26,6 +27,7 @@ export const io = new Server(server, {
 app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 
+app.use(i18nMiddleware);
 app.use(express.json());
 app.use(helmet());
 app.use(

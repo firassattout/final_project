@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "email_exists": "This email already exists",
+    "register_success": "User registered successfully",
+    "login_error": "Username or password is incorrect",
+    "refresh_token_required": "Refresh token is required",
+    "invalid_refresh_token": "Invalid refresh token",
+    "validation": {
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Email must be a valid email",
+      "password_required": "Password is required",
+      "password_min": "Password must be at least 6 characters"
+    }
+  }
+}

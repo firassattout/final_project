@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "email_exists": "هذا البريد الإلكتروني موجود بالفعل",
+    "register_success": "تم تسجيل المستخدم بنجاح",
+    "login_error": "اسم المستخدم أو كلمة المرور غير صحيحة",
+    "refresh_token_required": "رمز التحديث مطلوب",
+    "invalid_refresh_token": "رمز تحديث غير صالح",
+    "validation": {
+      "name_required": "الاسم مطلوب",
+      "email_required": "البريد الإلكتروني مطلوب",
+      "email_invalid": "يجب أن يكون البريد الإلكتروني صالحًا",
+      "password_required": "كلمة المرور مطلوبة",
+      "password_min": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
+    }
+  }
+}

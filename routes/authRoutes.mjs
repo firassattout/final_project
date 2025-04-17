@@ -3,7 +3,7 @@ import express from "express";
 import {
   userLogin,
   userLogout,
-  userRegister,
+  userFirstRegister,
 } from "../controllers/authController.mjs";
 import { Users } from "../models/Users.mjs";
 
@@ -12,7 +12,7 @@ import { generateAccessToken } from "../utils/tokenUtils.js";
 
 export const auth = express.Router();
 
-auth.post("/register", userRegister);
+auth.post("/first-register", userFirstRegister);
 
 auth.post("/login", userLogin);
 
