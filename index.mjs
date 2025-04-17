@@ -9,8 +9,8 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import { Server } from "socket.io";
 import { createServer } from "http";
-import adRoutes from "./Routes/adRoutes.mjs";
-import { auth } from "./Routes/authRoutes.mjs";
+import adRoutes from "./routes/adRoutes.mjs";
+import { auth } from "./routes/authRoutes.mjs";
 const app = express();
 
 configDotenv();
