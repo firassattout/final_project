@@ -1,4 +1,4 @@
-import AdService from "../Services/AdService.mjs";
+import AdService from "../services/AdService.mjs";
 
 class AdFacade {
   constructor() {
