@@ -9,6 +9,9 @@ export const createUser = async (userData) => {
   return await user.save();
 };
 
+export const updateUser = async (userId, data) => {
+  return await Users.findByIdAndUpdate(userId, data);
+};
 export const updateUserRefreshToken = async (userId, refreshToken) => {
   return await Users.findByIdAndUpdate(userId, { refreshToken }, { new: true });
 };

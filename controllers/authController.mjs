@@ -1,26 +1,34 @@
 import asyncHandler from "express-async-handler";
-import {
-  firstRegister,
-  login,
-  refreshAccessToken,
-} from "../services/authService.mjs";
+import AuthFacade from "../facade/AuthFacade.mjs";
 
-export const userFirstRegister = asyncHandler(async (req, res) => {
-  const result = await firstRegister(req.body);
-  res.json(result);
-});
+class AuthController {
+  constructor() {
+    this.authFacade = new AuthFacade();
+  }
 
-export const userLogin = asyncHandler(async (req, res) => {
-  const result = await login(req.body);
-  res.json(result);
-});
+  userFirstRegister = asyncHandler(async (req, res) => {
+    const result = await this.authFacade.handleFirstRegister(req.body);
+    res.json(result);
+  });
+  userSecondRegister = asyncHandler(async (req, res) => {
+    const result = await this.authFacade.handleSecondRegister(req);
+    res.json(result);
+  });
 
-export const userLogout = asyncHandler(async (req, res) => {
-  res.json({ message: "Logged out successfully" });
-});
+  userLogin = asyncHandler(async (req, res) => {
+    const result = await this.authFacade.handleLogin(req.body);
+    res.json(result);
+  });
 
-export const refreshToken = asyncHandler(async (req, res) => {
-  const { refreshToken } = req.body;
-  const access_token = await refreshAccessToken(refreshToken);
-  res.json({ access_token });
-});
+  userLogout = asyncHandler(async (req, res) => {
+    res.json({ message: "Logged out successfully" });
+  });
+
+  refreshToken = asyncHandler(async (req, res) => {
+    const { refreshToken } = req.body;
+    const access_token = await this.authFacade.handleRefreshToken(refreshToken);
+    res.json({ access_token });
+  });
+}
+
+export default new AuthController();

@@ -30,11 +30,11 @@ app.use("/uploads", express.static("uploads"));
 app.use(i18nMiddleware);
 app.use(express.json());
 app.use(helmet());
-app.use(
-  morgan("combined", {
-    stream: { write: (message) => logger.info(message.trim()) },
-  })
-);
+// app.use(
+//   morgan("combined", {
+//     stream: { write: (message) => logger.info(message.trim()) },
+//   })
+// );
 app.use(cors());
 
 app.use("/api/ads", adRoutes);

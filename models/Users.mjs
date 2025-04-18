@@ -6,6 +6,7 @@ const UsersSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     refreshToken: { type: String },
+    photo: { type: String },
     role: {
       type: String,
       enum: ["admin", "advertiser", "partner"],

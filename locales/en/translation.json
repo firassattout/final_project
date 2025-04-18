@@ -1,6 +1,7 @@
 {
   "auth": {
     "email_exists": "This email already exists",
+    "email_not_exists": "This email not exists",
     "register_success": "User registered successfully",
     "login_error": "Username or password is incorrect",
     "refresh_token_required": "Refresh token is required",

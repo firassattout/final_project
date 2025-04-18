@@ -1,45 +1,46 @@
 import mongoose from "mongoose";
 
-const adSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true,
+const AdsSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+      required: true,
+    },
+    title: { type: String, required: true },
+    description: { type: String },
+    budget: { type: mongoose.Schema.Types.Decimal128, required: true },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    platform: {
+      type: String,
+      enum: ["web", "mobile", "both"],
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ["banner", "interstitial", "rewarded", "app_open"],
+      required: true,
+    },
+    category: {
+      type: String,
+      enum: [
+        "automotive",
+        "finance",
+        "health",
+        "entertainment",
+        "household",
+        "other",
+      ],
+      required: true,
+    },
+    state: {
+      type: String,
+      enum: ["pending", "active", "paused", "ended"],
+      default: "pending",
+    },
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  imageUrl: {
-    type: String,
-    required: true,
-  },
-  targetUrl: {
-    type: String,
-    required: true,
-  },
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
-  clicks: {
-    type: Number,
-    default: 0,
-  },
-  impressions: {
-    type: Number,
-    default: 0,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { timestamps: true }
+);
 
-const Ad = mongoose.model("Ad", adSchema);
-
-export default Ad;
+export const Ads = mongoose.model("Ads", AdsSchema);
