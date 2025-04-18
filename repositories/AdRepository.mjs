@@ -1,8 +1,8 @@
-import Ad from "../models/AdModel.mjs";
+import { Ads } from "../models/AdModel.mjs";
 
 class AdRepository {
   async create(adData) {
-    const ad = new Ad(adData);
+    const ad = new Ads(adData);
     return ad.save();
   }
 
