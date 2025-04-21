@@ -13,6 +13,7 @@ import {
   updateUserRefreshToken,
   findUserById,
   updateUser,
+  updateLoginData,
 } from "../repositories/userRepository.mjs";
 
 import {
@@ -33,20 +34,19 @@ class AuthService {
     if (user) throw new Error(t("auth.email_exists"));
 
     const tempPassword = generatePassword(8);
-    user = await createUser({
-      name: data.name,
-      email: data.email,
-      password: tempPassword,
-      role: data.role,
-    });
+    const salt = await bcrypt.genSalt(5);
+    data.password = await bcrypt.hash(tempPassword, salt);
+
+    user = await createUser(data);
 
     const access_token = generateAccessToken(user);
     const refresh_token = generateRefreshToken(user);
 
     await updateUserRefreshToken(user._id, refresh_token);
-
+    const { password, ...userWithoutPassword } = user._doc;
     return {
-      user,
+      user: userWithoutPassword,
+      tempPassword,
       access_token,
       message: t("auth.register_success"),
     };
@@ -92,23 +92,48 @@ class AuthService {
   }
 
   async login(data) {
-    const { error } = validateLoginUser(data);
-    if (error) throw new Error(t(error.details[0].message));
+    const { error } = validateLoginUser(data.body);
+    if (error) throw new Error(error.details[0].message);
 
-    const user = await findUserByEmail(data.email);
-    if (!user) throw new Error(t("auth.login_error"));
+    const user = await findUserByEmail(data.body.email);
+    if (!user) throw new Error("بيانات الدخول غير صحيحة");
 
-    const isPasswordMatch = await bcrypt.compare(data.password, user.password);
-    if (!isPasswordMatch) throw new Error(t("auth.login_error"));
+    const isPasswordMatch = await bcrypt.compare(
+      data.body.password,
+      user.password
+    );
+    if (!isPasswordMatch) throw new Error("بيانات الدخول غير صحيحة");
 
-    const access_token = generateAccessToken(user);
-    const refresh_token = generateRefreshToken(user);
+    const accessToken = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "15m" }
+    );
 
-    await updateUserRefreshToken(user._id, refresh_token);
+    const refreshToken = jwt.sign(
+      { id: user._id },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "7d" }
+    );
 
-    const { password, ...userWithoutPassword } = user._doc;
+    const updatedUser = await updateLoginData(user._id, refreshToken, {
+      ip: data?.id || "",
+      device: data?.headers["user-agent"] || "",
+    });
+    const {
+      password,
+      verificationCode,
+      resetPasswordToken,
+      loginHistory,
+      lastLogin,
+      ...userData
+    } = updatedUser._doc;
 
-    return { ...userWithoutPassword, access_token };
+    return {
+      ...userData,
+      accessToken,
+      refreshToken,
+    };
   }
 
   async refreshAccessToken(refreshToken) {

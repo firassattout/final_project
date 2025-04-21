@@ -16,7 +16,7 @@ class AuthController {
   });
 
   userLogin = asyncHandler(async (req, res) => {
-    const result = await this.authFacade.handleLogin(req.body);
+    const result = await this.authFacade.handleLogin(req);
     res.json(result);
   });
 

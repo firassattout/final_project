@@ -23,13 +23,53 @@ export const validateAdData = (req, res, next) => {
   next();
 };
 
-export function validateFirstRegisterUser(obj) {
+export const validateFirstRegisterUser = (obj) => {
   return Joi.object({
-    email: Joi.string().email().required(),
-    name: Joi.string().required(),
-    role: Joi.string().valid("advertiser", "partner").required(),
+    email: Joi.string().email().required().messages({
+      "string.email": "البريد الإلكتروني غير صالح",
+      "any.required": "البريد الإلكتروني مطلوب",
+    }),
+    role: Joi.string().valid("advertiser", "partner").required().messages({
+      "any.only": "الدور يجب أن يكون إما advertiser أو partner",
+      "any.required": "الدور مطلوب",
+    }),
+    name: Joi.string().min(3).max(50).required().messages({
+      "string.min": "الاسم يجب أن يكون على الأقل 3 أحرف",
+      "string.max": "الاسم يجب ألا يتجاوز 50 حرفًا",
+      "any.required": "الاسم مطلوب",
+    }),
+    companyName: Joi.string().min(2).max(100).required().messages({
+      "string.min": "اسم الشركة يجب أن يكون على الأقل حرفين",
+      "string.max": "اسم الشركة يجب ألا يتجاوز 100 حرف",
+      "any.required": "اسم الشركة مطلوب",
+    }),
+    mobileNumber: Joi.string()
+      .pattern(/^\+?[0-9]{10,15}$/)
+      .required()
+      .messages({
+        "string.pattern.base": "رقم الجوال غير صالح",
+        "any.required": "رقم الجوال مطلوب",
+      }),
+    nationalId: Joi.string()
+      .pattern(/^[0-9]{10,20}$/)
+      .required()
+      .messages({
+        "string.pattern.base": "الرقم الوطني غير صالح",
+        "any.required": "الرقم الوطني مطلوب",
+      }),
+    address: Joi.string().min(5).max(200).required().messages({
+      "string.min": "العنوان يجب أن يكون على الأقل 5 أحرف",
+      "string.max": "العنوان يجب ألا يتجاوز 200 حرف",
+      "any.required": "العنوان مطلوب",
+    }),
+    phoneNumber: Joi.string()
+      .pattern(/^\+?[0-9]{7,15}$/)
+      .allow("")
+      .messages({
+        "string.pattern.base": "رقم الهاتف غير صالح",
+      }),
   }).validate(obj);
-}
+};
 export function validateSecondRegisterUser(obj) {
   return Joi.object({
     phone: Joi.string()
@@ -69,7 +109,21 @@ export function validateSecondRegisterUser(obj) {
 }
 export function validateLoginUser(obj) {
   return Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
+    email: Joi.string().email().required().messages({
+      "string.email": "البريد الإلكتروني غير صالح",
+      "any.required": "البريد الإلكتروني مطلوب",
+    }),
+    password: Joi.string()
+      .min(8)
+
+      .required()
+      .messages({
+        "string.base": "كلمة المرور يجب أن تكون نصاً",
+        "string.empty": "كلمة المرور مطلوبة",
+        "string.min": "كلمة المرور يجب أن تحتوي على الأقل على 8 أحرف",
+        "string.pattern.base":
+          "يجب أن تحتوي كلمة المرور على: أحرف صغيرة، أحرف كبيرة، أرقام ورموز خاصة (@$!%*?&)",
+        "any.required": "كلمة المرور مطلوبة",
+      }),
   }).validate(obj);
 }

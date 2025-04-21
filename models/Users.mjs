@@ -13,13 +13,42 @@ const UsersSchema = new mongoose.Schema(
       required: true,
       default: "advertiser",
     },
-
     state: {
       type: String,
       enum: ["active", "pending"],
       required: true,
       default: "pending",
     },
+    companyName: {
+      type: String,
+      required: true,
+    },
+    mobileNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    phoneNumber: {
+      type: String,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    nationalId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    twoFactorAuth: { type: Boolean, default: false },
+    lastLogin: { type: Date },
+    loginHistory: [
+      {
+        ip: String,
+        device: String,
+        timestamp: Date,
+      },
+    ],
   },
   { timestamps: true }
 );

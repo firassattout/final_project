@@ -19,3 +19,20 @@ export const updateUserRefreshToken = async (userId, refreshToken) => {
 export const findUserById = async (id) => {
   return await Users.findById(id);
 };
+
+export const updateLoginData = async (userId, refreshToken, loginData) => {
+  return await Users.findByIdAndUpdate(
+    userId,
+    {
+      $set: { refreshToken, lastLogin: Date.now() },
+      $push: {
+        loginHistory: {
+          ip: loginData.ip || "unknown",
+          device: loginData.device || "unknown",
+          timestamp: Date.now(),
+        },
+      },
+    },
+    { new: true }
+  ).select("-password -verificationCode -resetPasswordToken");
+};
