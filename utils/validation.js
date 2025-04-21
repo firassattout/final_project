@@ -72,15 +72,6 @@ export const validateFirstRegisterUser = (obj) => {
 };
 export function validateSecondRegisterUser(obj) {
   return Joi.object({
-    phone: Joi.string()
-      .pattern(/^[0-9]{10}$/)
-      .required()
-      .messages({
-        "string.base": "رقم الهاتف يجب أن يكون نصاً",
-        "string.empty": "رقم الهاتف مطلوب",
-        "string.pattern.base": "يجب أن يتكون رقم الهاتف من 10 أرقام فقط",
-        "any.required": "رقم الهاتف مطلوب",
-      }),
     password: Joi.string()
       .min(8)
       .pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])"))
@@ -104,7 +95,6 @@ export function validateSecondRegisterUser(obj) {
       }),
     userIdFromToken: Joi.any().optional(),
     userRoleFromToken: Joi.any().optional(),
-    photo: Joi.any().optional(),
   }).validate(obj);
 }
 export function validateLoginUser(obj) {

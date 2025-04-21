@@ -62,23 +62,23 @@ class AuthService {
     if (user.id !== data.body.userIdFromToken)
       throw new Error(t("auth.email_not_exists"));
 
-    if (data?.files[0]) {
-      const { id } = await upload(
-        data?.files[0],
-        "1D11aejEkqYYQTPX5muychZvQxysUp3GN"
-      );
-      if (id) {
-        data.body.photo = `https://drive.google.com/thumbnail?id=${id}&sz=s300`;
-      }
-    }
+    // if (data?.files[0]) {
+    //   const { id } = await upload(
+    //     data?.files[0],
+    //     "1D11aejEkqYYQTPX5muychZvQxysUp3GN"
+    //   );
+    //   if (id) {
+    //     data.body.photo = `https://drive.google.com/thumbnail?id=${id}&sz=s300`;
+    //   }
+    // }
 
     const salt = await bcrypt.genSalt(5);
     data.body.password = await bcrypt.hash(data.body.password, salt);
 
     user = await updateUser(user._id, {
       state: "active",
-      photo: data.body.photo,
-      phone: data.body.phone,
+      // photo: data.body.photo,
+      // phone: data.body.phone,
       password: data.body.password,
     });
 
