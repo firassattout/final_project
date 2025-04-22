@@ -2,21 +2,25 @@ import asyncHandler from "express-async-handler";
 import AuthFacade from "../facade/AuthFacade.mjs";
 
 class AuthController {
-  constructor() {
-    this.authFacade = new AuthFacade();
-  }
-
   userFirstRegister = asyncHandler(async (req, res) => {
-    const result = await this.authFacade.handleFirstRegister(req.body);
+    const result = await AuthFacade.handleFirstRegister(req.body);
     res.json(result);
   });
   userSecondRegister = asyncHandler(async (req, res) => {
-    const result = await this.authFacade.handleSecondRegister(req);
+    const result = await AuthFacade.handleSecondRegister(req);
     res.json(result);
   });
 
   userLogin = asyncHandler(async (req, res) => {
-    const result = await this.authFacade.handleLogin(req);
+    const result = await AuthFacade.handleLogin(req);
+    res.json(result);
+  });
+  userDeactivation = asyncHandler(async (req, res) => {
+    const result = await AuthFacade.handleDeactivation(req);
+    res.json(result);
+  });
+  getUser = asyncHandler(async (req, res) => {
+    const result = await AuthFacade.getUser(req);
     res.json(result);
   });
 
@@ -26,7 +30,7 @@ class AuthController {
 
   refreshToken = asyncHandler(async (req, res) => {
     const { refreshToken } = req.body;
-    const access_token = await this.authFacade.handleRefreshToken(refreshToken);
+    const access_token = await AuthFacade.handleRefreshToken(refreshToken);
     res.json({ access_token });
   });
 }

@@ -13,5 +13,15 @@ auth.post(
   authController.userSecondRegister
 );
 auth.post("/login", authController.userLogin);
+auth.post(
+  "/user-deactivation/:id",
+  checkUserRole("admin"),
+  authController.userDeactivation
+);
+auth.get(
+  "/get-user/:type/:name?",
+  checkUserRole("admin"),
+  authController.getUser
+);
 auth.post("/logout", authController.userLogout);
 auth.post("/refresh-token", authController.refreshToken);

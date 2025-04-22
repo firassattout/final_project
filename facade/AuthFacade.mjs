@@ -1,24 +1,26 @@
 import AuthService from "../services/authService.mjs";
 
 class AuthFacade {
-  constructor() {
-    this.authService = new AuthService();
-  }
-
   async handleFirstRegister(data) {
-    return this.authService.firstRegister(data);
+    return AuthService.firstRegister(data);
   }
   async handleSecondRegister(data) {
-    return this.authService.secondRegister(data);
+    return AuthService.secondRegister(data);
   }
 
   async handleLogin(data) {
-    return this.authService.login(data);
+    return AuthService.login(data);
+  }
+  async handleDeactivation(data) {
+    return AuthService.userDeactivation(data);
+  }
+  async getUser(data) {
+    return AuthService.getUser(data);
   }
 
   async handleRefreshToken(refreshToken) {
-    return this.authService.refreshAccessToken(refreshToken);
+    return AuthService.refreshAccessToken(refreshToken);
   }
 }
 
-export default AuthFacade;
+export default new AuthFacade();

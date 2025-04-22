@@ -13,6 +13,12 @@ const UsersSchema = new mongoose.Schema(
       required: true,
       default: "advertiser",
     },
+
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
     state: {
       type: String,
       enum: ["active", "pending"],
