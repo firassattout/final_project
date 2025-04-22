@@ -106,7 +106,7 @@ class AuthService {
 
     const accessToken = jwt.sign(
       { id: user._id, role: user.role },
-      process.env.ACCESS_TOKEN_SECRET,
+      process.env.SECRET,
       { expiresIn: "15m" }
     );
 
