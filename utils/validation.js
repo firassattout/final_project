@@ -103,17 +103,13 @@ export function validateLoginUser(obj) {
       "string.email": "البريد الإلكتروني غير صالح",
       "any.required": "البريد الإلكتروني مطلوب",
     }),
-    password: Joi.string()
-      .min(8)
-
-      .required()
-      .messages({
-        "string.base": "كلمة المرور يجب أن تكون نصاً",
-        "string.empty": "كلمة المرور مطلوبة",
-        "string.min": "كلمة المرور يجب أن تحتوي على الأقل على 8 أحرف",
-        "string.pattern.base":
-          "يجب أن تحتوي كلمة المرور على: أحرف صغيرة، أحرف كبيرة، أرقام ورموز خاصة (@$!%*?&)",
-        "any.required": "كلمة المرور مطلوبة",
-      }),
+    password: Joi.string().min(8).required().messages({
+      "string.base": "كلمة المرور يجب أن تكون نصاً",
+      "string.empty": "كلمة المرور مطلوبة",
+      "string.min": "كلمة المرور يجب أن تحتوي على الأقل على 8 أحرف",
+      "string.pattern.base":
+        "يجب أن تحتوي كلمة المرور على: أحرف صغيرة، أحرف كبيرة، أرقام ورموز خاصة (@$!%*?&)",
+      "any.required": "كلمة المرور مطلوبة",
+    }),
   }).validate(obj);
 }

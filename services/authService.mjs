@@ -110,11 +110,9 @@ class AuthService {
       { expiresIn: "15m" }
     );
 
-    const refreshToken = jwt.sign(
-      { id: user._id },
-      process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" }
-    );
+    const refreshToken = jwt.sign({ id: user._id }, process.env.SECRET, {
+      expiresIn: "7d",
+    });
 
     const updatedUser = await updateLoginData(user._id, refreshToken, {
       ip: data?.id || "",
