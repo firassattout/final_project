@@ -34,7 +34,7 @@ class AuthService {
     const access_token = generateAccessToken(user);
     const refresh_token = generateRefreshToken(user);
 
-    await updateUserRefreshToken(user._id, refresh_token);
+    await userRepository.updateRefreshToken(user._id, refresh_token);
     const { password, ...userWithoutPassword } = user._doc;
     return {
       user: userWithoutPassword,

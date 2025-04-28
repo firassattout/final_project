@@ -28,7 +28,7 @@ class UserRepository {
 
   async findByType(type, name) {
     return await Users.find({
-      role: type,
+      ...(type && { role: type }),
       ...(name && { name: { $regex: name, $options: "i" } }),
     }).select(
       "-loginHistory -loginHistory -password -lastLogin -refreshToken -updatedAt -createdAt"

@@ -19,7 +19,7 @@ auth.post(
   authController.userDeactivation
 );
 auth.get(
-  "/get-user/:type/:name?",
+  "/get-user/:type?/:name?",
   checkUserRole("admin"),
   authController.getUser
 );
