@@ -29,6 +29,11 @@ const UsersSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    companyType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CompanyType",
+      required: true,
+    },
     mobileNumber: {
       type: String,
       required: true,

@@ -23,6 +23,10 @@ class AuthController {
     const result = await AuthFacade.getUser(req);
     res.json(result);
   });
+  getCompanyType = asyncHandler(async (req, res) => {
+    const result = await AuthFacade.getCompanyType(req);
+    res.json(result);
+  });
 
   userLogout = asyncHandler(async (req, res) => {
     res.json({ message: "Logged out successfully" });

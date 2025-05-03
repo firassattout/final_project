@@ -5,7 +5,11 @@ import multer from "multer";
 const upload = multer();
 export const auth = express.Router();
 
-auth.post("/first-register", authController.userFirstRegister);
+auth.post(
+  "/first-register",
+  checkUserRole("admin"),
+  authController.userFirstRegister
+);
 auth.post(
   "/second-register",
   upload.any(),
@@ -22,6 +26,11 @@ auth.get(
   "/get-user/:type?/:name?",
   checkUserRole("admin"),
   authController.getUser
+);
+auth.get(
+  "/get-companyType",
+  checkUserRole("admin"),
+  authController.getCompanyType
 );
 auth.post("/logout", authController.userLogout);
 auth.post("/refresh-token", authController.refreshToken);

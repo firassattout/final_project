@@ -153,6 +153,12 @@ class AuthService {
 
     return { user };
   }
+  async getCompanyType(data) {
+    const company = await userRepository.findCompanyType();
+    if (!company) throw new Error("لا توجد معلومات");
+
+    return { company };
+  }
 
   async refreshAccessToken(refreshToken) {
     if (!refreshToken) throw new Error(t("auth.refresh_token_required"));

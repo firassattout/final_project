@@ -17,6 +17,9 @@ class AuthFacade {
   async getUser(data) {
     return AuthService.getUser(data);
   }
+  async getCompanyType(data) {
+    return AuthService.getCompanyType(data);
+  }
 
   async handleRefreshToken(refreshToken) {
     return AuthService.refreshAccessToken(refreshToken);

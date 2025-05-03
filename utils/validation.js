@@ -43,6 +43,9 @@ export const validateFirstRegisterUser = (obj) => {
       "string.max": "اسم الشركة يجب ألا يتجاوز 100 حرف",
       "any.required": "اسم الشركة مطلوب",
     }),
+    companyType: Joi.string().required().messages({
+      "any.required": "نوع الشركة مطلوب",
+    }),
     mobileNumber: Joi.string()
       .pattern(/^\+?[0-9]{10,15}$/)
       .required()
@@ -68,6 +71,8 @@ export const validateFirstRegisterUser = (obj) => {
       .messages({
         "string.pattern.base": "رقم الهاتف غير صالح",
       }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
   }).validate(obj);
 };
 export function validateSecondRegisterUser(obj) {

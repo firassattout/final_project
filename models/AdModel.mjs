@@ -22,18 +22,17 @@ const AdsSchema = new mongoose.Schema(
       enum: ["banner", "interstitial", "rewarded", "app_open"],
       required: true,
     },
-    category: {
+    pricingModel: {
       type: String,
-      enum: [
-        "automotive",
-        "finance",
-        "health",
-        "entertainment",
-        "household",
-        "other",
-      ],
+      enum: ["CPC", "CPM"],
+      required: true,
+      default: "CPC",
+    },
+    price: {
+      type: mongoose.Schema.Types.Decimal128,
       required: true,
     },
+
     state: {
       type: String,
       enum: ["pending", "active", "paused", "ended"],

@@ -1,3 +1,4 @@
+import { CompanyType } from "../models/CompanyTypeModel.mjs";
 import { Users } from "../models/Users.mjs";
 
 class UserRepository {
@@ -33,6 +34,9 @@ class UserRepository {
     }).select(
       "-loginHistory -loginHistory -password -lastLogin -refreshToken -updatedAt -createdAt"
     );
+  }
+  async findCompanyType() {
+    return await CompanyType.find();
   }
 
   async updateLoginData(userId, refreshToken, loginData = {}) {
