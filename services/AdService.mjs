@@ -38,6 +38,16 @@ class AdService {
       ...adData.body,
     });
   }
+  async getAd(adData) {
+    let user = await userRepository.findById(adData.body.userIdFromToken);
+
+    if (!user) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+    let ads = await AdRepository.findByUser(user.id);
+
+    return ads;
+  }
   async editAd(adData) {
     const { error } = validateEditAd(adData.body);
     if (error) throw new Error(error.details[0].message);

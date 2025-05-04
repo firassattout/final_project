@@ -32,6 +32,10 @@ const AdsSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    url: {
+      type: String,
+      required: true,
+    },
 
     state: {
       type: String,

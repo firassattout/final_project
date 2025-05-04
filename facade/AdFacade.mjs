@@ -10,6 +10,9 @@ class AdFacade {
   async editAd(adData) {
     return await AdService.editAd(adData);
   }
+  async getAd(adData) {
+    return await AdService.getAd(adData);
+  }
 }
 
 export default new AdFacade();

@@ -14,6 +14,10 @@ class AdController {
     const result = await AdFacade.editAd(req);
     res.json(result);
   });
+  getAd = asyncHandler(async (req, res) => {
+    const result = await AdFacade.getAd(req);
+    res.json(result);
+  });
 }
 
 export default new AdController();

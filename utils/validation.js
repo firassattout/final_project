@@ -132,6 +132,11 @@ export function validateCreateAd(obj) {
       "any.required": "الميزانية مطلوبة",
       "number.base": "الميزانية يجب أن تكون رقمًا",
     }),
+    url: Joi.string().required().messages({
+      "any.required": "رابط الإعلان مطلوب",
+      "string.empty": "رابط الإعلان لا يمكن أن يكون فارغًا",
+      "string.uri": "رابط الإعلان غير صالح",
+    }),
     startDate: Joi.date().required().messages({
       "any.required": "تاريخ البدء مطلوب",
       "date.base": "تاريخ البدء غير صالح",
@@ -171,6 +176,11 @@ export function validateEditAd(obj) {
     }),
     description: Joi.string().allow("").messages({
       "string.base": "الوصف غير صالح",
+    }),
+    url: Joi.string().messages({
+      "any.required": "رابط الإعلان مطلوب",
+      "string.empty": "رابط الإعلان لا يمكن أن يكون فارغًا",
+      "string.uri": "رابط الإعلان غير صالح",
     }),
     budget: Joi.number().messages({
       "any.required": "الميزانية مطلوبة",

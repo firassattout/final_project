@@ -12,3 +12,4 @@ adRoutes.post(
   checkUserRole("advertiser"),
   AdController.valueCheck
 );
+adRoutes.get("/get-ad", checkUserRole("advertiser"), AdController.getAd);

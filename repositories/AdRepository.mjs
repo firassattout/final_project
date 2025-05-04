@@ -9,6 +9,9 @@ class AdRepository {
   async findById(id) {
     return await Ads.findById(id);
   }
+  async findByUser(id) {
+    return await Ads.find({ userId: id });
+  }
 
   async edit(id, adData) {
     return await Ads.findByIdAndUpdate(
