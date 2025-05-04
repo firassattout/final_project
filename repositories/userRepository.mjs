@@ -24,7 +24,7 @@ class UserRepository {
   }
 
   async findById(id) {
-    return await Users.findById(id);
+    return await Users.findById(id).populate("companyType");
   }
 
   async findByType(type, name) {

@@ -9,7 +9,7 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import { Server } from "socket.io";
 import { createServer } from "http";
-import adRoutes from "./routes/adRoutes.mjs";
+import { adRoutes } from "./routes/adRoutes.mjs";
 import { auth } from "./routes/authRoutes.mjs";
 import { i18nMiddleware } from "./config/i18n.mjs";
 
@@ -37,7 +37,7 @@ app.use(helmet());
 // );
 app.use(cors());
 
-app.use("/api/ads", adRoutes);
+app.use("/api/", adRoutes);
 app.use("/api/", auth);
 
 app.use(notfound);

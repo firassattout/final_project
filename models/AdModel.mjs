@@ -9,7 +9,7 @@ const AdsSchema = new mongoose.Schema(
     },
     title: { type: String, required: true },
     description: { type: String },
-    budget: { type: mongoose.Schema.Types.Decimal128, required: true },
+    budget: { type: Number, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     platform: {
@@ -19,7 +19,7 @@ const AdsSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["banner", "interstitial", "rewarded", "app_open"],
+      enum: ["banner", "rewarded", "app_open"],
       required: true,
     },
     pricingModel: {
@@ -28,8 +28,8 @@ const AdsSchema = new mongoose.Schema(
       required: true,
       default: "CPC",
     },
-    price: {
-      type: mongoose.Schema.Types.Decimal128,
+    unitPrice: {
+      type: Number,
       required: true,
     },
 

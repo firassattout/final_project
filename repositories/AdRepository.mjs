@@ -7,32 +7,20 @@ class AdRepository {
   }
 
   async findById(id) {
-    return Ad.findById(id);
+    return await Ads.findById(id);
   }
 
-  async findAll() {
-    return Ad.find({ isActive: true });
-  }
-
-  async update(id, adData) {
-    return Ad.findByIdAndUpdate(id, adData, { new: true });
-  }
-
-  async delete(id) {
-    return Ad.findByIdAndUpdate(id, { isActive: false }, { new: true });
-  }
-
-  async incrementClicks(id) {
-    return Ad.findByIdAndUpdate(id, { $inc: { clicks: 1 } }, { new: true });
-  }
-
-  async incrementImpressions(id) {
-    return Ad.findByIdAndUpdate(
+  async edit(id, adData) {
+    return await Ads.findByIdAndUpdate(
       id,
-      { $inc: { impressions: 1 } },
-      { new: true }
+      {
+        $set: adData,
+      },
+      {
+        new: true,
+      }
     );
   }
 }
 
-export default AdRepository;
+export default new AdRepository();

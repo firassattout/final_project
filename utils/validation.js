@@ -118,3 +118,124 @@ export function validateLoginUser(obj) {
     }),
   }).validate(obj);
 }
+
+export function validateCreateAd(obj) {
+  return Joi.object({
+    title: Joi.string().required().messages({
+      "any.required": "عنوان الإعلان مطلوب",
+      "string.empty": "عنوان الإعلان لا يمكن أن يكون فارغًا",
+    }),
+    description: Joi.string().allow("").messages({
+      "string.base": "الوصف غير صالح",
+    }),
+    budget: Joi.number().required().messages({
+      "any.required": "الميزانية مطلوبة",
+      "number.base": "الميزانية يجب أن تكون رقمًا",
+    }),
+    startDate: Joi.date().required().messages({
+      "any.required": "تاريخ البدء مطلوب",
+      "date.base": "تاريخ البدء غير صالح",
+    }),
+    endDate: Joi.date().greater(Joi.ref("startDate")).required().messages({
+      "any.required": "تاريخ الانتهاء مطلوب",
+      "date.base": "تاريخ الانتهاء غير صالح",
+      "date.greater": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء",
+    }),
+    platform: Joi.string().valid("web", "mobile", "both").required().messages({
+      "any.required": "المنصة مطلوبة",
+      "any.only": "المنصة يجب أن تكون web أو mobile أو both",
+    }),
+    type: Joi.string()
+      .valid("banner", "rewarded", "app_open")
+      .required()
+      .messages({
+        "any.required": "نوع الإعلان مطلوب",
+        "any.only": "نوع الإعلان غير صالح",
+      }),
+    pricingModel: Joi.string().valid("CPC", "CPM").required().messages({
+      "any.required": "نموذج التسعير مطلوب",
+      "any.only": "نموذج التسعير غير صالح",
+    }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
+  }).validate(obj);
+}
+export function validateEditAd(obj) {
+  return Joi.object({
+    id: Joi.string().messages({
+      "any.required": "id  مطلوب",
+    }),
+    title: Joi.string().messages({
+      "any.required": "عنوان الإعلان مطلوب",
+      "string.empty": "عنوان الإعلان لا يمكن أن يكون فارغًا",
+    }),
+    description: Joi.string().allow("").messages({
+      "string.base": "الوصف غير صالح",
+    }),
+    budget: Joi.number().messages({
+      "any.required": "الميزانية مطلوبة",
+      "number.base": "الميزانية يجب أن تكون رقمًا",
+    }),
+    startDate: Joi.date().messages({
+      "any.required": "تاريخ البدء مطلوب",
+      "date.base": "تاريخ البدء غير صالح",
+    }),
+    endDate: Joi.date().greater(Joi.ref("startDate")).messages({
+      "any.required": "تاريخ الانتهاء مطلوب",
+      "date.base": "تاريخ الانتهاء غير صالح",
+      "date.greater": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء",
+    }),
+    platform: Joi.string().valid("web", "mobile", "both").messages({
+      "any.required": "المنصة مطلوبة",
+      "any.only": "المنصة يجب أن تكون web أو mobile أو both",
+    }),
+    type: Joi.string()
+      .valid("banner", "rewarded", "app_open")
+
+      .messages({
+        "any.required": "نوع الإعلان مطلوب",
+        "any.only": "نوع الإعلان غير صالح",
+      }),
+    pricingModel: Joi.string().valid("CPC", "CPM").messages({
+      "any.required": "نموذج التسعير مطلوب",
+      "any.only": "نموذج التسعير غير صالح",
+    }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
+  }).validate(obj);
+}
+
+export function validatevalueCheck(obj) {
+  return Joi.object({
+    budget: Joi.number().required().messages({
+      "any.required": "الميزانية مطلوبة",
+      "number.base": "الميزانية يجب أن تكون رقمًا",
+    }),
+    startDate: Joi.date().required().messages({
+      "any.required": "تاريخ البدء مطلوب",
+      "date.base": "تاريخ البدء غير صالح",
+    }),
+    endDate: Joi.date().greater(Joi.ref("startDate")).required().messages({
+      "any.required": "تاريخ الانتهاء مطلوب",
+      "date.base": "تاريخ الانتهاء غير صالح",
+      "date.greater": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء",
+    }),
+    platform: Joi.string().valid("web", "mobile", "both").required().messages({
+      "any.required": "المنصة مطلوبة",
+      "any.only": "المنصة يجب أن تكون web أو mobile أو both",
+    }),
+    type: Joi.string()
+      .valid("banner", "rewarded", "app_open")
+      .required()
+      .messages({
+        "any.required": "نوع الإعلان مطلوب",
+        "any.only": "نوع الإعلان غير صالح",
+      }),
+    pricingModel: Joi.string().valid("CPC", "CPM").required().messages({
+      "any.required": "نموذج التسعير مطلوب",
+      "any.only": "نموذج التسعير غير صالح",
+    }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
+  }).validate(obj);
+}

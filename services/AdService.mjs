@@ -1,37 +1,119 @@
 import AdRepository from "../repositories/AdRepository.mjs";
+import userRepository from "../repositories/userRepository.mjs";
+import { basePrices, platformFactors } from "../utils/price.js";
+import {
+  validateCreateAd,
+  validateEditAd,
+  validatevalueCheck,
+} from "../utils/validation.js";
 
 class AdService {
-  constructor() {
-    this.adRepository = new AdRepository();
-  }
-
   async createAd(adData) {
-    return this.adRepository.create(adData);
-  }
+    const { error } = validateCreateAd(adData.body);
+    if (error) throw new Error(error.details[0].message);
 
-  async getAdById(id) {
-    return this.adRepository.findById(id);
-  }
+    if (new Date(adData.body.startDate) >= new Date(adData.body.endDate)) {
+      throw new Error("Start date must be before end date");
+    }
 
-  async getAllAds() {
-    return this.adRepository.findAll();
-  }
+    if (!adData.body.userIdFromToken) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
 
-  async updateAd(id, adData) {
-    return this.adRepository.update(id, adData);
-  }
+    let user = await userRepository.findById(adData.body.userIdFromToken);
 
-  async deleteAd(id) {
-    return this.adRepository.delete(id);
-  }
+    if (!user) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
 
-  async trackClick(id) {
-    return this.adRepository.incrementClicks(id);
-  }
+    const basePrice = basePrices[adData.body.pricingModel][adData.body.type];
+    const platformFactor = platformFactors[adData.body.platform];
+    const companyFactor = user?.companyType?.priceRating || 1.0;
 
-  async trackImpression(id) {
-    return this.adRepository.incrementImpressions(id);
+    const unitPrice = basePrice * platformFactor * companyFactor;
+
+    return AdRepository.create({
+      userId: adData.body.userIdFromToken,
+      unitPrice,
+      ...adData.body,
+    });
+  }
+  async editAd(adData) {
+    const { error } = validateEditAd(adData.body);
+    if (error) throw new Error(error.details[0].message);
+
+    if (new Date(adData.body.startDate) >= new Date(adData.body.endDate)) {
+      throw new Error("Start date must be before end date");
+    }
+
+    if (!adData.body.userIdFromToken) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+
+    let user = await userRepository.findById(adData.body.userIdFromToken);
+
+    if (!user) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+    let oldAd = await AdRepository.findById(adData.body.id);
+
+    if (!user || !oldAd) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+    if (oldAd.state !== "pending") {
+      throw new Error("لا يمكن تعديل الاعلان بعد نشره");
+    }
+
+    const basePrice =
+      basePrices[adData.body.pricingModel || oldAd.pricingModel][
+        adData.body.type || oldAd.type
+      ];
+    const platformFactor =
+      platformFactors[adData.body.platform || oldAd.platform];
+    const companyFactor = user?.companyType?.priceRating || 1.0;
+
+    const unitPrice = basePrice * platformFactor * companyFactor;
+
+    return AdRepository.edit(adData.body.id, {
+      unitPrice,
+      ...adData.body,
+    });
+  }
+  async valueCheck(adData) {
+    const { error } = validatevalueCheck(adData.body);
+    if (error) throw new Error(error.details[0].message);
+
+    if (!adData.body.userIdFromToken) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+
+    let user = await userRepository.findById(adData.body.userIdFromToken);
+
+    if (!user) {
+      throw new Error("لا يوجد معرف للمستخدم");
+    }
+
+    const basePrice = basePrices[adData.body.pricingModel][adData.body.type];
+    const platformFactor = platformFactors[adData.body.platform];
+    const companyFactor = user?.companyType?.priceRating || 1.0;
+
+    const unitPrice = basePrice * platformFactor * companyFactor;
+    let estimatedUnits;
+    if (adData.body.pricingModel === "CPC") {
+      estimatedUnits = Math.floor(adData.body.budget / unitPrice);
+    } else {
+      estimatedUnits = Math.floor((adData.body.budget / unitPrice) * 1000);
+    }
+
+    const durationDays = Math.ceil(
+      (new Date(adData.body.endDate) - new Date(adData.body.startDate)) /
+        (1000 * 60 * 60 * 24)
+    );
+    const dailyBudget = adData.body.budget / durationDays;
+    return {
+      estimatedUnits,
+      dailyBudget,
+    };
   }
 }
-
-export default AdService;
+export default new AdService();
