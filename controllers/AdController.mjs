@@ -18,6 +18,10 @@ class AdController {
     const result = await AdFacade.getAd(req);
     res.json(result);
   });
+  addMedia = asyncHandler(async (req, res) => {
+    const result = await AdFacade.addMedia(req);
+    res.json(result);
+  });
 }
 
 export default new AdController();

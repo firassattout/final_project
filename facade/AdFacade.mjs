@@ -13,6 +13,9 @@ class AdFacade {
   async getAd(adData) {
     return await AdService.getAd(adData);
   }
+  async addMedia(adData) {
+    return await AdService.addMedia(adData);
+  }
 }
 
 export default new AdFacade();

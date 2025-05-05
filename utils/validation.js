@@ -132,8 +132,8 @@ export function validateCreateAd(obj) {
       "any.required": "الميزانية مطلوبة",
       "number.base": "الميزانية يجب أن تكون رقمًا",
     }),
-    url: Joi.string().required().messages({
-      "any.required": "رابط الإعلان مطلوب",
+    url: Joi.string().messages({
+      "any.required": "رابط الإعلان مطلوب عند اختيار CPC",
       "string.empty": "رابط الإعلان لا يمكن أن يكون فارغًا",
       "string.uri": "رابط الإعلان غير صالح",
     }),
@@ -244,6 +244,24 @@ export function validatevalueCheck(obj) {
     pricingModel: Joi.string().valid("CPC", "CPM").required().messages({
       "any.required": "نموذج التسعير مطلوب",
       "any.only": "نموذج التسعير غير صالح",
+    }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
+  }).validate(obj);
+}
+export function validateAddMedia(obj) {
+  return Joi.object({
+    adId: Joi.string()
+      .required()
+      .pattern(/^[0-9a-fA-F]{24}$/)
+      .messages({
+        "any.required": "معرف الإعلان مطلوب",
+        "string.pattern.base": "معرف الإعلان غير صالح",
+      }),
+
+    mediaType: Joi.string().valid("image", "video").required().messages({
+      "any.required": "نوع الميديا مطلوب",
+      "any.only": "نوع الميديا يجب أن يكون image أو video",
     }),
     userIdFromToken: Joi.any().optional(),
     userRoleFromToken: Joi.any().optional(),

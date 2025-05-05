@@ -36,6 +36,10 @@ const AdsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    mediaFolder: {
+      type: String,
+      required: true,
+    },
 
     state: {
       type: String,

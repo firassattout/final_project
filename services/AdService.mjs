@@ -1,7 +1,12 @@
 import AdRepository from "../repositories/AdRepository.mjs";
+import MediaRepository from "../repositories/MediaRepository.mjs";
 import userRepository from "../repositories/userRepository.mjs";
+import { createFolder } from "../config/createFileForGroup.mjs";
+import { uploadFile } from "../config/uploadFiles.mjs";
+
 import { basePrices, platformFactors } from "../utils/price.js";
 import {
+  validateAddMedia,
   validateCreateAd,
   validateEditAd,
   validatevalueCheck,
@@ -26,15 +31,25 @@ class AdService {
       throw new Error("لا يوجد معرف للمستخدم");
     }
 
+    if (adData.body.pricingModel === "CPC" && !adData.body.url) {
+      throw new Error("يجب تضمين رابط الموقع");
+    }
+
     const basePrice = basePrices[adData.body.pricingModel][adData.body.type];
     const platformFactor = platformFactors[adData.body.platform];
     const companyFactor = user?.companyType?.priceRating || 1.0;
 
     const unitPrice = basePrice * platformFactor * companyFactor;
 
+    const folder = await createFolder(
+      adData.body.title,
+      "1n3q58YJeS5Qlgf3mWfxqcyABnid4lIdO"
+    );
+
     return AdRepository.create({
       userId: adData.body.userIdFromToken,
       unitPrice,
+      mediaFolder: folder,
       ...adData.body,
     });
   }
@@ -124,6 +139,36 @@ class AdService {
       estimatedUnits,
       dailyBudget,
     };
+  }
+  async addMedia(adData) {
+    const { error } = validateAddMedia(adData.body);
+    if (error) throw new Error(error.details[0].message);
+
+    if (!adData?.files[0]) {
+      throw new Error("لايوجد ملف صورة او فيديو");
+    }
+    let adExists = await AdRepository.findById(adData.body.adId);
+    if (!adExists) {
+      throw new Error("الإعلان المحدد غير موجود");
+    }
+    if (!adExists.mediaFolder) {
+      throw new Error("حدث خطأ");
+    }
+    let filePath;
+    const { id } = await uploadFile(
+      adData?.files[0],
+      adExists.mediaFolder,
+      adData?.files[0].originalname
+    );
+    if (id) {
+      filePath = `https://drive.usercontent.google.com/download?id=${id}&export=download`;
+    } else throw new Error("Error");
+
+    return MediaRepository.create({
+      adId: adData.body.adId,
+      mediaType: adData.body.mediaType,
+      mediaURL: filePath,
+    });
   }
 }
 export default new AdService();
