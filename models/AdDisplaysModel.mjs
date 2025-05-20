@@ -8,7 +8,8 @@ const AdDisplaysSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
-    displayDate: { type: Date, required: true },
+    views: { type: Number },
+    clicks: { type: Number },
   },
   { timestamps: true }
 );

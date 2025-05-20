@@ -9,7 +9,7 @@ const UsersSchema = new mongoose.Schema(
     photo: { type: String },
     role: {
       type: String,
-      enum: ["admin", "advertiser", "partner"],
+      enum: ["admin", "advertiser", "publisher"],
       required: true,
       default: "advertiser",
     },

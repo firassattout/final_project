@@ -9,9 +9,11 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import { Server } from "socket.io";
 import { createServer } from "http";
-import { adRoutes } from "./routes/adRoutes.mjs";
+
 import { auth } from "./routes/authRoutes.mjs";
 import { i18nMiddleware } from "./config/i18n.mjs";
+import { advertiserRoutes } from "./routes/advertiserRoutes.mjs";
+import { publisherRoutes } from "./routes/publisherRoutes.mjs";
 
 const app = express();
 configDotenv();
@@ -29,7 +31,23 @@ app.use("/uploads", express.static("uploads"));
 
 app.use(i18nMiddleware);
 app.use(express.json());
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      baseUri: ["'self'"],
+      fontSrc: ["'self'", "https:", "data:"],
+      formAction: ["'self'"],
+      frameAncestors: ["'self'", "*"],
+      imgSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      scriptSrc: ["'self'"],
+      scriptSrcAttr: ["'none'"],
+      styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 // app.use(
 //   morgan("combined", {
 //     stream: { write: (message) => logger.info(message.trim()) },
@@ -37,7 +55,8 @@ app.use(helmet());
 // );
 app.use(cors());
 
-app.use("/api/", adRoutes);
+app.use("/api/", publisherRoutes);
+app.use("/api/", advertiserRoutes);
 app.use("/api/", auth);
 
 app.use(notfound);

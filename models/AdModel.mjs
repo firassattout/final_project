@@ -14,7 +14,7 @@ const AdsSchema = new mongoose.Schema(
     endDate: { type: Date, required: true },
     platform: {
       type: String,
-      enum: ["web", "mobile", "both"],
+      enum: ["web", "mobile"],
       required: true,
     },
     type: {
@@ -40,7 +40,10 @@ const AdsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    AdType: {
+      type: String,
+      required: true,
+    },
     state: {
       type: String,
       enum: ["pending", "active", "paused", "ended"],

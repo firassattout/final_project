@@ -12,7 +12,9 @@ import {
   validatevalueCheck,
 } from "../utils/validation.js";
 
-class AdService {
+import { validateImage } from "../utils/photoSize.mjs";
+
+class AdvertiserService {
   async createAd(adData) {
     const { error } = validateCreateAd(adData.body);
     if (error) throw new Error(error.details[0].message);
@@ -48,6 +50,7 @@ class AdService {
 
     return AdRepository.create({
       userId: adData.body.userIdFromToken,
+      AdType: user.companyType.name,
       unitPrice,
       mediaFolder: folder,
       ...adData.body,
@@ -140,35 +143,60 @@ class AdService {
       dailyBudget,
     };
   }
+
   async addMedia(adData) {
     const { error } = validateAddMedia(adData.body);
     if (error) throw new Error(error.details[0].message);
 
-    if (!adData?.files[0]) {
-      throw new Error("لايوجد ملف صورة او فيديو");
-    }
     let adExists = await AdRepository.findById(adData.body.adId);
     if (!adExists) {
       throw new Error("الإعلان المحدد غير موجود");
     }
-    if (!adExists.mediaFolder) {
-      throw new Error("حدث خطأ");
-    }
-    let filePath;
-    const { id } = await uploadFile(
-      adData?.files[0],
-      adExists.mediaFolder,
-      adData?.files[0].originalname
-    );
-    if (id) {
-      filePath = `https://drive.usercontent.google.com/download?id=${id}&export=download`;
-    } else throw new Error("Error");
 
+    let mediaExists = await AdRepository.findMedia(adData.body.adId);
+    if (mediaExists) {
+      throw new Error("تم اضافة الملفات");
+    }
+
+    if (!adExists.mediaFolder) {
+      throw new Error("لايوجد مجلد للاعلان");
+    }
+
+    const { platform, type: adType } = adExists;
+    const files = adData.files || [];
+
+    if (adType && adType === "banner" && adData.body.mediaType === "video") {
+      throw new Error("لا تستطيع رفع فيديو في حالة البانير");
+    }
+
+    if (!files[0]) {
+      throw new Error("لايوجد ملف صورة أو فيديو");
+    }
+
+    if (adData.body.mediaType === "image")
+      await validateImage(files[0], platform, adType);
+
+    const { id } = await uploadFile(
+      files[0],
+      adExists.mediaFolder,
+      files[0].originalname
+    );
+    if (!id) throw new Error("فشل رفع الملف");
+
+    const filePath = `https://drive.usercontent.google.com/download?id=${id}&export=download`;
     return MediaRepository.create({
       adId: adData.body.adId,
       mediaType: adData.body.mediaType,
-      mediaURL: filePath,
+      url: filePath,
     });
   }
+  async getMedia(adData) {
+    let media = await AdRepository.findMedia(adData.params.adId);
+    if (!media) {
+      throw new Error("لا يوجد ملفات ");
+    }
+
+    return media;
+  }
 }
-export default new AdService();
+export default new AdvertiserService();

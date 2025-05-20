@@ -1,36 +1,13 @@
 import Joi from "joi";
 
-export const validateAdData = (req, res, next) => {
-  const { title, content, imageUrl, targetUrl } = req.body;
-
-  if (!title || !content || !imageUrl || !targetUrl) {
-    return res.status(400).json({
-      error: "Missing required fields: title, content, imageUrl, targetUrl",
-    });
-  }
-
-  if (
-    typeof title !== "string" ||
-    typeof content !== "string" ||
-    typeof imageUrl !== "string" ||
-    typeof targetUrl !== "string"
-  ) {
-    return res.status(400).json({
-      error: "All fields must be strings",
-    });
-  }
-
-  next();
-};
-
 export const validateFirstRegisterUser = (obj) => {
   return Joi.object({
     email: Joi.string().email().required().messages({
       "string.email": "البريد الإلكتروني غير صالح",
       "any.required": "البريد الإلكتروني مطلوب",
     }),
-    role: Joi.string().valid("advertiser", "partner").required().messages({
-      "any.only": "الدور يجب أن يكون إما advertiser أو partner",
+    role: Joi.string().valid("advertiser", "publisher").required().messages({
+      "any.only": "الدور يجب أن يكون إما advertiser أو publisher",
       "any.required": "الدور مطلوب",
     }),
     name: Joi.string().min(3).max(50).required().messages({
@@ -146,9 +123,9 @@ export function validateCreateAd(obj) {
       "date.base": "تاريخ الانتهاء غير صالح",
       "date.greater": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء",
     }),
-    platform: Joi.string().valid("web", "mobile", "both").required().messages({
+    platform: Joi.string().valid("web", "mobile").required().messages({
       "any.required": "المنصة مطلوبة",
-      "any.only": "المنصة يجب أن تكون web أو mobile أو both",
+      "any.only": "المنصة يجب أن تكون web أو mobile ",
     }),
     type: Joi.string()
       .valid("banner", "rewarded", "app_open")
@@ -195,9 +172,9 @@ export function validateEditAd(obj) {
       "date.base": "تاريخ الانتهاء غير صالح",
       "date.greater": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء",
     }),
-    platform: Joi.string().valid("web", "mobile", "both").messages({
+    platform: Joi.string().valid("web", "mobile").messages({
       "any.required": "المنصة مطلوبة",
-      "any.only": "المنصة يجب أن تكون web أو mobile أو both",
+      "any.only": "المنصة يجب أن تكون web أو mobile ",
     }),
     type: Joi.string()
       .valid("banner", "rewarded", "app_open")
@@ -259,10 +236,14 @@ export function validateAddMedia(obj) {
         "string.pattern.base": "معرف الإعلان غير صالح",
       }),
 
-    mediaType: Joi.string().valid("image", "video").required().messages({
-      "any.required": "نوع الميديا مطلوب",
-      "any.only": "نوع الميديا يجب أن يكون image أو video",
-    }),
+    mediaType: Joi.alternatives()
+      .try(Joi.string().uri(), Joi.array().items(Joi.string().uri()))
+      .valid("image", "video")
+      .required()
+      .messages({
+        "any.required": "نوع الميديا مطلوب",
+        "any.only": "نوع الميديا يجب أن يكون image أو video",
+      }),
     userIdFromToken: Joi.any().optional(),
     userRoleFromToken: Joi.any().optional(),
   }).validate(obj);
