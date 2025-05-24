@@ -22,29 +22,20 @@ publisherRoutes.post("/track-click", PublisherController.trackClick);
 
 publisherRoutes.get("/stream-video", PublisherController.streamVideo);
 
-publisherRoutes.get("/ads-sdk", (_, res) => {
-  const filePath = path.join(__dirname, "..", "sdk", "ads-sdk.mjs");
+publisherRoutes.get(
+  "/:sdkType(rewarded-sdk|vue-rewarded-sdk|banner-sdk)",
+  (req, res) => {
+    const sdkType = req.params.sdkType;
+    const filePath = path.join(__dirname, "..", "sdk", `${sdkType}.mjs`);
 
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).send("خطأ في تحميل ملف SDK");
-    }
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err) {
+        return res.status(500).send("خطأ في تحميل ملف SDK");
+      }
 
-    const finalScript = data.replace(/__URL__/g, process.env.URL);
-    res.setHeader("Content-Type", "application/javascript");
-    res.send(finalScript);
-  });
-});
-publisherRoutes.get("/vue-ads-sdk", (_, res) => {
-  const filePath = path.join(__dirname, "..", "sdk", "vue-ads-sdk.mjs");
-
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).send("خطأ في تحميل ملف SDK");
-    }
-
-    const finalScript = data.replace(/__URL__/g, process.env.URL);
-    res.setHeader("Content-Type", "application/javascript");
-    res.send(finalScript);
-  });
-});
+      const finalScript = data.replace(/__URL__/g, process.env.URL);
+      res.setHeader("Content-Type", "application/javascript");
+      res.send(finalScript);
+    });
+  }
+);

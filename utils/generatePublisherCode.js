@@ -1,6 +1,13 @@
 export function generatePublisherCode(userId, type, platform) {
   if (type === "banner") {
-    return `<iframe src="${process.env.URL}/show-ad/${userId}" width="728px" height="90px" style="border:none;overflow:hidden;position:fixed;top:0;left:50%;transform:translateX(-50%);" scrolling="no"></iframe>`;
+    return `<div
+  class="auto-ad"
+  data-user="${userId}"
+  data-type="banner"
+  data-position="top"
+></div>
+<script src="${process.env.URL}/banner-sdk" defer></script>
+`;
   } else if (type === "rewarded") {
     if (platform === "web")
       return ` 
@@ -9,7 +16,7 @@ export function generatePublisherCode(userId, type, platform) {
       data-user="${userId}"
       data-type="rewarded"
     ></div>
-    <script src="${process.env.URL}/ads-sdk" defer></script>
+    <script src="${process.env.URL}/rewarded-sdk" defer></script>
     <script>
       window.addEventListener("message", (event) => {
         if (event.data.type === "rewardedAdCompleted") {
@@ -28,7 +35,7 @@ function RewardedAd() {
   useEffect(() => {
     // إضافة السكربت مرة واحدة عند تحميل الكومبوننت
     const script = document.createElement("script");
-    script.src = "${process.env.URL}/ads-sdk";
+    script.src = "${process.env.URL}/rewarded-sdk";
     script.defer = true;
     document.body.appendChild(script);
 
@@ -87,7 +94,7 @@ function handleMessage(event) {
 
 onMounted(() => {
   const script = document.createElement("script");
-  script.src = "${process.env.URL}/vue-ads-sdk";
+  script.src = "${process.env.URL}/vue-rewarded-sdk";
   script.defer = true;
   document.body.appendChild(script);
 

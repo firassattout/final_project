@@ -23,7 +23,7 @@ const AdsSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["banner", "rewarded", "app_open"],
+      enum: ["banner", "rewarded"],
       required: true,
     },
     pricingModel: {

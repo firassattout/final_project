@@ -1,21 +1,19 @@
-export function generateEmbedCode(ad, url, userId) {
+export function generateEmbedCode(ad, url, userId, type) {
   if (ad.mediaType === "image")
-    switch (ad.adId?.type) {
+    switch (type) {
       case "banner":
         return generateBannerEmbedCode(ad, url, userId);
       case "rewarded":
         return generateRewardedEmbedCode(ad, url, userId);
-      case "app_open":
-        return generateAppOpenEmbedCode(ad);
+
       default:
         throw new Error("نوع الإعلان غير مدعوم");
     }
   else {
-    switch (ad.adId.type) {
+    switch (type) {
       case "rewarded":
         return generateRewardedEmbedCode(ad, url, userId);
-      case "app_open":
-        return generateAppOpenEmbedCode(ad);
+
       default:
         throw new Error("نوع الإعلان غير مدعوم");
     }
@@ -25,14 +23,146 @@ export function generateEmbedCode(ad, url, userId) {
 function generateBannerEmbedCode(ad, url, userId) {
   if (ad.adId.platform === "web")
     return `
-    <!-- إعلان ${ad.title} -->
-          <body style="margin:0; padding:0; display:flex; justify-content:center; align-items:center; font-family:sans-serif; color:#999;">
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>إعلان بانر - ${ad.adId.title}</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        width: 100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+
+      .ad-container {
+        width: 750px;
+        height: 80px;
+        overflow:hidden
+      }
+      .ad-title {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+  
+
+      .ad-image {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .ad-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .ad-container {
+          height: 100px;
+        }
+
+        .ad-image-container {
+          height: 70px;
+        }
+
+        .ad-title {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <div class="ad-container" data-ad-id="${ad._id}">
-      <a href="${ad.adId.url}" target="_blank" rel="noopener noreferrer">
-        <img src="${url}" alt="${ad.adId.title}" style="width:100%;height:100%;objectFit:contain">
-      </a>
+   
+      
+       
+      
+              <a href="http://${ad.adId.url}" target="_blank" rel="noopener noreferrer" id="ad-link">
+                  <img src="${url}" class="ad-image" alt="${ad.adId.title}" />
+                </a>
+        
+          
+   
+ 
     </div>
-      </body>
+
+    <script nonce="my-nonce-123">
+      const impressionDuration = 20;
+      let impressionTracked = false;
+
+      // Track impression after 10 seconds
+      setTimeout(() => {
+        if (!impressionTracked) {
+          fetch("${process.env.URL}/track-views", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              adId: "${ad.adId._id}",
+              userId: "${userId}",
+            }),
+          }).then((response) => {
+            if (response.ok) {
+              impressionTracked = true;
+              window.parent.postMessage(
+                {
+                  type: "bannerAdImpression",
+                  adId: "${ad.adId._id}",
+                },
+                "*"
+              );
+            }
+          });
+        }
+      }, impressionDuration * 1000);
+
+      // Track click on image or video
+      document.getElementById("ad-link").addEventListener("click", async () => {
+        try {
+          const response = await fetch("${process.env.URL}/track-click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              adId: "${ad.adId._id}",
+              clickedAt: new Date().toISOString(),
+              userId: "${userId}",
+            }),
+          });
+        } catch (error) {
+          console.error("Tracking error:", error);
+        }
+      });
+
+      // Send message when banner is loaded
+      window.parent.postMessage(
+        {
+          type: "bannerAdLoaded",
+          adId: "${ad._id}",
+        },
+        "*"
+      );
+    </script>
+  </body>
+</html>
+
+  
   `;
 }
 
@@ -376,19 +506,5 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, duration = 10) {
   </body>
 </html>
 
-  `;
-}
-
-function generateAppOpenEmbedCode(ad) {
-  return `
-    <!-- إعلان فتح تطبيق ${ad.title} -->
-    <script>
-      window.adConfig = {
-        adId: "${ad._id}",
-        type: "app_open",
-        url: "${ad.url}"
-      };
-    </script>
-    <script src="https://your-ad-server.com/ads/app-open.js" async></script>
   `;
 }

@@ -1,9 +1,10 @@
 import { Redis } from "@upstash/redis";
+import { configDotenv } from "dotenv";
 
+configDotenv();
 const redis = new Redis({
-  url: "https://gusc1-calm-eel-31697.upstash.io",
-  token:
-    "AXvRASQgODE1OGE5ZDctYjdlOS00ZmMwLWIzYjQtMmVmZmE5MzE0NGY4NGEwNzRkODFkY2FjNGJkMGFkM2UyOGYzMWEyOWU2OWU=",
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
 export default redis;

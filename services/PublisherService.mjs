@@ -22,9 +22,19 @@ class PublisherService {
     if (!allAds) {
       throw new Error("الإعلان غير موجود");
     }
+    const type = data?.query?.type;
+    if (!type) {
+      throw new Error("نوع الإعلان غير موجود");
+    }
 
-    allAds = allAds.filter((ad) => ad.adId.state === "active");
+    allAds = allAds.filter(
+      (ad) => ad.adId.state === "active" && ad.adId.type === type
+    );
     allAds = allAds.sort((a, b) => a.adId.unitPrice - b.adId.unitPrice);
+
+    if (allAds.length === 0) {
+      throw new Error("  غير موجود");
+    }
 
     let rand = Math.random();
     rand = Math.floor(Math.random() * allAds.length);
@@ -40,10 +50,12 @@ class PublisherService {
         url = `data:${mimeType};base64,${base64}`;
       }
     }
+
     const embedCode = generateEmbedCode(
       allAds.at(rand),
       url,
-      data.params?.userId
+      data.params?.userId,
+      type
     );
     return embedCode;
   }
