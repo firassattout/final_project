@@ -9,7 +9,11 @@ const AdsSchema = new mongoose.Schema(
     },
     title: { type: String, required: true },
     description: { type: String },
-    budget: { type: Number, required: true },
+    budget: {
+      type: mongoose.Schema.Types.Decimal128,
+      required: true,
+      get: (v) => parseFloat(v.toString()),
+    },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     platform: {

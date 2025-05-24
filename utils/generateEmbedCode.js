@@ -289,7 +289,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, duration = 10) {
       }
 
       function notifyCompletion() {
-        fetch("${process.env.URL}/rewarded-complete", {
+        fetch("${process.env.URL}/track-views", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

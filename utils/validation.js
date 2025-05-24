@@ -248,3 +248,21 @@ export function validateAddMedia(obj) {
     userRoleFromToken: Joi.any().optional(),
   }).validate(obj);
 }
+
+export function validateEmbed(obj) {
+  return Joi.object({
+    type: Joi.string().valid("banner", "rewarded").required().messages({
+      "any.required": "نوع الإعلان مطلوب",
+      "any.only": "نوع الإعلان غير صالح",
+    }),
+    platform: Joi.string()
+      .valid("web", "mobile", "react", "vue3")
+      .required()
+      .messages({
+        "any.required": "المنصة مطلوبة",
+        "any.only": "المنصة يجب أن تكون web أو mobile ",
+      }),
+    userIdFromToken: Joi.any().optional(),
+    userRoleFromToken: Joi.any().optional(),
+  }).validate(obj);
+}

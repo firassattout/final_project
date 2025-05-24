@@ -124,8 +124,8 @@ class AdvertiserService {
     const basePrice = basePrices[adData.body.pricingModel][adData.body.type];
     const platformFactor = platformFactors[adData.body.platform];
     const companyFactor = user?.companyType?.priceRating || 1.0;
-
     const unitPrice = basePrice * platformFactor * companyFactor;
+
     let estimatedUnits;
     if (adData.body.pricingModel === "CPC") {
       estimatedUnits = Math.floor(adData.body.budget / unitPrice);

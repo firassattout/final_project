@@ -99,15 +99,8 @@ class AuthService {
     );
     if (!isPasswordMatch) throw new Error("بيانات الدخول غير صحيحة");
 
-    const accessToken = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.SECRET,
-      { expiresIn: "15m" }
-    );
-
-    const refreshToken = jwt.sign({ id: user._id }, process.env.SECRET, {
-      expiresIn: "7d",
-    });
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
 
     const updatedUser = await userRepository.updateLoginData(
       user._id,

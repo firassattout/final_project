@@ -4,8 +4,8 @@ class PublisherFacade {
   async embed(adData) {
     return await PublisherService.embed(adData);
   }
-  async rewardedComplete(adData) {
-    return await PublisherService.rewardedComplete(adData);
+  async trackViews(adData) {
+    return await PublisherService.trackViews(adData);
   }
   async trackClick(adData) {
     return await PublisherService.trackClick(adData);

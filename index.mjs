@@ -14,17 +14,21 @@ import { auth } from "./routes/authRoutes.mjs";
 import { i18nMiddleware } from "./config/i18n.mjs";
 import { advertiserRoutes } from "./routes/advertiserRoutes.mjs";
 import { publisherRoutes } from "./routes/publisherRoutes.mjs";
+import { analyticsRoutes } from "./routes/analyticsRoutes.mjs";
+
+import "./cron/adStatsFlushJob.mjs";
+import "./cron/revenueJob.mjs";
 
 const app = express();
 configDotenv();
 connectDb();
-const server = createServer(app);
-export const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// const server = createServer(app);
+// export const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
 
 app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
@@ -55,6 +59,7 @@ app.use(
 // );
 app.use(cors());
 
+app.use("/api/", analyticsRoutes);
 app.use("/api/", publisherRoutes);
 app.use("/api/", advertiserRoutes);
 app.use("/api/", auth);
