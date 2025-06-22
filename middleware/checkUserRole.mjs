@@ -31,8 +31,9 @@ export const checkUserRole = (requiredRole) => {
           });
         }
 
-      req.body.userIdFromToken = userId;
-      req.body.userRoleFromToken = userRole;
+      req.user = {};
+      req.user.id = userId;
+      req.user.role = userRole;
 
       next();
     } catch (error) {

@@ -1,28 +1,116 @@
 import AuthService from "../services/authService.mjs";
+import logger from "../utils/logger.mjs";
 
 class AuthFacade {
+  /**
+   * Handle first registration
+   * @param {Object} data - Registration data
+   * @returns {Promise<Object>} Formatted response
+   */
   async handleFirstRegister(data) {
-    return AuthService.firstRegister(data);
-  }
-  async handleSecondRegister(data) {
-    return AuthService.secondRegister(data);
-  }
-
-  async handleLogin(data) {
-    return AuthService.login(data);
-  }
-  async handleDeactivation(data) {
-    return AuthService.userDeactivation(data);
-  }
-  async getUser(data) {
-    return AuthService.getUser(data);
-  }
-  async getCompanyType(data) {
-    return AuthService.getCompanyType(data);
+    try {
+      const result = await AuthService.firstRegister(data);
+      return result;
+    } catch (error) {
+      logger.error(`First register error: ${error.message}`);
+      throw new Error(error.message);
+    }
   }
 
+  /**
+   * Handle second registration
+   * @param {Object} req - Request object
+   * @returns {Promise<Object>} Formatted response
+   */
+  async handleSecondRegister(req) {
+    try {
+      const result = await AuthService.secondRegister(
+        req.body,
+        req.user,
+        req.files
+      );
+      return result;
+    } catch (error) {
+      logger.error(`Second register error: ${error.message}`);
+      throw new Error(error.message);
+    }
+  }
+
+  /**
+   * Handle user login
+   * @param {Object} req - Request object
+   * @returns {Promise<Object>} Formatted response
+   */
+  async handleLogin(req) {
+    try {
+      const result = await AuthService.login(req.body, {
+        ip: req.ip,
+        device: req.get("user-agent"),
+      });
+      return result;
+    } catch (error) {
+      logger.error(`Login error: ${error.message}`);
+      throw new Error(error.message);
+    }
+  }
+
+  /**
+   * Handle user deactivation
+   * @param {Object} params - Request parameters
+   * @returns {Promise<Object>} Formatted response
+   */
+  async handleDeactivation(params) {
+    try {
+      const result = await AuthService.userDeactivation(params.id);
+      return result;
+    } catch (error) {
+      logger.error(`Deactivation error: ${error.message}`);
+      throw new Error(error.message);
+    }
+  }
+
+  /**
+   * Get users
+   * @param {Object} params - Request parameters
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getUser(params) {
+    try {
+      const result = await AuthService.getUser(params.type, params.name);
+      return result;
+    } catch (error) {
+      logger.error(`Get user error: ${error.message}`);
+      throw new Error(error.message);
+    }
+  }
+
+  /**
+   * Get company types
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getCompanyType() {
+    try {
+      const result = await AuthService.getCompanyType();
+      return result;
+    } catch (error) {
+      logger.error(`Get company type error: ${error.message}`);
+      throw new Error(error.message);
+    }
+  }
+
+  /**
+   * Handle token refresh
+   * @param {string} refreshToken - Refresh token
+   * @returns {Promise<Object>} Formatted response
+   */
   async handleRefreshToken(refreshToken) {
-    return AuthService.refreshAccessToken(refreshToken);
+    try {
+      const result = await AuthService.refreshAccessToken(refreshToken);
+      return result;
+    } catch (error) {
+      logger.error(`Refresh token error: ${error.message}`);
+      throw new Error(error.message);
+    }
   }
 }
 

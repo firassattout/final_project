@@ -1,16 +1,64 @@
 import AnalyticRepository from "../repositories/AnalyticRepository.mjs";
+import logger from "../utils/logger.mjs";
+import { t } from "i18next";
+import Joi from "joi";
 
 class AnalyticService {
-  async advertiserAnalytics(data) {
-    const advertiserId = data.body.userIdFromToken;
-    const endDate = new Date(); // التاريخ الحالي
-    const startDate = new Date();
-    startDate.setDate(endDate.getDate() - 9);
+  /**
+   * Validate date range
+   * @param {Object} query - Query parameters
+   * @returns {Object} Validated start and end dates
+   */
+  validateDateRange(query) {
+    const schema = Joi.object({
+      startDate: Joi.date().iso().optional(),
+      endDate: Joi.date().iso().optional().min(Joi.ref("startDate")),
+      days: Joi.number().integer().min(1).max(90).optional(),
+    });
 
+    const { error, value } = schema.validate(query);
+    if (error) {
+      logger.warn(`Date range validation failed: ${error.message}`);
+      throw new Error(t("analytics.invalid_date_range"));
+    }
+
+    let endDate = value.endDate ? new Date(value.endDate) : new Date();
+    let startDate = value.startDate
+      ? new Date(value.startDate)
+      : new Date(endDate.getTime() - (value.days || 9) * 24 * 60 * 60 * 1000);
+
+    // Ensure endDate is not in the future
+    if (endDate > new Date()) {
+      endDate = new Date();
+    }
+
+    // Ensure startDate is not too far in the past (e.g., max 90 days)
+    const maxDays = 90 * 24 * 60 * 60 * 1000;
+    if (endDate.getTime() - startDate.getTime() > maxDays) {
+      startDate = new Date(endDate.getTime() - maxDays);
+    }
+
+    return { startDate, endDate };
+  }
+
+  /**
+   * Get advertiser analytics
+   * @param {Object} data - Analytics data
+   * @returns {Promise<Array>} Formatted stats
+   */
+  async advertiserAnalytics(data) {
+    const advertiserId = data.userIdFromToken;
+    if (!advertiserId) {
+      logger.warn("Missing advertiser ID");
+      throw new Error(t("analytics.no_user_id"));
+    }
+
+    const { startDate, endDate } = this.validateDateRange(data.query);
     const stats = await AnalyticRepository.getAdvertiserStats(
       advertiserId,
       startDate,
-      endDate
+      endDate,
+      data.adId
     );
 
     const dateRange = [];
@@ -33,19 +81,32 @@ class AnalyticService {
       };
     });
 
-    return formattedStats.sort((a, b) => b.date.localeCompare(a.date));
+    logger.info(
+      `Advertiser analytics retrieved for user: ${advertiserId}${
+        data.adId ? `, ad: ${data.adId}` : ""
+      }`
+    );
+    return formattedStats;
   }
 
+  /**
+   * Get publisher analytics
+   * @param {Object} data - Analytics data
+   * @returns {Promise<Array>} Formatted stats
+   */
   async publisherAnalytics(data) {
-    const publisherId = data.body.userIdFromToken;
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(endDate.getDate() - 9);
+    const publisherId = data.userIdFromToken;
+    if (!publisherId) {
+      logger.warn("Missing publisher ID");
+      throw new Error(t("analytics.no_user_id"));
+    }
 
+    const { startDate, endDate } = this.validateDateRange(data.query);
     const stats = await AnalyticRepository.getPublisherStats(
       publisherId,
       startDate,
-      endDate
+      endDate,
+      data.adId
     );
 
     const dateRange = [];
@@ -68,14 +129,21 @@ class AnalyticService {
       };
     });
 
-    return formattedStats.sort((a, b) => b.date.localeCompare(a.date));
+    logger.info(
+      `Publisher analytics retrieved for user: ${publisherId}${
+        data.adId ? `, ad: ${data.adId}` : ""
+      }`
+    );
+    return formattedStats;
   }
 
-  async adminAnalytics() {
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(endDate.getDate() - 9);
-
+  /**
+   * Get admin analytics
+   * @param {Object} data - Analytics data
+   * @returns {Promise<Array>} Formatted stats
+   */
+  async adminAnalytics(data) {
+    const { startDate, endDate } = this.validateDateRange(data.query);
     const stats = await AnalyticRepository.getAdminStats(startDate, endDate);
 
     const dateRange = [];
@@ -98,7 +166,8 @@ class AnalyticService {
       };
     });
 
-    return formattedStats.sort((a, b) => b.date.localeCompare(a.date));
+    logger.info(`Admin analytics retrieved`);
+    return formattedStats;
   }
 }
 

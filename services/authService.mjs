@@ -1,103 +1,122 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { t } from "i18next";
-
 import {
   generateAccessToken,
   generateRefreshToken,
 } from "../utils/tokenUtils.js";
-
 import {
   validateFirstRegisterUser,
   validateLoginUser,
   validateSecondRegisterUser,
 } from "../utils/validation.js";
-
 import { generatePassword } from "../utils/generatePassword.js";
-
 import userRepository from "../repositories/userRepository.mjs";
+import logger from "../utils/logger.mjs";
 
 class AuthService {
+  /**
+   * Handle first user registration
+   * @param {Object} data - User registration data
+   * @returns {Promise<Object>} User data and tokens
+   */
   async firstRegister(data) {
     const { error } = validateFirstRegisterUser(data);
-    if (error) throw new Error(t(error.details[0].message));
+    if (error) throw new Error(error.details[0].message);
 
-    let user = await userRepository.findByEmail(data.email);
-    if (user) throw new Error(t("auth.email_exists"));
+    const existingUser = await userRepository.findByEmail(data.email);
+    if (existingUser) throw new Error("البريد الإلكتروني موجود بالفعل");
 
     const tempPassword = generatePassword(8);
-    const salt = await bcrypt.genSalt(5);
+    const salt = await bcrypt.genSalt(10);
     data.password = await bcrypt.hash(tempPassword, salt);
 
-    user = await userRepository.create(data);
+    const user = await userRepository.create({
+      ...data,
+      state: "pending",
+      createdAt: new Date(),
+    });
 
-    const access_token = generateAccessToken(user);
-    const refresh_token = generateRefreshToken(user);
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
 
-    await userRepository.updateRefreshToken(user._id, refresh_token);
+    await userRepository.updateRefreshToken(user._id, refreshToken);
     const { password, ...userWithoutPassword } = user._doc;
+
+    logger.info(`User registered: ${user.email}`);
     return {
       user: userWithoutPassword,
       tempPassword,
-      access_token,
-      message: t("auth.register_success"),
+      accessToken,
+      refreshToken,
+      message: "تم التسجيل بنجاح",
     };
   }
 
-  async secondRegister(data) {
-    const { error } = validateSecondRegisterUser(data.body);
-    if (error) throw new Error(t(error.details[0].message));
-
-    let user = await userRepository.findById(data.body.userIdFromToken);
-
-    if (!user) throw new Error(t("auth.email_not_exists"));
-    if (user.id !== data.body.userIdFromToken)
-      throw new Error(t("auth.email_not_exists"));
-
-    // if (data?.files[0]) {
-    //   const { id } = await upload(
-    //     data?.files[0],
-    //     "1D11aejEkqYYQTPX5muychZvQxysUp3GN"
-    //   );
-    //   if (id) {
-    //     data.body.photo = `https://drive.google.com/thumbnail?id=${id}&sz=s300`;
-    //   }
-    // }
-
-    const salt = await bcrypt.genSalt(5);
-    data.body.password = await bcrypt.hash(data.body.password, salt);
-
-    user = await userRepository.update(user._id, {
-      state: "active",
-      // photo: data.body.photo,
-      // phone: data.body.phone,
-      password: data.body.password,
-    });
-
-    const { password, ...userWithoutPassword } = user._doc;
-
-    return {
-      ...userWithoutPassword,
-
-      message: t("auth.register_success"),
-    };
-  }
-
-  async login(data) {
-    const { error } = validateLoginUser(data.body);
+  /**
+   * Handle second registration step
+   * @param {Object} data - Registration completion data
+   * @param {Array} files - Uploaded files
+   * @returns {Promise<Object>} Updated user data
+   */
+  async secondRegister(data, user, files) {
+    const { error } = validateSecondRegisterUser(data);
     if (error) throw new Error(error.details[0].message);
 
-    const user = await userRepository.findByEmail(data.body.email);
-    if (!user) throw new Error("بيانات الدخول غير صحيحة");
+    const findUser = await userRepository.findById(user.id);
 
-    if (!user.isActive)
-      throw new Error("الحساب غير نشط، يرجى التواصل مع الدعم");
+    if (!findUser || findUser._id.toString() !== user.id) {
+      throw new Error("البريد الإلكتروني غير موجود");
+    }
+
+    // Handle file upload (uncomment and configure as needed)
+    /*
+    if (files?.[0]) {
+      const { id } = await upload(files[0], "1D11aejEkqYYQTPX5muychZvQxysUp3GN");
+      if (id) {
+        data.photo = `https://drive.google.com/thumbnail?id=${id}&sz=s300`;
+      }
+    }
+    */
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+
+    const updatedUser = await userRepository.update(user.id, {
+      state: "active",
+      password: hashedPassword,
+      // phone: data.phone,
+      updatedAt: new Date(),
+    });
+
+    const { password, ...userWithoutPassword } = updatedUser;
+    logger.info(`User completed registration: ${user.email}`);
+    return {
+      user: userWithoutPassword,
+      message: "تم إكمال التسجيل بنجاح",
+    };
+  }
+
+  /**
+   * Handle user login
+   * @param {Object} credentials - Email and password
+   * @param {Object} loginData - Login metadata (ip, device)
+   * @returns {Promise<Object>} User data and tokens
+   */
+  async login(credentials, loginData) {
+    const { error } = validateLoginUser(credentials);
+    if (error) throw new Error(error.details[0].message);
+
+    const user = await userRepository.findByEmail(credentials.email);
+    if (!user) throw new Error("بيانات تسجيل الدخول غير صحيحة");
+    // if (user.state !== "active") throw new Error("الحساب غير نشط");
 
     const isPasswordMatch = await bcrypt.compare(
-      data.body.password,
+      credentials.password,
       user.password
     );
-    if (!isPasswordMatch) throw new Error("بيانات الدخول غير صحيحة");
+    if (!isPasswordMatch) throw new Error("بيانات تسجيل الدخول غير صحيحة");
+
+    if (user.state !== "active") throw new Error("الحساب غير نشط");
 
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);
@@ -106,61 +125,79 @@ class AuthService {
       user._id,
       refreshToken,
       {
-        ip: data?.id || "",
-        device: data?.headers["user-agent"] || "",
+        ip: loginData.ip || "unknown",
+        device: loginData.device || "unknown",
       }
     );
+
     const {
       password,
       verificationCode,
       resetPasswordToken,
       loginHistory,
-      lastLogin,
+      twoFactorAuth,
+      isActive,
       ...userData
-    } = updatedUser._doc;
-
+    } = updatedUser;
+    logger.info(`User logged in: ${user.email}`);
     return {
-      ...userData,
+      user: userData,
       accessToken,
       refreshToken,
     };
   }
-  async userDeactivation(data) {
-    const user = await userRepository.findById(data.params.id);
-    if (!user) throw new Error("بيانات الدخول غير صحيحة");
 
-    if (!user.isActive) throw new Error("الحساب غير نشط");
+  /**
+   * Deactivate user account
+   * @param {string} userId - User ID
+   * @returns {Promise<Object>} Deactivation result
+   */
+  async userDeactivation(userId) {
+    const user = await userRepository.findById(userId);
+    if (!user) throw new Error("المستخدم غير موجود");
+    if (user.state === "inactive") throw new Error("الحساب غير نشط");
 
-    const updatedUser = await userRepository.update(user._id, {
-      isActive: false,
-    });
-
-    return { message: "تم الغاء التفعيل", updatedUser };
-  }
-  async getUser(data) {
-    const user = await userRepository.findByType(
-      data.params.type,
-      data.params.name
-    );
-    if (!user) throw new Error("لا توجد معلومات");
-
-    return { user };
-  }
-  async getCompanyType(data) {
-    const company = await userRepository.findCompanyType();
-    if (!company) throw new Error("لا توجد معلومات");
-
-    return { company };
+    const updatedUser = await userRepository.deactivateUser(userId);
+    logger.info(`User deactivated: ${user.email}`);
+    return { message: "تم إلغاء تفعيل الحساب بنجاح", user: updatedUser };
   }
 
+  /**
+   * Get users by type or name
+   * @param {string} type - User role
+   * @param {string} name - User name
+   * @returns {Promise<Object>} Users data
+   */
+  async getUser(type, name) {
+    const users = await userRepository.findByType(type, name);
+    if (!users.length) throw new Error("لا توجد بيانات للمستخدمين");
+    return { users };
+  }
+
+  /**
+   * Get company types
+   * @returns {Promise<Object>} Company types data
+   */
+  async getCompanyType() {
+    const companyTypes = await userRepository.findCompanyType();
+    if (!companyTypes.length) throw new Error("لا توجد أنواع شركات متاحة");
+    return { companyTypes };
+  }
+
+  /**
+   * Refresh access token
+   * @param {string} refreshToken - Refresh token
+   * @returns {Promise<string>} New access token
+   */
   async refreshAccessToken(refreshToken) {
-    if (!refreshToken) throw new Error(t("auth.refresh_token_required"));
+    if (!refreshToken) throw new Error("رمز التحديث مطلوب");
 
     const decoded = jwt.verify(refreshToken, process.env.SECRET);
+
     const user = await userRepository.findById(decoded.id);
 
     if (!user || user.refreshToken !== refreshToken) {
-      throw new Error(t("auth.invalid_refresh_token"));
+      throw new Error("رمز التحديث غير صالح");
     }
 
     return generateAccessToken(user);

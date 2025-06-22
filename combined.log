@@ -1,0 +1,155 @@
+{"level":"error","message":"Login error: auth.account_inactive","timestamp":"2025-05-24T17:37:14.507Z"}
+{"level":"error","message":"Refresh token error: Invalid refresh token","timestamp":"2025-05-24T17:39:07.747Z"}
+{"level":"error","message":"First register error: This email already exists","timestamp":"2025-05-24T17:44:06.168Z"}
+{"level":"info","message":"User registered: publisher@example.com","timestamp":"2025-05-24T17:45:24.516Z"}
+{"level":"info","message":"User registered: publisher@example.com","timestamp":"2025-05-24T17:50:10.749Z"}
+{"level":"error","message":"Login error: auth.account_inactive","timestamp":"2025-05-24T17:50:44.319Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T17:51:58.260Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:52:28.146Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:52:28.147Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:23.356Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:23.357Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:54.179Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:54.181Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:35.002Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:35.004Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:59.057Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:59.058Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:57:33.831Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:57:33.832Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:58:06.175Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:58:06.176Z"}
+{"level":"error","message":"Second register error: This email not exists","timestamp":"2025-05-24T17:59:33.934Z"}
+{"level":"error","message":"Second register error: Cannot read properties of null (reading '_id')","timestamp":"2025-05-24T18:00:28.724Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:07:45.401Z"}
+{"level":"info","message":"User registered: publisher@example.com","timestamp":"2025-05-24T18:10:13.596Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:10:31.835Z"}
+{"level":"error","message":"First register error: This email already exists","timestamp":"2025-05-24T18:12:10.728Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:13:37.388Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:13:50.817Z"}
+{"level":"info","message":"User registered: publisher@example.com","timestamp":"2025-05-24T18:14:18.436Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:14:32.733Z"}
+{"level":"info","message":"User registered: publisher@example.com","timestamp":"2025-05-24T18:17:28.369Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:35.211Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:45.904Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:48.596Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:22:02.931Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:35:27.440Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:35:27.443Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-05-24T18:36:29.501Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-05-24T18:36:43.512Z"}
+{"level":"info","message":"User completed registration: undefined","timestamp":"2025-05-24T18:37:10.995Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:37:15.702Z"}
+{"level":"error","message":"Refresh token error: رمز التحديث غير صالح","timestamp":"2025-05-24T18:37:29.478Z"}
+{"level":"error","message":"Refresh token error: رمز التحديث غير صالح","timestamp":"2025-05-24T18:38:09.188Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:43:37.362Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:52:41.899Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:52:41.901Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:52:51.257Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:53:57.917Z"}
+{"level":"info","message":"User logged in: publisher@example.com","timestamp":"2025-05-24T18:54:27.868Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:03:28.437Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:05:54.137Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:06:23.952Z"}
+{"level":"info","message":"User deactivated: ahmed1@gmail.com","timestamp":"2025-05-24T19:06:45.591Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:08:18.534Z"}
+{"level":"info","message":"User logged in: ahmed1@gmail.com","timestamp":"2025-06-22T12:19:12.776Z"}
+{"level":"info","message":"User logged in: ahmed1@gmail.com","timestamp":"2025-06-22T12:20:28.289Z"}
+{"level":"error","message":"Create ad error: ad.no_user_id","timestamp":"2025-06-22T12:21:26.941Z"}
+{"level":"error","message":"Create ad error: userIdFromToken is not defined","timestamp":"2025-06-22T12:24:29.605Z"}
+{"level":"info","message":"Ad created: 6857f65c5a675c8254d45536 by user: ahmed1@gmail.com","timestamp":"2025-06-22T12:26:04.634Z"}
+{"level":"error","message":"Get ad error: AdRepository.findByUser(...).lean is not a function","timestamp":"2025-06-22T12:27:00.036Z"}
+{"level":"error","message":"Error finding user by ID: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T12:27:33.206Z"}
+{"level":"error","message":"Get ad error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T12:27:33.208Z"}
+{"level":"info","message":"Retrieved 4 ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T12:27:44.020Z"}
+{"level":"info","message":"Retrieved 4 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T12:30:12.633Z"}
+{"level":"info","message":"Retrieved 4 ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T12:30:12.635Z"}
+{"level":"info","message":"Retrieved 4 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T12:30:56.326Z"}
+{"level":"info","message":"Retrieved 4 ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T12:30:56.328Z"}
+{"level":"error","message":"Edit ad error: المنصة يجب أن تكون web أو mobile ","timestamp":"2025-06-22T12:33:09.227Z"}
+{"level":"info","message":"Ad retrieved: 682b34775bd4f3b5728b0f68","timestamp":"2025-06-22T12:33:15.222Z"}
+{"level":"error","message":"Edit ad error: ad.cannot_edit_published","timestamp":"2025-06-22T12:33:15.770Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:35:00.258Z"}
+{"level":"info","message":"Ad updated: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:35:03.703Z"}
+{"level":"info","message":"Ad edited: 6857f65c5a675c8254d45536 by user: ahmed1@gmail.com","timestamp":"2025-06-22T12:35:03.704Z"}
+{"level":"info","message":"Value check performed for user: ahmed1@gmail.com","timestamp":"2025-06-22T12:36:05.387Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:36:57.096Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:36:57.734Z"}
+{"level":"error","message":"Add media error: Image dimensions must be within 720 - 728 x 80 - 90 for web banner","timestamp":"2025-06-22T12:36:57.741Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:08.181Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:08.745Z"}
+{"level":"error","message":"Add media error: Image dimensions must be within 720 - 728 x 80 - 90 for web banner","timestamp":"2025-06-22T12:37:08.746Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:23.625Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:25.027Z"}
+{"level":"info","message":"Media added to ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:28.655Z"}
+{"level":"warn","message":"Media not found for ad: 68191ce6a04ccd9f3e06a62c","timestamp":"2025-06-22T12:37:46.338Z"}
+{"level":"error","message":"Get media error: ad.no_media_found","timestamp":"2025-06-22T12:37:46.340Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:55.581Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T12:37:55.582Z"}
+{"level":"warn","message":"Invalid user ID: undefined","timestamp":"2025-06-22T12:51:52.072Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T12:51:52.075Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:53:53.048Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:54:26.445Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:54:56.950Z"}
+{"level":"info","message":"User logged in: ahmed2@gmail.com","timestamp":"2025-06-22T12:56:54.673Z"}
+{"level":"warn","message":"Invalid user ID: undefined","timestamp":"2025-06-22T12:57:49.698Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T12:57:49.700Z"}
+{"level":"info","message":"Embed code generated for user: undefined","timestamp":"2025-06-22T12:58:50.052Z"}
+{"level":"warn","message":"Invalid user ID: undefined","timestamp":"2025-06-22T13:00:20.019Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T13:00:20.022Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T13:01:11.470Z"}
+{"level":"info","message":"Publisher stats retrieved: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T13:07:13.021Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T13:07:13.023Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:07:44.313Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:07:44.314Z"}
+{"level":"info","message":"User logged in: Firas_sat_97@example.com","timestamp":"2025-06-22T13:10:27.263Z"}
+{"level":"info","message":"Admin stats retrieved","timestamp":"2025-06-22T13:11:09.429Z"}
+{"level":"info","message":"Admin analytics retrieved","timestamp":"2025-06-22T13:11:09.429Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T13:16:23.017Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T13:16:23.018Z"}
+{"level":"info","message":"Retrieved 4 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:16:40.817Z"}
+{"level":"info","message":"Retrieved 4 ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T13:16:40.818Z"}
+{"level":"info","message":"Retrieved ad: 682ccff68d1e8d0661183f99 for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:27:10.977Z"}
+{"level":"info","message":"Retrieved undefined ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T13:27:10.979Z"}
+{"level":"info","message":"Retrieved 4 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:27:43.576Z"}
+{"level":"info","message":"Retrieved 4 ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T13:27:43.577Z"}
+{"level":"info","message":"Retrieved ad: 682ccff68d1e8d0661183f99 for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T13:27:55.587Z"}
+{"level":"info","message":"Retrieved undefined ads for user: ahmed1@gmail.com","timestamp":"2025-06-22T13:27:55.587Z"}
+{"level":"error","message":"Publisher analytics error: Cannot read properties of undefined (reading 'endDate')","timestamp":"2025-06-22T16:09:13.663Z"}
+{"level":"error","message":"Error getting publisher stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:09:53.224Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:09:53.228Z"}
+{"level":"error","message":"Error getting publisher stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:11:44.104Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:11:44.107Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:12:08.928Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:12:08.928Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:14:55.302Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:14:55.306Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:15:43.005Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:15:43.006Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:17:29.546Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:17:29.549Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T16:18:08.738Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T16:18:38.226Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-22T16:18:38.226Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:18:53.861Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:18:53.863Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:19:19.244Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:19.245Z"}
+{"level":"error","message":"Error getting advertiser stats: fetch failed","timestamp":"2025-06-22T16:19:31.589Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:31.590Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:19:45.202Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:45.203Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T16:19:57.461Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T16:21:09.968Z"}
+{"level":"info","message":"Publisher stats retrieved: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T16:22:33.413Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-22T16:22:33.415Z"}
+{"level":"info","message":"Admin stats retrieved","timestamp":"2025-06-22T16:28:08.134Z"}
+{"level":"info","message":"Admin analytics retrieved","timestamp":"2025-06-22T16:28:08.137Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T16:31:56.499Z"}
+{"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:31:56.501Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T16:32:11.052Z"}
+{"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:32:11.053Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T16:32:55.356Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T16:32:55.357Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-22T16:33:20.019Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-22T16:33:20.019Z"}

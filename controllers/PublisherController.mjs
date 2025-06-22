@@ -1,70 +1,87 @@
-import PublisherFacade from "../facade/PublisherFacade.mjs";
 import asyncHandler from "express-async-handler";
+import PublisherFacade from "../facade/PublisherFacade.mjs";
+import logger from "../utils/logger.mjs";
 import { getErrorHtml } from "../utils/getErrorHtml.js";
 import axios from "axios";
+import { generateNonce } from "../utils/securityUtils.mjs";
+
 class PublisherController {
+  /**
+   * Generate embed code
+   */
   embed = asyncHandler(async (req, res) => {
-    const result = await PublisherFacade.embed(req);
-    res.send(result);
+    const result = await PublisherFacade.embed({
+      body: req.body,
+      userIdFromToken: req.user?.id,
+    });
+    res.status(200).json(result);
   });
+
+  /**
+   * Track advertisement views
+   */
   trackViews = asyncHandler(async (req, res) => {
-    const result = await PublisherFacade.trackViews(req);
-    res.send(result);
+    const result = await PublisherFacade.trackViews(req.body);
+    res.status(200).json(result);
   });
+
+  /**
+   * Track advertisement clicks
+   */
   trackClick = asyncHandler(async (req, res) => {
-    const result = await PublisherFacade.trackClick(req);
-    res.send(result);
+    const result = await PublisherFacade.trackClick(req.body);
+    res.status(200).json(result);
   });
-  showAd = async (req, res) => {
-    try {
-      const result = await PublisherFacade.showAd(req);
 
-      if (!result) {
-        return res
-          .status(404)
-          .setHeader(
-            "Content-Security-Policy",
-            "script-src 'self' 'nonce-my-nonce-123'; object-src 'none';"
-          )
-          .send(getErrorHtml("الإعلان غير متوفر"));
-      }
+  /**
+   * Show advertisement
+   */
+  showAd = asyncHandler(async (req, res) => {
+    const nonce = generateNonce();
+    const result = await PublisherFacade.showAd({
+      params: req.params,
+      query: req.query,
+    });
 
-      res
-        .status(200)
-        .setHeader(
-          "Content-Security-Policy",
-          "script-src 'self' 'nonce-my-nonce-123'; object-src 'none';"
-        )
-        .send(result);
-    } catch (e) {
-      console.error("Error showing ad:", e);
+    res
+      .status(200)
+      .setHeader(
+        "Content-Security-Policy",
+        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:;`
+      )
+      .setHeader("X-Content-Type-Options", "nosniff")
+      .send(result.data);
+  });
 
-      res
-        .status(500)
-        .setHeader(
-          "Content-Security-Policy",
-          "script-src 'self' 'nonce-my-nonce-123'; object-src 'none';"
-        )
-        .send(getErrorHtml("حدث خطأ في تحميل الإعلان"));
-    }
-  };
+  /**
+   * Stream video content
+   */
   streamVideo = asyncHandler(async (req, res) => {
     const { url } = req.query;
-
-    if (!url) return res.status(400).send("URL is required");
+    if (!url) {
+      return res.status(400).json({
+        status: "error",
+        message: "URL is required",
+      });
+    }
 
     try {
       const response = await axios.get(url, {
         responseType: "stream",
+        headers: { "User-Agent": "Mozilla/5.0" },
       });
 
       res.setHeader("Content-Type", response.headers["content-type"]);
       res.setHeader("Content-Disposition", "inline");
+      res.setHeader("X-Content-Type-Options", "nosniff");
 
       response.data.pipe(res);
     } catch (err) {
-      console.error("Streaming error:", err.message);
-      res.status(500).send("Failed to stream video");
+      logger.error(`Streaming error: ${err.message}`);
+      res.status(500).json({
+        status: "error",
+        message: "Failed to stream video",
+      });
     }
   });
 }

@@ -6,15 +6,15 @@ import { notfound, errorHandler } from "./middleware/errorMiddleware.mjs";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import logger from "./utils/logger.js";
+import logger from "./utils/logger.mjs";
 import { Server } from "socket.io";
 import { createServer } from "http";
 
-import { auth } from "./routes/authRoutes.mjs";
+import authRouter from "./routes/authRoutes.mjs";
 import { i18nMiddleware } from "./config/i18n.mjs";
-import { advertiserRoutes } from "./routes/advertiserRoutes.mjs";
-import { publisherRoutes } from "./routes/publisherRoutes.mjs";
-import { analyticsRoutes } from "./routes/analyticsRoutes.mjs";
+import advertiserRoutes from "./routes/advertiserRoutes.mjs";
+import publisherRoutes from "./routes/publisherRoutes.mjs";
+import analyticsRoutes from "./routes/analyticsRoutes.mjs";
 
 import "./cron/adStatsFlushJob.mjs";
 import "./cron/revenueJob.mjs";
@@ -62,7 +62,7 @@ app.use(cors());
 app.use("/api/", analyticsRoutes);
 app.use("/api/", publisherRoutes);
 app.use("/api/", advertiserRoutes);
-app.use("/api/", auth);
+app.use("/api/", authRouter);
 
 app.use(notfound);
 app.use(errorHandler);

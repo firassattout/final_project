@@ -1,0 +1,78 @@
+{"level":"error","message":"Login error: auth.account_inactive","timestamp":"2025-05-24T17:37:14.507Z"}
+{"level":"error","message":"Refresh token error: Invalid refresh token","timestamp":"2025-05-24T17:39:07.747Z"}
+{"level":"error","message":"First register error: This email already exists","timestamp":"2025-05-24T17:44:06.168Z"}
+{"level":"error","message":"Login error: auth.account_inactive","timestamp":"2025-05-24T17:50:44.319Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:52:28.146Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:52:28.147Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:23.356Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:23.357Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:54.179Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:54:54.181Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:35.002Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"advertiser\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:35.004Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:59.057Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:56:59.058Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:57:33.831Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:57:33.832Z"}
+{"level":"error","message":"Error finding user by ID: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:58:06.175Z"}
+{"level":"error","message":"Second register error: Cast to ObjectId failed for value \"publisher\" (type string) at path \"_id\" for model \"Users\"","timestamp":"2025-05-24T17:58:06.176Z"}
+{"level":"error","message":"Second register error: This email not exists","timestamp":"2025-05-24T17:59:33.934Z"}
+{"level":"error","message":"Second register error: Cannot read properties of null (reading '_id')","timestamp":"2025-05-24T18:00:28.724Z"}
+{"level":"error","message":"First register error: This email already exists","timestamp":"2025-05-24T18:12:10.728Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:13:37.388Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:13:50.817Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:35.211Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:45.904Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:21:48.596Z"}
+{"level":"error","message":"Login error: auth.invalid_credentials","timestamp":"2025-05-24T18:22:02.931Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:35:27.440Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:35:27.443Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-05-24T18:36:29.501Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-05-24T18:36:43.512Z"}
+{"level":"error","message":"Refresh token error: رمز التحديث غير صالح","timestamp":"2025-05-24T18:37:29.478Z"}
+{"level":"error","message":"Refresh token error: رمز التحديث غير صالح","timestamp":"2025-05-24T18:38:09.188Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:52:41.899Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-05-24T18:52:41.901Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:03:28.437Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:05:54.137Z"}
+{"level":"error","message":"Deactivation error: الحساب غير نشط","timestamp":"2025-05-24T19:06:23.952Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:08:18.534Z"}
+{"level":"error","message":"Create ad error: ad.no_user_id","timestamp":"2025-06-22T12:21:26.941Z"}
+{"level":"error","message":"Create ad error: userIdFromToken is not defined","timestamp":"2025-06-22T12:24:29.605Z"}
+{"level":"error","message":"Get ad error: AdRepository.findByUser(...).lean is not a function","timestamp":"2025-06-22T12:27:00.036Z"}
+{"level":"error","message":"Error finding user by ID: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T12:27:33.206Z"}
+{"level":"error","message":"Get ad error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T12:27:33.208Z"}
+{"level":"error","message":"Edit ad error: المنصة يجب أن تكون web أو mobile ","timestamp":"2025-06-22T12:33:09.227Z"}
+{"level":"error","message":"Edit ad error: ad.cannot_edit_published","timestamp":"2025-06-22T12:33:15.770Z"}
+{"level":"error","message":"Add media error: Image dimensions must be within 720 - 728 x 80 - 90 for web banner","timestamp":"2025-06-22T12:36:57.741Z"}
+{"level":"error","message":"Add media error: Image dimensions must be within 720 - 728 x 80 - 90 for web banner","timestamp":"2025-06-22T12:37:08.746Z"}
+{"level":"error","message":"Get media error: ad.no_media_found","timestamp":"2025-06-22T12:37:46.340Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T12:51:52.075Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:53:53.048Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:54:26.445Z"}
+{"level":"error","message":"Login error: الحساب غير نشط","timestamp":"2025-06-22T12:54:56.950Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T12:57:49.700Z"}
+{"level":"error","message":"Embed error: publisher.invalid_user_id","timestamp":"2025-06-22T13:00:20.022Z"}
+{"level":"error","message":"Publisher analytics error: Cannot read properties of undefined (reading 'endDate')","timestamp":"2025-06-22T16:09:13.663Z"}
+{"level":"error","message":"Error getting publisher stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:09:53.224Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:09:53.228Z"}
+{"level":"error","message":"Error getting publisher stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:11:44.104Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:11:44.107Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-22T16:12:08.928Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:12:08.928Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:14:55.302Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:14:55.306Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:15:43.005Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:15:43.006Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:17:29.546Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:17:29.549Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:18:53.861Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:18:53.863Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:19:19.244Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:19.245Z"}
+{"level":"error","message":"Error getting advertiser stats: fetch failed","timestamp":"2025-06-22T16:19:31.589Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:31.590Z"}
+{"level":"error","message":"Error getting publisher stats: fetch failed","timestamp":"2025-06-22T16:19:45.202Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:45.203Z"}
+{"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:31:56.501Z"}
+{"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:32:11.053Z"}

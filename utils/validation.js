@@ -192,7 +192,7 @@ export function validateEditAd(obj) {
   }).validate(obj);
 }
 
-export function validatevalueCheck(obj) {
+export function validateValueCheck(obj) {
   return Joi.object({
     budget: Joi.number().required().messages({
       "any.required": "الميزانية مطلوبة",
