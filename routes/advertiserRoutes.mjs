@@ -22,7 +22,7 @@ const advertiserRoutes = express.Router();
 // Rate limiter for sensitive endpoints
 const adRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // Limit each IP to 50 requests per window
+  max: 1000, // Limit each IP to 50 requests per window
   message: "Too many requests, please try again later.",
 });
 

@@ -76,3 +76,7 @@
 {"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-22T16:19:45.203Z"}
 {"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:31:56.501Z"}
 {"level":"error","message":"Advertiser analytics error: adId is not defined","timestamp":"2025-06-22T16:32:11.053Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:07:59.704Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:07:59.706Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.761Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.762Z"}

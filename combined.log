@@ -153,3 +153,9 @@
 {"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-22T16:32:55.357Z"}
 {"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-22T16:33:20.019Z"}
 {"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-22T16:33:20.019Z"}
+{"level":"info","message":"User logged in: Firas_sat_97@example.com","timestamp":"2025-06-22T19:05:26.737Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:07:59.704Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:07:59.706Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.761Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.762Z"}
+{"level":"info","message":"User logged in: Firas_sat_97@example.com","timestamp":"2025-06-22T19:08:52.078Z"}
