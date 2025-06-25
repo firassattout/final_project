@@ -8,6 +8,7 @@ const AdDisplaysSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
+    cost: { type: Number },
     views: { type: Number },
     clicks: { type: Number },
   },

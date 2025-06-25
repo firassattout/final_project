@@ -39,69 +39,46 @@ class PublisherService {
    * @returns {Promise<string>} Embed code for ad
    */
   async showAd(data) {
-    const { userId } = data.params;
-    const { type } = data.query;
-
-    if (!isValidObjectId(userId)) {
-      logger.warn(`Invalid user ID: ${userId}`);
-      throw new Error(t("publisher.invalid_user_id"));
-    }
-
-    if (!type) {
-      logger.warn("Missing ad type");
-      throw new Error(t("publisher.no_ad_type"));
-    }
-
-    // Check Redis cache first
-    const cacheKey = `ads:active:${type}`;
-    let allAds = await redis.get(cacheKey);
-
+    let allAds = await AdRepository.findAllMedia();
     if (!allAds) {
-      allAds = await AdRepository.findAllMedia();
-      if (!allAds || allAds.length === 0) {
-        logger.warn("No ads found");
-        throw new Error(t("publisher.no_ads"));
-      }
-      // Cache for 5 minutes
-      await redis.setex(cacheKey, 300, JSON.stringify(allAds));
-    } else {
-      allAds = JSON.parse(allAds);
+      throw new Error("الإعلان غير موجود");
+    }
+    const type = data?.query?.type;
+    if (!type) {
+      throw new Error("نوع الإعلان غير موجود");
     }
 
     allAds = allAds.filter(
-      (ad) => ad.adId?.state === "active" && ad.adId?.type === type
+      (ad) => ad.adId.state === "active" && ad.adId.type === type
     );
+    allAds = allAds.sort((a, b) => a.adId.unitPrice - b.adId.unitPrice);
 
     if (allAds.length === 0) {
-      logger.warn(`No active ads found for type: ${type}`);
-      throw new Error(t("publisher.no_active_ads"));
+      throw new Error("  غير موجود");
     }
 
-    // Sort by unitPrice (ascending)
-    allAds.sort((a, b) => a.adId.unitPrice - b.adId.unitPrice);
+    let rand = Math.random();
+    rand = Math.floor(Math.random() * allAds.length);
 
-    // Random selection
-    const randomIndex = Math.floor(Math.random() * allAds.length);
-    const selectedAd = allAds[randomIndex];
-
-    let url = selectedAd.url;
-    if (selectedAd.mediaType === "image" && url) {
-      try {
-        const response = await axios.get(url, {
+    let url;
+    if (allAds.at(rand)?.mediaType === "image") {
+      if (allAds.at(rand).url) {
+        const response = await axios.get(allAds.at(rand).url, {
           responseType: "arraybuffer",
-          headers: { "User-Agent": "Mozilla/5.0" },
         });
         const base64 = Buffer.from(response.data, "binary").toString("base64");
         const mimeType = response.headers["content-type"];
         url = `data:${mimeType};base64,${base64}`;
-      } catch (error) {
-        logger.error(`Error fetching image: ${error.message}`);
-        throw new Error(t("publisher.image_fetch_failed"));
       }
     }
 
-    const embedCode = generateEmbedCode(selectedAd, url, userId, type);
-    logger.info(`Ad shown for user: ${userId}, ad: ${selectedAd.adId._id}`);
+    const embedCode = generateEmbedCode(
+      allAds.at(rand),
+      url,
+      data.params?.userId,
+      type,
+      data.nonce
+    );
     return embedCode;
   }
 

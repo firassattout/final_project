@@ -1,10 +1,10 @@
-export function generateEmbedCode(ad, url, userId, type) {
+export function generateEmbedCode(ad, url, userId, type, nonce) {
   if (ad.mediaType === "image")
     switch (type) {
       case "banner":
-        return generateBannerEmbedCode(ad, url, userId);
+        return generateBannerEmbedCode(ad, url, userId, nonce);
       case "rewarded":
-        return generateRewardedEmbedCode(ad, url, userId);
+        return generateRewardedEmbedCode(ad, url, userId, nonce);
 
       default:
         throw new Error("نوع الإعلان غير مدعوم");
@@ -12,7 +12,7 @@ export function generateEmbedCode(ad, url, userId, type) {
   else {
     switch (type) {
       case "rewarded":
-        return generateRewardedEmbedCode(ad, url, userId);
+        return generateRewardedEmbedCode(ad, url, userId, nonce);
 
       default:
         throw new Error("نوع الإعلان غير مدعوم");
@@ -20,7 +20,7 @@ export function generateEmbedCode(ad, url, userId, type) {
   }
 }
 
-function generateBannerEmbedCode(ad, url, userId) {
+function generateBannerEmbedCode(ad, url, userId, nonce) {
   if (ad.adId.platform === "web")
     return `
 
@@ -102,7 +102,7 @@ function generateBannerEmbedCode(ad, url, userId) {
  
     </div>
 
-    <script nonce="my-nonce-123">
+    <script nonce="${nonce}">
       const impressionDuration = 20;
       let impressionTracked = false;
 
@@ -166,7 +166,7 @@ function generateBannerEmbedCode(ad, url, userId) {
   `;
 }
 
-function generateRewardedEmbedCode(ad, mediaUrl, userId, duration = 10) {
+function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
   if (ad.adId.platform === "web")
     return `
 <!DOCTYPE html>
@@ -396,7 +396,8 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, duration = 10) {
         </div>
       </div>
     </div>
-    <script nonce="my-nonce-123">
+
+    <script nonce="${nonce}">
        const adDuration = ${duration};
 
       let timeLeft = adDuration;

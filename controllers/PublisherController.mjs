@@ -14,7 +14,7 @@ class PublisherController {
       body: req.body,
       userIdFromToken: req.user?.id,
     });
-    res.status(200).json(result);
+    res.status(200).send(result);
   });
 
   /**
@@ -41,6 +41,7 @@ class PublisherController {
     const result = await PublisherFacade.showAd({
       params: req.params,
       query: req.query,
+      nonce,
     });
 
     res
@@ -50,7 +51,7 @@ class PublisherController {
         `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:;`
       )
       .setHeader("X-Content-Type-Options", "nosniff")
-      .send(result.data);
+      .send(result);
   });
 
   /**

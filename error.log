@@ -80,3 +80,39 @@
 {"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:07:59.706Z"}
 {"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.761Z"}
 {"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.762Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:39:47.029Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:39:47.031Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:41:00.507Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:41:00.508Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:41:28.588Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:41:28.591Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:07:40.337Z"}
+{"level":"error","message":"Show ad error: publisher.no_ad_type","timestamp":"2025-06-25T19:10:41.813Z"}
+{"level":"error","message":"Show ad error: s is not defined","timestamp":"2025-06-25T19:11:13.066Z"}
+{"level":"error","message":"Show ad error: publisher.no_active_ads","timestamp":"2025-06-25T19:11:27.408Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:12:56.594Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:14:07.711Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:19:16.104Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:19:39.219Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:20:09.729Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:20:26.963Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:21:14.364Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:32:17.056Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:32:42.598Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:33:35.144Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:33:43.337Z"}
+{"level":"error","message":"Advertiser analytics error: AnalyticService.getTotalCost is not a function","timestamp":"2025-06-25T20:14:28.003Z"}
+{"level":"error","message":"Error getting advertiser stats: result is not defined","timestamp":"2025-06-25T20:19:07.097Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:19:07.101Z"}
+{"level":"error","message":"Error getting advertiser stats: totalCost is not defined","timestamp":"2025-06-25T20:19:54.718Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:19:54.722Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:20:21.959Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:20:21.962Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:20:57.512Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:20:57.514Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:21:10.933Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:21:10.936Z"}
+{"level":"error","message":"Advertiser analytics error: Cannot destructure property 'stats' of '(intermediate value)' as it is undefined.","timestamp":"2025-06-25T20:21:54.728Z"}
+{"level":"error","message":"Advertiser analytics error: Cannot destructure property 'stats' of '(intermediate value)' as it is undefined.","timestamp":"2025-06-25T20:22:18.622Z"}
+{"level":"error","message":"Error getting advertiser stats: Cannot access 'ads' before initialization","timestamp":"2025-06-25T20:43:02.179Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:43:02.183Z"}

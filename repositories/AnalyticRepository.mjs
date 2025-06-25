@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import logger from "../utils/logger.mjs";
 import { t } from "i18next";
 import redis from "../utils/redisClient.mjs";
+import AdRepository from "./AdRepository.mjs";
 
 class AnalyticRepository {
   /**
@@ -23,21 +24,7 @@ class AnalyticRepository {
       throw new Error(t("analytics.invalid_ad_id"));
     }
 
-    const cacheKey = `stats:advertiser:${advertiserId}:${startDate.toISOString()}:${endDate.toISOString()}${
-      adId ? `:${adId}` : ""
-    }`;
     try {
-      // Check Redis cache
-      const cachedStats = await redis.get(cacheKey);
-      if (cachedStats) {
-        logger.info(
-          `Cache hit for advertiser stats: ${advertiserId}${
-            adId ? `, ad: ${adId}` : ""
-          }`
-        );
-        return JSON.parse(cachedStats);
-      }
-
       const matchStage = {
         "ad.userId": new mongoose.Types.ObjectId(advertiserId),
         createdAt: { $gte: startDate, $lte: endDate },
@@ -66,15 +53,32 @@ class AnalyticRepository {
         },
         { $sort: { _id: 1 } },
       ]);
+      const matchStage2 = {};
+      if (adId) {
+        matchStage.adId = new mongoose.Types.ObjectId(adId);
+      }
 
-      // Cache for 1 hour
-      await redis.setex(cacheKey, 3600, JSON.stringify(stats));
-      logger.info(
-        `Advertiser stats retrieved: ${advertiserId}${
-          adId ? `, ad: ${adId}` : ""
-        }`
-      );
-      return stats;
+      const [result] = await AdDisplays.aggregate([
+        { $match: matchStage2 },
+        {
+          $group: {
+            _id: null,
+            totalCost: { $sum: "$cost" },
+          },
+        },
+      ]);
+
+      const totalCost = result?.totalCost || 0;
+
+      let budget = 0;
+      if (adId) {
+        const ad = await AdRepository.findById(adId);
+        budget = ad.budget;
+      } else {
+        const ads = await AdRepository.findByUser(advertiserId);
+        ads.map((ad) => (budget += ad.budget));
+      }
+      return { stats, budget, totalCost };
     } catch (error) {
       logger.error(`Error getting advertiser stats: ${error.message}`);
       throw new Error(t("analytics.stats_failed"));
@@ -99,21 +103,7 @@ class AnalyticRepository {
       throw new Error(t("analytics.invalid_ad_id"));
     }
 
-    const cacheKey = `stats:publisher:${publisherId}:${startDate.toISOString()}:${endDate.toISOString()}${
-      adId ? `:${adId}` : ""
-    }`;
     try {
-      // Check Redis cache
-      const cachedStats = await redis.get(cacheKey);
-      if (cachedStats) {
-        logger.info(
-          `Cache hit for publisher stats: ${publisherId}${
-            adId ? `, ad: ${adId}` : ""
-          }`
-        );
-        return JSON.parse(cachedStats);
-      }
-
       const matchStage = {
         userId: new mongoose.Types.ObjectId(publisherId),
         createdAt: { $gte: startDate, $lte: endDate },
@@ -134,13 +124,6 @@ class AnalyticRepository {
         { $sort: { _id: 1 } },
       ]);
 
-      // Cache for 1 hour
-      await redis.setex(cacheKey, 3600, JSON.stringify(stats));
-      logger.info(
-        `Publisher stats retrieved: ${publisherId}${
-          adId ? `, ad: ${adId}` : ""
-        }`
-      );
       return stats;
     } catch (error) {
       logger.error(`Error getting publisher stats: ${error.message}`);
@@ -155,15 +138,7 @@ class AnalyticRepository {
    * @returns {Promise<Array>} Aggregated stats
    */
   async getAdminStats(startDate, endDate) {
-    const cacheKey = `stats:admin:${startDate.toISOString()}:${endDate.toISOString()}`;
     try {
-      // Check Redis cache
-      const cachedStats = await redis.get(cacheKey);
-      if (cachedStats) {
-        logger.info(`Cache hit for admin stats`);
-        return JSON.parse(cachedStats);
-      }
-
       const stats = await AdDisplays.aggregate([
         {
           $match: {
@@ -180,8 +155,6 @@ class AnalyticRepository {
         { $sort: { _id: 1 } },
       ]);
 
-      // Cache for 1 hour
-      await redis.setex(cacheKey, 3600, JSON.stringify(stats));
       logger.info(`Admin stats retrieved`);
       return stats;
     } catch (error) {

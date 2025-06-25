@@ -159,3 +159,129 @@
 {"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.761Z"}
 {"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-22T19:08:26.762Z"}
 {"level":"info","message":"User logged in: Firas_sat_97@example.com","timestamp":"2025-06-22T19:08:52.078Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:37:56.238Z"}
+{"level":"info","message":"Advertiser totals retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:37:57.112Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:37:57.112Z"}
+{"level":"info","message":"Cache hit for advertiser totals: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:39:47.028Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:39:47.029Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:39:47.031Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:39:47.844Z"}
+{"level":"info","message":"Cache hit for advertiser totals: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:41:00.507Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:41:00.507Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:41:00.508Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:41:01.212Z"}
+{"level":"info","message":"Cache hit for advertiser totals: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:41:28.587Z"}
+{"level":"error","message":"Error getting advertiser totals: \"[object Object]\" is not valid JSON","timestamp":"2025-06-25T18:41:28.588Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.totals_failed","timestamp":"2025-06-25T18:41:28.591Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:41:30.044Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:42:23.415Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:42:23.416Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:46:41.473Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:46:41.474Z"}
+{"level":"info","message":"Total payments retrieved: 0 for all ads","timestamp":"2025-06-25T18:46:42.741Z"}
+{"level":"info","message":"Total payments retrieved: 0","timestamp":"2025-06-25T18:46:42.741Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:03.389Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:03.390Z"}
+{"level":"info","message":"Total payments retrieved: 0 for all ads","timestamp":"2025-06-25T18:48:04.566Z"}
+{"level":"info","message":"Total payments retrieved: 0","timestamp":"2025-06-25T18:48:04.566Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:20.664Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:20.665Z"}
+{"level":"info","message":"Total payments retrieved: 0 for all ads","timestamp":"2025-06-25T18:48:21.762Z"}
+{"level":"info","message":"Total payments retrieved: 0","timestamp":"2025-06-25T18:48:21.762Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:33.182Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T18:48:33.183Z"}
+{"level":"info","message":"Total payments retrieved: 0 for all ads","timestamp":"2025-06-25T18:48:36.148Z"}
+{"level":"info","message":"Total payments retrieved: 0","timestamp":"2025-06-25T18:48:36.148Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:07:15.008Z"}
+{"level":"info","message":"Ad shown for user: 6829f9d2f4302c14d2c78124, ad: 6831c27ea4f8244c749a1c31","timestamp":"2025-06-25T19:07:21.810Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:07:40.337Z"}
+{"level":"warn","message":"Missing ad type","timestamp":"2025-06-25T19:10:41.813Z"}
+{"level":"error","message":"Show ad error: publisher.no_ad_type","timestamp":"2025-06-25T19:10:41.813Z"}
+{"level":"error","message":"Show ad error: s is not defined","timestamp":"2025-06-25T19:11:13.066Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:11:26.972Z"}
+{"level":"warn","message":"No active ads found for type: undefined","timestamp":"2025-06-25T19:11:27.406Z"}
+{"level":"error","message":"Show ad error: publisher.no_active_ads","timestamp":"2025-06-25T19:11:27.408Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:12:38.398Z"}
+{"level":"info","message":"Ad shown for user: 6829f9d2f4302c14d2c78124, ad: 6831c27ea4f8244c749a1c31","timestamp":"2025-06-25T19:12:40.893Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:12:56.594Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:14:07.711Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:18:26.896Z"}
+{"level":"info","message":"Ad shown for user: 6829f9d2f4302c14d2c78124, ad: 682b149b44a26cfae2e7d3ad","timestamp":"2025-06-25T19:18:32.329Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:19:16.104Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:19:39.219Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:20:09.729Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:20:26.963Z"}
+{"level":"error","message":"Show ad error: Unexpected token 'o', \"[object Obj\"... is not valid JSON","timestamp":"2025-06-25T19:21:14.364Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:23:02.798Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:23:11.734Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:23:26.060Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:25:45.650Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:25:48.794Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:28:41.591Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:29:14.792Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:29:49.457Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:32:17.054Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:32:17.056Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:32:42.597Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:32:42.598Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:33:35.143Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:33:35.144Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:33:39.204Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:33:41.137Z"}
+{"level":"error","message":"Show ad error: nonce is not defined","timestamp":"2025-06-25T19:33:43.337Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:34:15.634Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:34:15.789Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:35:00.095Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:36:07.141Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:36:19.730Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:37:17.338Z"}
+{"level":"info","message":"View tracked for ad: 682cce411c69d412526b22a4, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:37:38.193Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-25T19:37:41.688Z"}
+{"level":"info","message":"Click tracked for ad: 682b34775bd4f3b5728b0f68, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:37:49.473Z"}
+{"level":"info","message":"Click tracked for ad: 682b34775bd4f3b5728b0f68, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:37:53.678Z"}
+{"level":"info","message":"View tracked for ad: 682b34775bd4f3b5728b0f68, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-25T19:37:56.678Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:06:20.772Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:06:20.774Z"}
+{"level":"info","message":"Total payments retrieved: 55 for all ads","timestamp":"2025-06-25T20:06:22.122Z"}
+{"level":"info","message":"Total payments retrieved: 55","timestamp":"2025-06-25T20:06:22.123Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:07:09.044Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:07:09.045Z"}
+{"level":"info","message":"Cache hit for payments: all","timestamp":"2025-06-25T20:07:09.690Z"}
+{"level":"info","message":"Total payments retrieved: 55","timestamp":"2025-06-25T20:07:09.690Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:14:28.001Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:14:28.003Z"}
+{"level":"error","message":"Advertiser analytics error: AnalyticService.getTotalCost is not a function","timestamp":"2025-06-25T20:14:28.003Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:14:43.788Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:14:43.790Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:16:16.713Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:16:16.715Z"}
+{"level":"info","message":"Advertiser stats retrieved: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:18:21.422Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:18:21.423Z"}
+{"level":"error","message":"Error getting advertiser stats: result is not defined","timestamp":"2025-06-25T20:19:07.097Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:19:07.101Z"}
+{"level":"error","message":"Error getting advertiser stats: totalCost is not defined","timestamp":"2025-06-25T20:19:54.718Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:19:54.722Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:20:21.959Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:20:21.962Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:20:57.512Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:20:57.514Z"}
+{"level":"error","message":"Error getting advertiser stats: stats is not defined","timestamp":"2025-06-25T20:21:10.933Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:21:10.936Z"}
+{"level":"error","message":"Advertiser analytics error: Cannot destructure property 'stats' of '(intermediate value)' as it is undefined.","timestamp":"2025-06-25T20:21:54.728Z"}
+{"level":"error","message":"Advertiser analytics error: Cannot destructure property 'stats' of '(intermediate value)' as it is undefined.","timestamp":"2025-06-25T20:22:18.622Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:25:45.781Z"}
+{"level":"error","message":"Error getting advertiser stats: Cannot access 'ads' before initialization","timestamp":"2025-06-25T20:43:02.179Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:43:02.183Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:43:02.317Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:43:26.264Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:43:26.266Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:44:13.226Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-25T20:44:13.229Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:44:19.731Z"}
+{"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:44:19.867Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:44:29.167Z"}
+{"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:44:29.284Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:13.961Z"}
+{"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:14.100Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:32.755Z"}
+{"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:32.907Z"}

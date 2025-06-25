@@ -4,7 +4,7 @@ import redis from "../utils/redisClient.mjs";
 import DisplaysRepository from "../repositories/DisplaysRepository.mjs";
 import { Ads } from "../models/AdModel.mjs";
 
-cron.schedule("0 * * * *", async () => {
+cron.schedule("* * * * *", async () => {
   try {
     const keys = await redis.keys("ad:*:user:*");
 
@@ -17,12 +17,20 @@ cron.schedule("0 * * * *", async () => {
 
       if (views === 0 && clicks === 0) continue;
       const ad = await Ads.findById(adId);
+      let cost = 0;
+      if (ad.pricingModel === "CPC") {
+        cost = clicks * Number(ad.unitPrice);
+      } else if (ad.pricingModel === "CPM") {
+        cost = (views / 1000) * Number(ad.unitPrice);
+      }
+
       if (!ad) continue;
       await DisplaysRepository.create({
         adId,
         userId,
         views,
         clicks,
+        cost,
       });
 
       await redis.del(key);
