@@ -1,9 +1,8 @@
 import cron from "node-cron";
 import { AdDisplays } from "../models/AdDisplaysModel.mjs";
-import { Ads } from "../models/AdModel.mjs";
 import { Earnings } from "../models/EarningsModel.mjs";
 
-cron.schedule("* * * * *", async () => {
+cron.schedule("0 * * * *", async () => {
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 

@@ -4,7 +4,7 @@ import redis from "../utils/redisClient.mjs";
 import DisplaysRepository from "../repositories/DisplaysRepository.mjs";
 import { Ads } from "../models/AdModel.mjs";
 
-cron.schedule("* * * * *", async () => {
+cron.schedule("0 * * * *", async () => {
   try {
     const keys = await redis.keys("ad:*:user:*");
 
