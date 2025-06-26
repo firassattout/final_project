@@ -289,3 +289,27 @@
 {"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:57.619Z"}
 {"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:58.337Z"}
 {"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-25T20:45:58.337Z"}
+{"level":"info","message":"Ad retrieved: 682ccff68d1e8d0661183f99","timestamp":"2025-06-26T18:11:26.757Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 682ccff68d1e8d0661183f99","timestamp":"2025-06-26T18:11:26.761Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:11:37.501Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:11:37.502Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:15:55.536Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:15:55.539Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:16:05.577Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:16:05.578Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:16:45.236Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-26T18:16:45.238Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:15:57.662Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:15:57.896Z"}
+{"level":"error","message":"Add media error: ad.media_already_exists","timestamp":"2025-06-26T19:15:57.898Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:16:53.854Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:16:54.190Z"}
+{"level":"error","message":"Error uploading file: ENOENT: no such file or directory, open 'C:\\tmp\\webBanner1.jpg'","timestamp":"2025-06-26T19:16:54.301Z"}
+{"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:16:54.301Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:19:07.185Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:19:07.409Z"}
+{"level":"error","message":"Error uploading file: The \"path\" argument must be of type string or an instance of Buffer or URL. Received an instance of Object","timestamp":"2025-06-26T19:19:07.478Z"}
+{"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:19:07.480Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:46.022Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:46.162Z"}
+{"level":"info","message":"Media added to ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:50.723Z"}

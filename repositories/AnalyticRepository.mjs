@@ -64,11 +64,15 @@ class AnalyticRepository {
           $group: {
             _id: null,
             totalCost: { $sum: "$cost" },
+            totalViews: { $sum: "$views" },
+            totalClicks: { $sum: "$clicks" },
           },
         },
       ]);
 
       const totalCost = result?.totalCost || 0;
+      const totalViews = result?.totalViews || 0;
+      const totalClicks = result?.totalClicks || 0;
 
       let budget = 0;
       if (adId) {
@@ -76,9 +80,9 @@ class AnalyticRepository {
         budget = ad.budget;
       } else {
         const ads = await AdRepository.findByUser(advertiserId);
-        ads.map((ad) => (budget += ad.budget));
+        budget = ads.reduce((sum, ad) => sum + parseFloat(ad.budget), 0);
       }
-      return { stats, budget, totalCost };
+      return { stats, budget, totalCost, totalViews, totalClicks };
     } catch (error) {
       logger.error(`Error getting advertiser stats: ${error.message}`);
       throw new Error(t("analytics.stats_failed"));

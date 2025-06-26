@@ -116,3 +116,8 @@
 {"level":"error","message":"Advertiser analytics error: Cannot destructure property 'stats' of '(intermediate value)' as it is undefined.","timestamp":"2025-06-25T20:22:18.622Z"}
 {"level":"error","message":"Error getting advertiser stats: Cannot access 'ads' before initialization","timestamp":"2025-06-25T20:43:02.179Z"}
 {"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-25T20:43:02.183Z"}
+{"level":"error","message":"Add media error: ad.media_already_exists","timestamp":"2025-06-26T19:15:57.898Z"}
+{"level":"error","message":"Error uploading file: ENOENT: no such file or directory, open 'C:\\tmp\\webBanner1.jpg'","timestamp":"2025-06-26T19:16:54.301Z"}
+{"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:16:54.301Z"}
+{"level":"error","message":"Error uploading file: The \"path\" argument must be of type string or an instance of Buffer or URL. Received an instance of Object","timestamp":"2025-06-26T19:19:07.478Z"}
+{"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:19:07.480Z"}

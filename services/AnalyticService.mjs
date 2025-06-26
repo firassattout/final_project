@@ -54,7 +54,7 @@ class AnalyticService {
     }
 
     const { startDate, endDate } = this.validateDateRange(data.query);
-    const { stats, budget, totalCost } =
+    const { stats, budget, totalCost, totalViews, totalClicks } =
       await AnalyticRepository.getAdvertiserStats(
         advertiserId,
         startDate,
@@ -87,7 +87,7 @@ class AnalyticService {
         data.adId ? `, ad: ${data.adId}` : ""
       }`
     );
-    return { formattedStats, budget, totalCost };
+    return { formattedStats, budget, totalCost, totalViews, totalClicks };
   }
 
   /**
