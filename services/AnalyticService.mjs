@@ -2,6 +2,7 @@ import AnalyticRepository from "../repositories/AnalyticRepository.mjs";
 import logger from "../utils/logger.mjs";
 import { t } from "i18next";
 import Joi from "joi";
+import { publisherBudget } from "../utils/price.js";
 
 class AnalyticService {
   /**
@@ -103,12 +104,13 @@ class AnalyticService {
     }
 
     const { startDate, endDate } = this.validateDateRange(data.query);
-    const stats = await AnalyticRepository.getPublisherStats(
-      publisherId,
-      startDate,
-      endDate,
-      data.adId
-    );
+    const { stats, budget, totalCost, totalViews, totalClicks } =
+      await AnalyticRepository.getPublisherStats(
+        publisherId,
+        startDate,
+        endDate,
+        data.adId
+      );
 
     const dateRange = [];
     for (
@@ -135,7 +137,12 @@ class AnalyticService {
         data.adId ? `, ad: ${data.adId}` : ""
       }`
     );
-    return formattedStats;
+    return {
+      formattedStats,
+      totalEarnings: publisherBudget(totalCost),
+      totalViews,
+      totalClicks,
+    };
   }
 
   /**

@@ -63,7 +63,7 @@ class AdvertiserController {
   addMedia = asyncHandler(async (req, res) => {
     const result = await AdvertiserFacade.addMedia({
       body: req.body,
-      file: req.file,
+      files: req.files,
       userIdFromToken: req.user?.id,
     });
     res.status(201).json(result);

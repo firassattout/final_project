@@ -313,3 +313,60 @@
 {"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:46.022Z"}
 {"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:46.162Z"}
 {"level":"info","message":"Media added to ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-26T19:23:50.723Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:24:04.379Z"}
+{"level":"info","message":"Media retrieved for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:24:04.928Z"}
+{"level":"error","message":"Add media error: تم اضافة الملفات","timestamp":"2025-06-30T09:24:04.928Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:28:19.871Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:28:22.068Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:28:22.068Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:28:36.316Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:28:36.580Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:28:36.581Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:19.649Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:19.961Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:19.962Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:39.651Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:39.917Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:39.917Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:55.989Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:29:56.254Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:56.254Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:30:15.698Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:30:16.083Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:30:16.084Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:36:30.700Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:36:33.108Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:36:33.109Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:43:41.666Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:43:41.934Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:43:41.934Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:44:05.899Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:44:06.172Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:44:06.172Z"}
+{"level":"error","message":"Error finding ad by ID: Operation `ads.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-30T09:46:23.949Z"}
+{"level":"error","message":"Add media error: ad.find_failed","timestamp":"2025-06-30T09:46:23.953Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:53:55.620Z"}
+{"level":"warn","message":"Media not found for ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T09:53:55.898Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-30T09:54:56.594Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-30T09:54:56.597Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T09:55:54.854Z"}
+{"level":"info","message":"Retrieved 9 media items","timestamp":"2025-06-30T09:56:29.443Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T09:56:37.953Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-30T10:00:42.866Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:00:42.869Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-30T10:01:06.938Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:01:06.941Z"}
+{"level":"info","message":"Retrieved 7 ads for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-30T10:03:20.319Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab","timestamp":"2025-06-30T10:03:20.321Z"}
+{"level":"info","message":"Ad retrieved: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T10:03:36.820Z"}
+{"level":"info","message":"Advertiser analytics retrieved for user: 68191b9d173aba1c70d808ab, ad: 6857f65c5a675c8254d45536","timestamp":"2025-06-30T10:03:36.821Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:04:15.449Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:04:15.452Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:04:31.743Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:04:31.744Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:05:28.717Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:05:28.720Z"}
+{"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:06:04.260Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:06:04.261Z"}
+{"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:09:11.112Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:09:11.114Z"}

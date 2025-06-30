@@ -16,3 +16,7 @@ export const platformFactors = {
   mobile: 1.2,
   // both: 1.1,
 };
+
+export const publisherBudget = (cost) => {
+  return (cost * 40) / 100;
+};

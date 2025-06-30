@@ -190,63 +190,51 @@ class AdvertiserService {
    * @param {Object} data - Media addition data
    * @returns {Promise<Object>} Created media
    */
-  async addMedia(data) {
-    const { error } = validateAddMedia(data.body);
-    if (error) throw new Error(t(error.details[0].message));
+  async addMedia(adData) {
+    const { error } = validateAddMedia(adData.body);
+    if (error) throw new Error(error.details[0].message);
 
-    const { adId, mediaType } = data.body;
-    const file = data.file;
-
-    const ad = await AdRepository.findById(adId);
-    if (!ad) {
-      throw new Error(t("ad.not_found"));
+    let adExists = await AdRepository.findById(adData.body.adId);
+    if (!adExists) {
+      throw new Error("الإعلان المحدد غير موجود");
     }
 
-    const existingMedia = await AdRepository.findMedia(adId);
-    if (existingMedia) {
-      throw new Error(t("ad.media_already_exists"));
+    let mediaExists = await AdRepository.findMedia(adData.body.adId);
+    if (mediaExists) {
+      throw new Error("يوجد ميديا لهذا الاعلان");
     }
 
-    if (!ad.mediaFolder) {
-      throw new Error(t("ad.no_media_folder"));
+    if (!adExists.mediaFolder) {
+      throw new Error("لايوجد مجلد للاعلان");
     }
 
-    const { platform, type: adType } = ad;
+    const { platform, type: adType } = adExists;
+    const files = adData.files || [];
 
-    if (adType === "banner" && mediaType === "video") {
-      throw new Error(t("ad.invalid_media_type"));
+    if (adType && adType === "banner" && adData.body.mediaType === "video") {
+      throw new Error("لا تستطيع رفع فيديو في حالة البانير");
     }
 
-    if (!file) {
-      throw new Error(t("ad.no_media_file"));
+    if (!files[0]) {
+      throw new Error("لايوجد ملف صورة أو فيديو");
     }
 
-    if (mediaType === "image") {
-      await validateImage(file, platform, adType);
-    }
+    if (adData.body.mediaType === "image")
+      await validateImage(files[0], platform, adType);
 
-    let fileId;
-    try {
-      fileId = await uploadFile(file, ad.mediaFolder, file.originalname);
-    } catch (error) {
-      logger.error(`Error uploading file: ${error.message}`);
-      throw new Error(t("ad.upload_failed"));
-    }
+    const { id } = await uploadFile(
+      files[0],
+      adExists.mediaFolder,
+      files[0].originalname
+    );
+    if (!id) throw new Error("فشل رفع الملف");
 
-    if (!fileId) {
-      throw new Error(t("ad.upload_failed"));
-    }
-
-    const filePath = `https://drive.usercontent.google.com/download?id=${fileId}&export=download`;
-    const media = await MediaRepository.create({
-      adId,
-      mediaType,
+    const filePath = `https://drive.usercontent.google.com/download?id=${id}&export=download`;
+    return MediaRepository.create({
+      adId: adData.body.adId,
+      mediaType: adData.body.mediaType,
       url: filePath,
-      createdAt: new Date(),
     });
-
-    logger.info(`Media added to ad: ${adId}`);
-    return media;
   }
 
   /**

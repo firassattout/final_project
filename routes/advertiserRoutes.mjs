@@ -58,7 +58,7 @@ advertiserRoutes.post(
  */
 advertiserRoutes.post(
   "/add-media",
-  upload.single("media"), // Changed to single file upload
+  upload.any(),
   checkUserRole("advertiser"),
   AdvertiserController.addMedia
 );

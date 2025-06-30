@@ -55,7 +55,7 @@ class AnalyticRepository {
       ]);
       const matchStage2 = {};
       if (adId) {
-        matchStage.adId = new mongoose.Types.ObjectId(adId);
+        matchStage2["ad._id"] = new mongoose.Types.ObjectId(adId);
       }
 
       const [result] = await AdDisplays.aggregate([
@@ -128,7 +128,36 @@ class AnalyticRepository {
         { $sort: { _id: 1 } },
       ]);
 
-      return stats;
+      const matchStage2 = {};
+      if (adId) {
+        matchStage2["ad._id"] = new mongoose.Types.ObjectId(adId);
+      }
+
+      const [result] = await AdDisplays.aggregate([
+        { $match: matchStage2 },
+        {
+          $group: {
+            _id: null,
+            totalCost: { $sum: "$cost" },
+            totalViews: { $sum: "$views" },
+            totalClicks: { $sum: "$clicks" },
+          },
+        },
+      ]);
+
+      const totalCost = result?.totalCost || 0;
+      const totalViews = result?.totalViews || 0;
+      const totalClicks = result?.totalClicks || 0;
+
+      let budget = 0;
+      if (adId) {
+        const ad = await AdRepository.findById(adId);
+        budget = ad.budget;
+      } else {
+        const ads = await AdRepository.findByUser(publisherId);
+        budget = ads.reduce((sum, ad) => sum + parseFloat(ad.budget), 0);
+      }
+      return { stats, budget, totalCost, totalViews, totalClicks };
     } catch (error) {
       logger.error(`Error getting publisher stats: ${error.message}`);
       throw new Error(t("analytics.stats_failed"));

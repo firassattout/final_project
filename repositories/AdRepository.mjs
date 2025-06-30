@@ -30,10 +30,6 @@ class AdRepository {
    * @throws {Error} If ID is invalid or query fails
    */
   async findById(id) {
-    if (!isValidObjectId(id)) {
-      logger.warn(`Invalid ad ID: ${id}`);
-      throw new Error(t("ad.invalid_id"));
-    }
     try {
       const ad = await Ads.findById(id).lean();
       if (!ad) {

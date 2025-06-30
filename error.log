@@ -121,3 +121,25 @@
 {"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:16:54.301Z"}
 {"level":"error","message":"Error uploading file: The \"path\" argument must be of type string or an instance of Buffer or URL. Received an instance of Object","timestamp":"2025-06-26T19:19:07.478Z"}
 {"level":"error","message":"Add media error: ad.upload_failed","timestamp":"2025-06-26T19:19:07.480Z"}
+{"level":"error","message":"Add media error: تم اضافة الملفات","timestamp":"2025-06-30T09:24:04.928Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:28:22.068Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:28:36.581Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:19.962Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:39.917Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:29:56.254Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:30:16.084Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:36:33.109Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:43:41.934Z"}
+{"level":"error","message":"Add media error: لايوجد ملف صورة أو فيديو","timestamp":"2025-06-30T09:44:06.172Z"}
+{"level":"error","message":"Error finding ad by ID: Operation `ads.findOne()` buffering timed out after 10000ms","timestamp":"2025-06-30T09:46:23.949Z"}
+{"level":"error","message":"Add media error: ad.find_failed","timestamp":"2025-06-30T09:46:23.953Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-30T10:00:42.866Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:00:42.869Z"}
+{"level":"error","message":"Error getting advertiser stats: Operation `addisplays.aggregate()` buffering timed out after 10000ms","timestamp":"2025-06-30T10:01:06.938Z"}
+{"level":"error","message":"Advertiser analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:01:06.941Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:04:15.449Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:04:15.452Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:04:31.743Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:04:31.744Z"}
+{"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:05:28.717Z"}
+{"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:05:28.720Z"}
