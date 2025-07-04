@@ -88,6 +88,7 @@ class UserRepository {
         ...(name && { name: { $regex: name, $options: "i" } }),
       })
         .select("-loginHistory -password -refreshToken -updatedAt -createdAt")
+        .populate("companyType", "name")
         .lean();
     } catch (error) {
       logger.error(`Error finding users by type: ${error.message}`);

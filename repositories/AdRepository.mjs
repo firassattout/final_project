@@ -92,10 +92,6 @@ class AdRepository {
         .lean();
 
       if (adId) {
-        if (!ads.length) {
-          logger.warn(`Ad not found: ${adId} for user: ${userId}`);
-          return null;
-        }
         logger.info(`Retrieved ad: ${adId} for user: ${userId}`);
         return ads[0]; // Return single ad object
       }

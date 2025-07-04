@@ -1,4 +1,6 @@
 import AdRepository from "../repositories/AdRepository.mjs";
+import axios from "axios";
+import sharp from "sharp";
 import MediaRepository from "../repositories/MediaRepository.mjs";
 import userRepository from "../repositories/userRepository.mjs";
 import { createFolder } from "../config/createFileForGroup.mjs";
@@ -88,6 +90,59 @@ class AdvertiserService {
     }
 
     const ads = await AdRepository.findByUser(user._id, adId);
+    console.log(ads);
+
+    if (adId && ads && !ads?.length) {
+      const media = await AdRepository.findMedia(adId);
+      if (media.url) {
+        if (media.mediaType === "image") {
+          const response = await axios.get(media.url, {
+            responseType: "arraybuffer",
+          });
+          const resizedBuffer = await sharp(response.data)
+            .resize({ width: 1200 })
+            .toFormat("jpeg", { quality: 100 })
+            .toBuffer();
+
+          const base64 = resizedBuffer.toString("base64");
+          ads.photo = `data:image/jpeg;base64,${base64}`;
+        } else ads.photo = media.url;
+      }
+    } else {
+      await Promise.all(
+        ads.map(async (ad) => {
+          const media = await AdRepository.findMedia(ad._id);
+
+          if (media?.url) {
+            if (media.mediaType === "image") {
+              try {
+                const response = await axios.get(media.url, {
+                  responseType: "arraybuffer",
+                });
+
+                const resizedBuffer = await sharp(response.data)
+                  .resize({ width: 300 })
+                  .toFormat("jpeg", { quality: 80 })
+                  .toBuffer();
+
+                const base64 = resizedBuffer.toString("base64");
+                ad.photo = `data:image/jpeg;base64,${base64}`;
+              } catch (error) {
+                console.error(
+                  `Error processing image for ad ${ad._id}:`,
+                  error
+                );
+                ad.photo = media.url;
+              }
+            } else {
+              ad.photo = media.url;
+            }
+          }
+          return ad;
+        })
+      );
+    }
+
     logger.info(`Retrieved ${ads.length} ads for user: ${user.email}`);
     return ads;
   }
