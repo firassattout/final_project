@@ -89,12 +89,7 @@ class AdvertiserService {
       throw new Error(t("ad.user_not_found"));
     }
 
-    const ads = await AdRepository.findByUser(
-      user._id,
-      user.role,
-      adId,
-      searchKey
-    );
+    const ads = await AdRepository.findByUser(user._id, adId, searchKey);
 
     if (adId && ads && !ads?.length) {
       const media = await AdRepository.findMedia(adId);
