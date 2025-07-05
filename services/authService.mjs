@@ -155,11 +155,14 @@ class AuthService {
   async userDeactivation(userId) {
     const user = await userRepository.findById(userId);
     if (!user) throw new Error("المستخدم غير موجود");
-    if (user.state === "inactive") throw new Error("الحساب غير نشط");
 
-    const updatedUser = await userRepository.deactivateUser(userId);
+    let updatedUser;
+    if (user.isActive)
+      updatedUser = await userRepository.deactivateUser(userId);
+    if (!user.isActive) updatedUser = await userRepository.activateUser(userId);
+
     logger.info(`User deactivated: ${user.email}`);
-    return { message: "تم إلغاء تفعيل الحساب بنجاح", user: updatedUser };
+    return { message: "تم تعديل حالة الحساب الحساب بنجاح", user: updatedUser };
   }
 
   /**

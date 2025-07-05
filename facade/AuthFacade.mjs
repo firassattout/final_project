@@ -55,50 +55,6 @@ class AuthFacade {
   }
 
   /**
-   * Handle user deactivation
-   * @param {Object} params - Request parameters
-   * @returns {Promise<Object>} Formatted response
-   */
-  async handleDeactivation(params) {
-    try {
-      const result = await AuthService.userDeactivation(params.id);
-      return result;
-    } catch (error) {
-      logger.error(`Deactivation error: ${error.message}`);
-      throw new Error(error.message);
-    }
-  }
-
-  /**
-   * Get users
-   * @param {Object} params - Request parameters
-   * @returns {Promise<Object>} Formatted response
-   */
-  async getUser(params) {
-    try {
-      const result = await AuthService.getUser(params.type, params.name);
-      return result;
-    } catch (error) {
-      logger.error(`Get user error: ${error.message}`);
-      throw new Error(error.message);
-    }
-  }
-
-  /**
-   * Get company types
-   * @returns {Promise<Object>} Formatted response
-   */
-  async getCompanyType() {
-    try {
-      const result = await AuthService.getCompanyType();
-      return result;
-    } catch (error) {
-      logger.error(`Get company type error: ${error.message}`);
-      throw new Error(error.message);
-    }
-  }
-
-  /**
    * Handle token refresh
    * @param {string} refreshToken - Refresh token
    * @returns {Promise<Object>} Formatted response

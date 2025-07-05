@@ -152,7 +152,8 @@ class AnalyticService {
    */
   async adminAnalytics(data) {
     const { startDate, endDate } = this.validateDateRange(data.query);
-    const stats = await AnalyticRepository.getAdminStats(startDate, endDate);
+    const { stats, totalClicks, totalViews } =
+      await AnalyticRepository.getAdminStats(startDate, endDate);
 
     const dateRange = [];
     for (
@@ -175,7 +176,7 @@ class AnalyticService {
     });
 
     logger.info(`Admin analytics retrieved`);
-    return formattedStats;
+    return { formattedStats, totalClicks, totalViews };
   }
 }
 

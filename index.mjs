@@ -11,6 +11,7 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 
 import authRouter from "./routes/authRoutes.mjs";
+import adminRouter from "./routes/adminRoutes.mjs";
 import { i18nMiddleware } from "./config/i18n.mjs";
 import advertiserRoutes from "./routes/advertiserRoutes.mjs";
 import publisherRoutes from "./routes/publisherRoutes.mjs";
@@ -63,6 +64,7 @@ app.use("/api/", analyticsRoutes);
 app.use("/api/", publisherRoutes);
 app.use("/api/", advertiserRoutes);
 app.use("/api/", authRouter);
+app.use("/api/", adminRouter);
 
 app.use(notfound);
 app.use(errorHandler);

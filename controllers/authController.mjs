@@ -28,30 +28,6 @@ class AuthController {
   });
 
   /**
-   * Handle user deactivation
-   */
-  userDeactivation = asyncHandler(async (req, res) => {
-    const result = await AuthFacade.handleDeactivation(req.params);
-    res.status(200).json(result);
-  });
-
-  /**
-   * Get users
-   */
-  getUser = asyncHandler(async (req, res) => {
-    const result = await AuthFacade.getUser(req.params);
-    res.status(200).json(result);
-  });
-
-  /**
-   * Get company types
-   */
-  getCompanyType = asyncHandler(async (req, res) => {
-    const result = await AuthFacade.getCompanyType();
-    res.status(200).json(result);
-  });
-
-  /**
    * Handle user logout
    */
   userLogout = asyncHandler(async (req, res) => {

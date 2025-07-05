@@ -53,12 +53,23 @@ class AnalyticRepository {
         },
         { $sort: { _id: 1 } },
       ]);
-      const matchStage2 = {};
+      const matchStage2 = {
+        "ad.userId": new mongoose.Types.ObjectId(advertiserId),
+      };
       if (adId) {
         matchStage2["ad._id"] = new mongoose.Types.ObjectId(adId);
       }
 
       const [result] = await AdDisplays.aggregate([
+        {
+          $lookup: {
+            from: "ads",
+            localField: "adId",
+            foreignField: "_id",
+            as: "ad",
+          },
+        },
+        { $unwind: "$ad" },
         { $match: matchStage2 },
         {
           $group: {
@@ -128,7 +139,7 @@ class AnalyticRepository {
         { $sort: { _id: 1 } },
       ]);
 
-      const matchStage2 = {};
+      const matchStage2 = { userId: new mongoose.Types.ObjectId(publisherId) };
       if (adId) {
         matchStage2["ad._id"] = new mongoose.Types.ObjectId(adId);
       }
@@ -187,9 +198,20 @@ class AnalyticRepository {
         },
         { $sort: { _id: 1 } },
       ]);
+      const [result] = await AdDisplays.aggregate([
+        {
+          $group: {
+            _id: null,
+            totalViews: { $sum: "$views" },
+            totalClicks: { $sum: "$clicks" },
+          },
+        },
+      ]);
 
+      const totalViews = result?.totalViews || 0;
+      const totalClicks = result?.totalClicks || 0;
       logger.info(`Admin stats retrieved`);
-      return stats;
+      return { stats, totalViews, totalClicks };
     } catch (error) {
       logger.error(`Error getting admin stats: ${error.message}`);
       throw new Error(t("analytics.stats_failed"));

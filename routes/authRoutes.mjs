@@ -49,39 +49,6 @@ authRouter.post(
 authRouter.post("/login", authController.userLogin);
 
 /**
- * @route POST /user-deactivation/:id
- * @desc Deactivate user (admin only)
- * @access Private (admin)
- */
-authRouter.post(
-  "/user-deactivation/:id",
-  checkUserRole("admin"),
-  authController.userDeactivation
-);
-
-/**
- * @route GET /get-user/:type?/:name?
- * @desc Get users by type or name (admin only)
- * @access Private (admin)
- */
-authRouter.get(
-  "/get-user/:type?/:name?",
-  checkUserRole("admin"),
-  authController.getUser
-);
-
-/**
- * @route GET /get-companyType
- * @desc Get company types (admin only)
- * @access Private (admin)
- */
-authRouter.get(
-  "/get-companyType",
-  checkUserRole("admin"),
-  authController.getCompanyType
-);
-
-/**
  * @route POST /logout
  * @desc User logout
  * @access Private

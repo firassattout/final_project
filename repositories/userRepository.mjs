@@ -153,11 +153,28 @@ class UserRepository {
     try {
       return await Users.findByIdAndUpdate(
         userId,
-        { state: "inactive" },
+        { isActive: false },
         { new: true }
       ).lean();
     } catch (error) {
       logger.error(`Error deactivating user: ${error.message}`);
+      throw error;
+    }
+  }
+  /**
+   * activate user
+   * @param {string} userId - User ID
+   * @returns {Promise<Object|null>} Updated user document
+   */
+  async activateUser(userId) {
+    try {
+      return await Users.findByIdAndUpdate(
+        userId,
+        { isActive: true },
+        { new: true }
+      ).lean();
+    } catch (error) {
+      logger.error(`Error activating user: ${error.message}`);
       throw error;
     }
   }

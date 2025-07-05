@@ -71,25 +71,16 @@ class AdRepository {
    * @returns {Promise<Array>} Array of ad documents
    * @throws {Error} If ID is invalid or query fails
    */
-  async findByUser(userId, adId) {
-    if (!isValidObjectId(userId)) {
-      logger.warn(`Invalid user ID: ${userId}`);
-      throw new Error(t("ad.invalid_user_id"));
-    }
-    if (adId && !isValidObjectId(adId)) {
-      logger.warn(`Invalid ad ID: ${adId}`);
-      throw new Error(t("ad.invalid_id"));
-    }
-
+  async findByUser(userId, adId, searchKey) {
     try {
       let query = { userId };
       if (adId) {
         query._id = adId;
       }
-
-      const ads = await Ads.find(query)
-        .select("-__v -mediaFolder") // Exclude sensitive/unneeded fields
-        .lean();
+      if (searchKey) {
+        query.$or = [{ title: { $regex: searchKey, $options: "i" } }];
+      }
+      const ads = await Ads.find(query).select("-__v -mediaFolder").lean();
 
       if (adId) {
         logger.info(`Retrieved ad: ${adId} for user: ${userId}`);
@@ -102,6 +93,89 @@ class AdRepository {
       logger.error(`Error finding ads by user: ${error.message}`);
       throw new Error(t("ad.find_by_user_failed"));
     }
+  }
+  /**
+   * Find advertisements by user ID
+   * @param {string} userId - User ID
+   * @returns {Promise<Array>} Array of ad documents
+   * @throws {Error} If ID is invalid or query fails
+   */
+  async findByAdmin(userId, adId, searchKey, page = 1, limit = 10) {
+    if (!Number.isInteger(page) || page < 1) {
+      logger.warn(`Invalid page number: ${page}`);
+      throw new Error(t("ad.invalid_page"));
+    }
+    if (!Number.isInteger(limit) || limit < 1 || limit > 100) {
+      logger.warn(`Invalid limit: ${limit}`);
+      throw new Error(t("ad.invalid_limit"));
+    }
+    const skip = (page - 1) * limit;
+
+    const matchStage = {};
+
+    if (searchKey) {
+      const regex = new RegExp(searchKey, "i"); // بحث غير حساس لحالة الأحرف
+      matchStage.$or = [{ title: regex }, { "user.companyName": regex }];
+    }
+
+    const [results, countResult] = await Promise.all([
+      Ads.aggregate([
+        {
+          $lookup: {
+            from: "users", // تأكد من اسم مجموعة المستخدمين في MongoDB
+            localField: "userId",
+            foreignField: "_id",
+            as: "user",
+          },
+        },
+        { $unwind: "$user" },
+        { $match: matchStage },
+        { $skip: skip },
+        { $limit: limit },
+        {
+          $replaceRoot: {
+            newRoot: {
+              $mergeObjects: [
+                "$$ROOT",
+                { userId: { companyName: "$user.companyName" } },
+              ],
+            },
+          },
+        },
+        {
+          $project: {
+            user: 0,
+            __v: 0,
+          },
+        },
+      ]),
+      Ads.aggregate([
+        {
+          $lookup: {
+            from: "users",
+            localField: "userId",
+            foreignField: "_id",
+            as: "user",
+          },
+        },
+        { $unwind: "$user" },
+        { $match: matchStage },
+        {
+          $count: "total",
+        },
+      ]),
+    ]);
+
+    const totalItems = countResult[0]?.total || 0;
+    const totalPages = Math.ceil(totalItems / limit);
+
+    return {
+      ads: results,
+      totalItems,
+      totalPages,
+      currentPage: page,
+      limit,
+    };
   }
 
   /**

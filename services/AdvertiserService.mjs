@@ -79,7 +79,7 @@ class AdvertiserService {
    * @returns {Promise<Array>} Array of ads
    */
   async getAd(data) {
-    const { userIdFromToken, adId } = data;
+    const { userIdFromToken, adId, searchKey } = data;
     if (!userIdFromToken) {
       throw new Error(t("ad.no_user_id"));
     }
@@ -89,8 +89,12 @@ class AdvertiserService {
       throw new Error(t("ad.user_not_found"));
     }
 
-    const ads = await AdRepository.findByUser(user._id, adId);
-    console.log(ads);
+    const ads = await AdRepository.findByUser(
+      user._id,
+      user.role,
+      adId,
+      searchKey
+    );
 
     if (adId && ads && !ads?.length) {
       const media = await AdRepository.findMedia(adId);

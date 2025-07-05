@@ -43,6 +43,7 @@ class AdvertiserController {
     const result = await AdvertiserFacade.getAd({
       userIdFromToken: req.user?.id,
       adId: req.body?.adId,
+      searchKey: req.body?.searchKey,
     });
     res.status(200).json(result);
   });
