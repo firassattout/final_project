@@ -149,7 +149,22 @@ class AdminService {
 
     if (adId) {
       const ad = await AdRepository.findById(adId);
-      user.ad = ad;
+      if (ad) {
+        user.ad = ad;
+        const media = await AdRepository.findMedia(adId);
+        if (media.mediaType === "image") {
+          const response = await axios.get(media.url, {
+            responseType: "arraybuffer",
+          });
+          const resizedBuffer = await sharp(response.data)
+            .resize({ width: 1200 })
+            .toFormat("jpeg", { quality: 100 })
+            .toBuffer();
+
+          const base64 = resizedBuffer.toString("base64");
+          user.ad.photo = `data:image/jpeg;base64,${base64}`;
+        } else ads.photo = media.url;
+      }
     }
     if (user.role === "advertiser") {
       const advertiser = await AnalyticService.advertiserAnalytics(data);
