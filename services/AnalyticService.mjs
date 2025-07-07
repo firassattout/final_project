@@ -48,7 +48,7 @@ class AnalyticService {
    * @returns {Promise<Array>} Formatted stats
    */
   async advertiserAnalytics(data) {
-    const advertiserId = data.userIdFromToken;
+    const advertiserId = data.userId;
     if (!advertiserId) {
       logger.warn("Missing advertiser ID");
       throw new Error(t("analytics.no_user_id"));
@@ -97,7 +97,7 @@ class AnalyticService {
    * @returns {Promise<Array>} Formatted stats
    */
   async publisherAnalytics(data) {
-    const publisherId = data.userIdFromToken;
+    const publisherId = data.userId;
     if (!publisherId) {
       logger.warn("Missing publisher ID");
       throw new Error(t("analytics.no_user_id"));

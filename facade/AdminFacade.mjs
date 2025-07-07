@@ -61,6 +61,21 @@ class AdminFacade {
       throw error;
     }
   }
+
+  /**
+   * get One User
+   * @param {Object} data - Ad retrieval data
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getOneUser(data) {
+    try {
+      const result = await AdminService.getOneUser(data);
+      return result;
+    } catch (error) {
+      logger.error(`Get ad error: ${error.message}`);
+      throw error;
+    }
+  }
 }
 
 export default new AdminFacade();

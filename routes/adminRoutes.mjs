@@ -52,13 +52,23 @@ adminRouter.get(
 );
 
 /**
- * @route GET /get-ad-admin
- * @desc Get advertisements for user
- * @access Private (advertiser)
+ * @route post /get-ad-admin
+ * @desc get advertisements for user
+ * @access Private (admin)
  */
 adminRouter.post(
   "/get-ad-admin",
   checkUserRole("admin"),
   adminController.getAd
+);
+/**
+ * @route post /get-one-user
+ * @desc get one user for admin
+ * @access Private (admin)
+ */
+adminRouter.post(
+  "/get-one-user",
+  checkUserRole("admin"),
+  adminController.getOneUser
 );
 export default adminRouter;

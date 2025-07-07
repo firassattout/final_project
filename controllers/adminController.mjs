@@ -39,6 +39,18 @@ class AdminController {
     });
     res.status(200).json(result);
   });
+
+  /**
+   * Get user
+   */
+  getOneUser = asyncHandler(async (req, res) => {
+    const result = await AdminFacade.getOneUser({
+      userId: req.body?.userId,
+      adId: req.body?.adId,
+      query: req.query,
+    });
+    res.status(200).json(result);
+  });
 }
 
 export default new AdminController();

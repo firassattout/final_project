@@ -7,7 +7,7 @@ class AnalyticController {
    */
   publisherAnalytics = asyncHandler(async (req, res) => {
     const result = await AnalyticFacade.publisherAnalytics({
-      userIdFromToken: req.user?.id,
+      userId: req.user?.id,
       query: req.query,
       adId: req.body?.adId,
     });
@@ -19,7 +19,7 @@ class AnalyticController {
    */
   advertiserAnalytics = asyncHandler(async (req, res) => {
     const result = await AnalyticFacade.advertiserAnalytics({
-      userIdFromToken: req.user?.id,
+      userId: req.user?.id,
       query: req.query,
       adId: req.body?.adId,
     });

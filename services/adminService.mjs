@@ -15,6 +15,7 @@ import logger from "../utils/logger.mjs";
 import AdRepository from "../repositories/AdRepository.mjs";
 import axios from "axios";
 import sharp from "sharp";
+import AnalyticService from "./AnalyticService.mjs";
 
 class AdminService {
   /**
@@ -133,6 +134,32 @@ class AdminService {
 
     logger.info(`Retrieved ${ads.length} ads for user: ${user.email}`);
     return ads;
+  }
+
+  /**
+   * Get user types
+   * @returns {Promise<Object>} user types data
+   */
+  async getOneUser(data) {
+    const { userId, adId } = data;
+    if (!userId) throw new Error("لا يوجد userId");
+
+    const user = await userRepository.findById(userId);
+    if (!user) throw new Error("لا يوجد مستخدم بهذا العنوان");
+
+    if (adId) {
+      const ad = await AdRepository.findById(adId);
+      user.ad = ad;
+    }
+    if (user.role === "advertiser") {
+      const advertiser = await AnalyticService.advertiserAnalytics(data);
+      user.analytic = advertiser;
+    }
+    if (user.role === "publisher") {
+      const publisher = await AnalyticService.publisherAnalytics(data);
+      user.analytic = publisher;
+    }
+    return user;
   }
 }
 

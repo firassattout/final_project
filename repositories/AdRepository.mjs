@@ -137,7 +137,12 @@ class AdRepository {
             newRoot: {
               $mergeObjects: [
                 "$$ROOT",
-                { userId: { companyName: "$user.companyName" } },
+                {
+                  userId: {
+                    companyName: "$user.companyName",
+                    userId: "$user._id",
+                  },
+                },
               ],
             },
           },

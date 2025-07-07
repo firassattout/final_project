@@ -68,7 +68,10 @@ class UserRepository {
    */
   async findById(id) {
     try {
-      return await Users.findById(id).populate("companyType").lean();
+      return await Users.findById(id)
+        .select("-loginHistory -twoFactorAuth -password -refreshToken")
+        .populate("companyType", "name")
+        .lean();
     } catch (error) {
       logger.error(`Error finding user by ID: ${error.message}`);
       throw error;
