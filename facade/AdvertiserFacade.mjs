@@ -91,6 +91,19 @@ class AdvertiserFacade {
       throw error;
     }
   }
+  /**
+   * @param {Object} data - adId addition data
+   * @returns {Promise<Object>} Formatted response
+   */
+  async changeStateAd(data) {
+    try {
+      const result = await AdvertiserService.changeStateAd(data);
+      return result;
+    } catch (error) {
+      logger.error(`change State Ad error: ${error.message}`);
+      throw error;
+    }
+  }
 }
 
 export default new AdvertiserFacade();

@@ -71,4 +71,15 @@ adminRouter.post(
   checkUserRole("admin"),
   adminController.getOneUser
 );
+
+/**
+ * @route Post /paused-ad
+ * @desc changeStateAd for an admin
+ * @access Private (admin)
+ */
+adminRouter.post(
+  "/change-state-ad-admin",
+  checkUserRole("admin"),
+  adminController.changeStateAd
+);
 export default adminRouter;

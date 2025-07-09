@@ -69,6 +69,14 @@ class AdvertiserController {
     });
     res.status(201).json(result);
   });
+
+  changeStateAd = asyncHandler(async (req, res) => {
+    const result = await AdvertiserFacade.changeStateAd({
+      adId: req.body?.adId,
+      userId: req.user?.id,
+    });
+    res.status(201).json(result);
+  });
 }
 
 export default new AdvertiserController();

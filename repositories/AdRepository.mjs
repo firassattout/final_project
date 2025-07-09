@@ -247,6 +247,24 @@ class AdRepository {
       throw new Error(t("ad.update_failed"));
     }
   }
+  /**
+   * Update ad by ID
+   * @param {string} adId - User ID
+   * @param {Object} data - Update data
+   * @returns {Promise<Object|null>} Updated user document
+   */
+  async update(adId, data) {
+    try {
+      return await Ads.findByIdAndUpdate(
+        adId,
+        { $set: data },
+        { new: true }
+      ).lean();
+    } catch (error) {
+      logger.error(`Error updating user: ${error.message}`);
+      throw error;
+    }
+  }
 }
 
 export default new AdRepository();

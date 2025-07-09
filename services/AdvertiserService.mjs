@@ -306,6 +306,28 @@ class AdvertiserService {
     logger.info(`Media retrieved for ad: ${adId}`);
     return media;
   }
+  /**
+   * paused Ad for an advertisement
+   * @param {Object} data - ad retrieval data
+   * @returns {Promise<Object>} ad data
+   */
+  async changeStateAd(data) {
+    const { adId, userId } = data;
+    const ad = await AdRepository.findById(adId);
+    if (!ad) {
+      throw new Error(t("ad.no_found"));
+    }
+    if (ad.userId != userId) {
+      throw new Error(t("not_authorized"));
+    }
+    if (ad.state === "active")
+      await AdRepository.update(adId, { state: "paused" });
+    if (ad.state === "paused")
+      await AdRepository.update(adId, { state: "active" });
+
+    logger.info(`ad paused for ad: ${adId}`);
+    return { message: "ad state changed successfully" };
+  }
 }
 
 export default new AdvertiserService();

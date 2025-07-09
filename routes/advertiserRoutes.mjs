@@ -86,7 +86,7 @@ advertiserRoutes.post(
 );
 
 /**
- * @route GET /get-media/:adId
+ * @route post /get-media
  * @desc Get media for an advertisement
  * @access Private (advertiser)
  */
@@ -94,6 +94,17 @@ advertiserRoutes.post(
   "/get-media",
   checkUserRole("advertiser"),
   AdvertiserController.getMedia
+);
+
+/**
+ * @route Post /paused-ad
+ * @desc changeStateAd an advertisement
+ * @access Private (advertiser)
+ */
+advertiserRoutes.post(
+  "/change-state-ad",
+  checkUserRole("advertiser"),
+  AdvertiserController.changeStateAd
 );
 
 export default advertiserRoutes;

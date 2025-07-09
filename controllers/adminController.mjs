@@ -51,6 +51,16 @@ class AdminController {
     });
     res.status(200).json(result);
   });
+
+  /**
+   * Get user
+   */
+  changeStateAd = asyncHandler(async (req, res) => {
+    const result = await AdminFacade.changeStateAd({
+      adId: req.body?.adId,
+    });
+    res.status(200).json(result);
+  });
 }
 
 export default new AdminController();
