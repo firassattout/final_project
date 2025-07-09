@@ -7,6 +7,7 @@ import { generatePublisherCode } from "../utils/generatePublisherCode.js";
 import logger from "../utils/logger.mjs";
 import { t } from "i18next";
 import { isValidObjectId } from "mongoose";
+import ReportRepository from "../repositories/ReportRepository.mjs";
 
 class PublisherService {
   /**
@@ -130,6 +131,36 @@ class PublisherService {
       logger.error(`Error tracking click: ${error.message}`);
       throw new Error(t("publisher.track_click_failed"));
     }
+  }
+
+  /**
+   * Report advertisement
+   * @param {Object} data - Report data
+   * @returns {Promise<Object>} Report confirmation
+   */
+  async reportAd(data) {
+    const { adId, userId, message, reportedAt } = data.body;
+
+    // التحقق من وجود الإعلان
+    const ad = await AdRepository.findById(adId);
+    if (!ad) {
+      logger.warn(`Ad not found: ${adId}`);
+      throw new Error(t("report.ad_not_found"));
+    }
+
+    // إنشاء الإبلاغ
+    const report = await ReportRepository.create({
+      adId,
+      userId,
+      message,
+      reportedAt: new Date(reportedAt),
+    });
+
+    logger.info(`Report submitted for ad: ${adId} by user: ${userId}`);
+    return {
+      message: t("report.success"),
+      reportId: report._id,
+    };
   }
 }
 

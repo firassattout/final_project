@@ -175,7 +175,8 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>إعلان مكافأة - ${ad.adId.title}</title>
-    <style>
+<style>
+      /* الأنماط الأصلية مع إضافة تنسيق جديد لأزرار الإجراءات */
       * {
         margin: 0;
         padding: 0;
@@ -257,12 +258,46 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         align-items: center;
         color: white;
       }
-      .dialog-image {
+      .report-dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .dialog-content {
         background: #404040;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
         max-width: 80%;
+      }
+      .dialog-textarea {
+        width: 100%;
+        min-height: 100px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        resize: vertical;
+      }
+      .dialog-message {
+        margin: 10px 0;
+        color: #fff;
+        font-size: 16px;
+      }
+      .dialog-message.success {
+        color: #4caf50;
+      }
+      .dialog-message.error {
+        color: #f44336;
       }
       .dialog-buttons {
         margin-top: 20px;
@@ -279,14 +314,6 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
       .continue-btn {
         background: #4caf50;
         color: white;
-      }
-      .continue-btn2 {
-        background: #4caf50;
-        color: white;
-        padding: 8px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
       }
       .close-btn2 {
         background: #f44336;
@@ -322,10 +349,73 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
       .ad-text {
         text-align: right;
       }
+      /* تحسين تنسيق أزرار الإجراءات */
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+      }
+      .continue-btn2,
+      .report-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .continue-btn2 {
+        background: #4caf50;
+        color: white;
+      }
+      .continue-btn2:hover {
+        background: #45a049;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      .close-btn:hover {
+        background:rgb(255, 42, 0);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+      }
+      .continue-btn2:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+      .report-btn {
+        background: #ff9800;
+        color: white;
+      }
+      .report-btn:hover {
+        background: #e68a00;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      .report-btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
       @media only screen and (max-width: 800px) {
         .ad-image-container {
           width: 100%;
           height: 80vh;
+        }
+        .action-buttons {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .continue-btn2,
+        .report-btn {
+          width: 100%;
+          max-width: 200px;
+          padding: 8px 15px;
+          font-size: 14px;
         }
       }
     </style>
@@ -337,7 +427,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
           <h1>${ad.adId.title}</h1>
           <h1>${ad.adId.description}</h1>
         </div>
-        <div>
+         <div class="action-buttons">
           <a
             href="http://${ad.adId.url}"
             target="_blank"
@@ -345,11 +435,11 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             id="go"
             rel="noopener noreferrer"
           >
-            زيارة الموقع</a
-          >
+            زيارة الموقع
+          </a>
+          <button class="report-btn" id="reportBtn">إبلاغ</button>
         </div>
-
-        <button class="close-btn" id="closeBtn">✕</button>
+       <button class="close-btn" id="closeBtn">✕</button>
         <div class="timer" id="timer">${duration}s</div>
         <div class="progress-bar">
           <div class="progress" id="progress"></div>
@@ -383,7 +473,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     </div>
 
     <div class="confirmation-dialog" id="confirmationDialog">
-      <div class="dialog-image">
+      <div class="dialog-content">
         <h3>هل تريد إنهاء المكافأة الآن؟</h3>
         <p>إذا خرجت الآن، لن تحصل على المكافأة</p>
         <div class="dialog-buttons">
@@ -397,9 +487,28 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
       </div>
     </div>
 
-    <script nonce="${nonce}">
-       const adDuration = ${duration};
+    <div class="report-dialog" id="reportDialog">
+      <div class="dialog-content">
+        <h3>الإبلاغ عن الإعلان</h3>
+        <textarea
+          class="dialog-textarea"
+          id="reportMessage"
+          placeholder="اكتب سبب الإبلاغ هنا..."
+        ></textarea>
+        <p class="dialog-message" id="reportResult" style="display: none;"></p>
+        <div class="dialog-buttons">
+          <button class="dialog-btn submit-report-btn" id="submitReportBtn">
+            إرسال
+          </button>
+          <button class="dialog-btn close-btn2" id="cancelReportBtn">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
 
+    <script nonce="${nonce}">
+      const adDuration = ${duration};
       let timeLeft = adDuration;
       let timerInterval;
       let adCompleted = false;
@@ -426,7 +535,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-           adId: "${ad.adId._id}",
+            adId: "${ad.adId._id}",
             userId: "${userId}",
           }),
         }).then((response) => {
@@ -434,7 +543,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             window.parent.postMessage(
               {
                 type: "rewardedAdCompleted",
-                  adId: "${ad.adId._id}",
+                adId: "${ad.adId._id}",
                 rewardGranted: adCompleted,
               },
               "*"
@@ -443,25 +552,50 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         });
       }
 
-       ${
-         ad.mediaType === "image"
-           ? `  timerInterval = setInterval(updateTimer, 1000);`
-           : `const video = document.getElementById('ad-video');
+      ${
+        ad.mediaType === "image"
+          ? `timerInterval = setInterval(updateTimer, 1000);`
+          : `const video = document.getElementById('ad-video');
       video.addEventListener('play', () => {
         timerInterval = setInterval(updateTimer, 1000);
       });`
-       }
+      }
 
-      // التعامل مع زر الإغلاق
       document.getElementById("closeBtn").addEventListener("click", () => {
         clearInterval(timerInterval);
-        document.getElementById("confirmationDialog").style.display = "flex";
+        if (adCompleted) {
+          // إغلاق مباشر إذا اكتمل الإعلان
+          notifyCompletion();
+          window.parent.postMessage(
+            {
+              type: "rewardedAdClosed",
+              adId: "${ad._id}",
+              rewardGranted: false,
+            },
+            "*"
+          );
+        } else {
+          // عرض نافذة التأكيد إذا لم يكتمل الإعلان
+          document.getElementById("confirmationDialog").style.display = "flex";
+        }
       });
 
       document.getElementById("continueBtn").addEventListener("click", () => {
         document.getElementById("confirmationDialog").style.display = "none";
         timeLeft = Math.max(1, timeLeft);
         timerInterval = setInterval(updateTimer, 1000);
+      });
+
+      document.getElementById("confirmCloseBtn").addEventListener("click", () => {
+        clearInterval(timerInterval);
+        window.parent.postMessage(
+          {
+            type: "rewardedAdClosed",
+            adId: "${ad._id}",
+            rewardGranted: false,
+          },
+          "*"
+        );
       });
 
       document.getElementById("go").addEventListener("click", async () => {
@@ -472,7 +606,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             body: JSON.stringify({
               adId: "${ad.adId._id}",
               clickedAt: new Date().toISOString(),
-              userId:"${userId}",
+              userId: "${userId}",
             }),
           });
         } catch (error) {
@@ -480,20 +614,62 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         }
       });
 
-      document
-        .getElementById("confirmCloseBtn")
-        .addEventListener("click", () => {
-          clearInterval(timerInterval);
-          notifyCompletion();
-          window.parent.postMessage(
-            {
-              type: "rewardedAdClosed",
-              adId: "${ad._id}",
-              rewardGranted: false,
-            },
-            "*"
-          );
-        });
+      // التعامل مع زر الإبلاغ
+      document.getElementById("reportBtn").addEventListener("click", () => {
+        document.getElementById("reportDialog").style.display = "flex";
+        document.getElementById("reportResult").style.display = "none"; // إخفاء رسالة النتيجة عند فتح النافذة
+      });
+
+      document.getElementById("cancelReportBtn").addEventListener("click", () => {
+        document.getElementById("reportDialog").style.display = "none";
+        document.getElementById("reportMessage").value = "";
+        document.getElementById("reportResult").style.display = "none";
+      });
+
+      document.getElementById("submitReportBtn").addEventListener("click", async () => {
+        const reportMessage = document.getElementById("reportMessage").value.trim();
+        const reportResult = document.getElementById("reportResult");
+
+        if (!reportMessage) {
+          reportResult.textContent = "يرجى كتابة سبب الإبلاغ";
+          reportResult.className = "dialog-message error";
+          reportResult.style.display = "block";
+          return;
+        }
+
+        try {
+          const response = await fetch("${process.env.URL}/report-ad", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              adId: "${ad.adId._id}",
+              userId: "${userId}",
+              message: reportMessage,
+              reportedAt: new Date().toISOString(),
+            }),
+          });
+
+          if (response.ok) {
+            reportResult.textContent = "تم إرسال البلاغ بنجاح";
+            reportResult.className = "dialog-message success";
+            reportResult.style.display = "block";
+            setTimeout(() => {
+              document.getElementById("reportDialog").style.display = "none";
+              document.getElementById("reportMessage").value = "";
+              reportResult.style.display = "none";
+            }, 3000); // إخفاء النافذة بعد 3 ثوانٍ
+          } else {
+            reportResult.textContent = "فشل إرسال البلاغ، حاول مرة أخرى";
+            reportResult.className = "dialog-message error";
+            reportResult.style.display = "block";
+          }
+        } catch (error) {
+          console.error("Report error:", error);
+          reportResult.textContent = "حدث خطأ أثناء إرسال البلاغ";
+          reportResult.className = "dialog-message error";
+          reportResult.style.display = "block";
+        }
+      });
 
       // إرسال رسالة عند تحميل الصفحة
       window.parent.postMessage(

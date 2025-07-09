@@ -16,6 +16,7 @@ import AdRepository from "../repositories/AdRepository.mjs";
 import axios from "axios";
 import sharp from "sharp";
 import AnalyticService from "./AnalyticService.mjs";
+import ReportRepository from "../repositories/ReportRepository.mjs";
 
 class AdminService {
   /**
@@ -194,6 +195,33 @@ class AdminService {
 
     logger.info(`ad paused for ad: ${adId}`);
     return { message: "ad state changed successfully" };
+  }
+
+  /**
+   * Get reports with pagination and optional filtering
+   * @param {Object} data - Query data
+   * @returns {Promise<Object>} Reports with pagination metadata
+   */
+  async getReports(data) {
+    const { adId, userId, page, limit } = data.query;
+
+    const result = await ReportRepository.findReports({
+      adId,
+      userId,
+      page: parseInt(page) || 1,
+      limit: parseInt(limit) || 10,
+    });
+
+    logger.info(`Retrieved ${result.reports.length} reports for admin`);
+    return result;
+  }
+  /**
+   * Count pending reports
+   * @returns {Promise<number>} Number of pending reports
+   */
+  async countPendingReports() {
+    const count = await ReportRepository.countPendingReports();
+    return count;
   }
 }
 

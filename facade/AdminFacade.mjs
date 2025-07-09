@@ -89,6 +89,33 @@ class AdminFacade {
       throw error;
     }
   }
+  /**
+   * Get reports
+   * @param {Object} data - Query data
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getReports(data) {
+    try {
+      const result = await AdminService.getReports(data);
+      return result;
+    } catch (error) {
+      logger.error(`Get reports error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
+  /**
+   * Count pending reports
+   * @returns {Promise<Object>} Formatted response with count
+   */
+  async countPendingReports() {
+    try {
+      const count = await AdminService.countPendingReports();
+      return { pendingCount: count };
+    } catch (error) {
+      logger.error(`Count pending reports error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
 export default new AdminFacade();

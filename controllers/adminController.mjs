@@ -61,6 +61,24 @@ class AdminController {
     });
     res.status(200).json(result);
   });
+
+  /**
+   * Get reports
+   */
+  getReports = asyncHandler(async (req, res) => {
+    const result = await AdminFacade.getReports({
+      query: req.query,
+    });
+
+    res.status(200).json(result);
+  });
+  /**
+   * Count pending reports
+   */
+  countPendingReports = asyncHandler(async (req, res) => {
+    const result = await AdminFacade.countPendingReports();
+    res.status(200).json(result);
+  });
 }
 
 export default new AdminController();

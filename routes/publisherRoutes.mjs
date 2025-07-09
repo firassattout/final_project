@@ -123,4 +123,14 @@ publisherRoutes.get(
   }
 );
 
+/**
+ * @route POST /report-ad
+ * @desc Report an advertisement
+ * @access Public
+ */
+publisherRoutes.post(
+  "/report-ad",
+  publicRateLimiter,
+  PublisherController.reportAd
+);
 export default publisherRoutes;

@@ -62,6 +62,20 @@ class PublisherFacade {
       throw new Error(t(error.message));
     }
   }
+  /**
+   * Report advertisement
+   * @param {Object} data - Report data
+   * @returns {Promise<Object>} Formatted response
+   */
+  async reportAd(data) {
+    try {
+      const result = await PublisherService.reportAd(data);
+      return result;
+    } catch (error) {
+      logger.error(`Report ad error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
 export default new PublisherFacade();

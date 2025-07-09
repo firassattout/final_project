@@ -82,4 +82,23 @@ adminRouter.post(
   checkUserRole("admin"),
   adminController.changeStateAd
 );
+
+/**
+ * @route GET /reports
+ * @desc Get reports with pagination and filtering
+ * @access Private (admin only)
+ */
+adminRouter.get("/reports", checkUserRole("admin"), adminController.getReports);
+
+/**
+ * @route GET /reports/pending-count
+ * @desc Get count of pending reports
+ * @access Private (admin only)
+ */
+adminRouter.get(
+  "/reports/pending-count",
+  checkUserRole("admin"),
+  adminController.countPendingReports
+);
+
 export default adminRouter;
