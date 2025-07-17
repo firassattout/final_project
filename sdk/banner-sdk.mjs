@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   adContainers.forEach((container) => {
     const userId = container.dataset.user;
     const type = container.dataset.type || "banner";
-    const position = container.dataset.position || "top"; // 'top' or 'bottom'
+    const position = container.dataset.position || "top";
 
     const iframe = document.createElement("iframe");
-    iframe.src = `__URL__/show-ad/${userId}?type=${type}`;
+    iframe.src = `__URL__/show-ad/${userId}?type=${type}&position=${position}`;
     iframe.width = "100%";
     iframe.height = "80px";
     iframe.style.border = "none";
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     iframe.style.overflow = "hidden";
     iframe.allow = "autoplay; fullscreen";
 
-    // Set position (top or bottom)
     if (position === "bottom") {
       iframe.style.bottom = "0";
     } else {
@@ -32,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!event?.data?.type) return;
     const iframe = document.querySelector("iframe");
     if (event.data.type === "adError") {
+      iframe?.remove();
+    }
+    if (event.data.type === "bannerAdHidden") {
       iframe?.remove();
     }
   });

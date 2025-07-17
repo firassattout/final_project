@@ -66,6 +66,58 @@ class AdRepository {
   }
 
   /**
+   * Find a random advertisement media with populated ad data, prioritizing highest unitPrice
+   * @returns {Promise<Object|null>} Single media document or null if none found
+   * @throws {Error} If query fails
+   */
+  async findRandomAdMedia(type) {
+    try {
+      const media = await AdMedia.aggregate([
+        {
+          $lookup: {
+            from: "ads", // اسم المجموعة في MongoDB لنموذج Ads
+            localField: "adId",
+            foreignField: "_id",
+            as: "adId",
+          },
+        },
+        {
+          $unwind: "$adId", // فك تجميع مصفوفة adId
+        },
+        {
+          $match: { "adId.state": "active", "adId.type": type },
+        },
+        {
+          $sort: { "adId.unitPrice": -1 }, // الفرز تنازليًا حسب unitPrice
+        },
+        {
+          $sample: { size: 1 }, // اختيار إعلان واحد عشوائي
+        },
+        {
+          $project: {
+            "adId.__v": 0,
+            "adId.createdAt": 0,
+            "adId.updatedAt": 0,
+          }, // استبعاد الحقول غير الضرورية
+        },
+      ]).exec();
+
+      if (!media || media.length === 0) {
+        logger.info("No media items found");
+        return null;
+      }
+
+      logger.info(
+        `Retrieved random media item with adId: ${media[0].adId._id}`
+      );
+      return media[0]; // إرجاع أول عنصر (الإعلان العشوائي)
+    } catch (error) {
+      logger.error(`Error finding random media: ${error.message}`);
+      throw new Error(t("ad.media_find_failed"));
+    }
+  }
+
+  /**
    * Find advertisements by user ID
    * @param {string} userId - User ID
    * @returns {Promise<Array>} Array of ad documents

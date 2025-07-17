@@ -21,7 +21,7 @@ const UsersSchema = new mongoose.Schema(
     },
     state: {
       type: String,
-      enum: ["active", "pending", "inactive"],
+      enum: ["active", "pending"],
       required: true,
       default: "pending",
     },

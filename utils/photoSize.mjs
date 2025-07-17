@@ -3,8 +3,8 @@ import sharp from "sharp";
 export const AD_VALIDATIONS = {
   banner: {
     web: {
-      width: { min: 720, max: 728 },
-      height: { min: 80, max: 90 },
+      width: { min: 730, max: 755 },
+      height: { min: 60, max: 70 },
       maxSizeKB: 200,
     },
     mobile: {
@@ -15,8 +15,8 @@ export const AD_VALIDATIONS = {
   },
   rewarded: {
     web: {
-      width: { min: 720, max: 1400 },
-      height: { min: 500, max: 720 },
+      width: { min: 1450, max: 1550 },
+      height: { min: 550, max: 650 },
       maxSizeKB: 500,
     },
     mobile: {

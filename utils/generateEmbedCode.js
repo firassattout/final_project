@@ -1,8 +1,8 @@
-export function generateEmbedCode(ad, url, userId, type, nonce) {
+export function generateEmbedCode(ad, url, userId, type, nonce, position) {
   if (ad.mediaType === "image")
     switch (type) {
       case "banner":
-        return generateBannerEmbedCode(ad, url, userId, nonce);
+        return generateBannerEmbedCode(ad, url, userId, nonce, position);
       case "rewarded":
         return generateRewardedEmbedCode(ad, url, userId, nonce);
 
@@ -20,10 +20,9 @@ export function generateEmbedCode(ad, url, userId, type, nonce) {
   }
 }
 
-function generateBannerEmbedCode(ad, url, userId, nonce) {
+function generateBannerEmbedCode(ad, url, userId, nonce, position) {
   if (ad.adId.platform === "web")
     return `
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,48 +39,215 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
       body {
         margin: 0;
         width: 100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+            overflow: hidden;
       }
 
       .ad-container {
         width: 750px;
-        height: 80px;
-        overflow:hidden
+     height: 65px;
+   
+        position: relative;
+        background: #fff;
+        transition: transform 0.3s ease;
+            margin:  ${position == "top" ? "0 0 0 0" : "11px 0 0 0"};
       }
+
+      .ad-container.hidden {
+        transform: ${
+          position == "top" ? "translateY(-100%)" : "translateY(109%)"
+        };
+      }
+
       .ad-title {
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
         margin-bottom: 5px;
+        color: #333;
       }
-
-  
 
       .ad-image {
-        object-fit: contain;
+        object-fit: cover;
         width: 100%;
         height: 100%;
         cursor: pointer;
       }
 
-      .ad-video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+      .close-btn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    width: 17px;
+    height: 18px;
+    border-radius: 0px 0 10px 0;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-weight: 700;
+      }
+
+      .close-btn:hover {
+        background: rgb(255, 42, 0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .toggle-btn {
+     position: absolute;
+    ${position == "top" ? "bottom" : "top"}: -12px;
+    right: 0px;
+    color: #000000;
+    background: #ffffff;
+    border: none;
+    width: 80px;
+    height: 12px;
+    border-radius:  ${position == "top" ? "0 0 5px 5px" : "5px 5px 0 0"};
+    font-size: 11px;
+    font-weight: bolder;
+    cursor: pointer;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    overflow: hidden;
+      }
+
+      .toggle-btn:hover {
+        background: #6d6d6dff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .toggle-btn::before {
+        content: "close ad";
+      }
+
+      .toggle-btn.hidden::before {
+        content: "open ad";
+      }
+
+      .report-dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      .dialog-content {
+         background: #404040;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    height: 61px;
+    gap: 15px;
+    text-wrap-mode: nowrap;
+      }
+
+      .dialog-textarea {
+        width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    resize: vertical;
+    font-size: 14px;
+    height: 45px;
+      }
+
+      .dialog-message {
+        margin: 10px 0;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .dialog-message.success {
+        color: #4caf50;
+      }
+
+      .dialog-message.error {
+        color: #f44336;
+      }
+
+      .dialog-buttons {
+   
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+ 
+      }
+
+      .dialog-btn {
+        padding: 8px 20px;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
+        font-size: 14px;
+      }
+
+      .submit-report-btn {
+        background: #4caf50;
+        color: white;
+      }
+
+      .close-btn2 {
+        background: #f44336;
+        color: white;
       }
 
       @media only screen and (max-width: 800px) {
         .ad-container {
+          width: 100%;
           height: 100px;
         }
 
-        .ad-image-container {
-          height: 70px;
+        .ad-title {
+          font-size: 16px;
         }
 
-        .ad-title {
+        .close-btn,
+        .toggle-btn {
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+        }
+
+        .dialog-content {
+          max-width: 90%;
+          padding: 15px;
+        }
+
+        .dialog-textarea {
+          min-height: 60px;
+          font-size: 12px;
+        }
+
+        .dialog-message {
+          font-size: 12px;
+        }
+
+        .dialog-btn {
+          padding: 6px 15px;
           font-size: 12px;
         }
       }
@@ -89,26 +255,38 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
   </head>
   <body>
     <div class="ad-container" data-ad-id="${ad._id}">
-   
-      
-       
-      
-              <a href="http://${ad.adId.url}" target="_blank" rel="noopener noreferrer" id="ad-link">
-                  <img src="${url}" class="ad-image" alt="${ad.adId.title}" />
-                </a>
-        
-          
-   
- 
+      <button class="close-btn" id="closeBtn">✕</button>
+      <button class="toggle-btn" id="toggleBtn"></button>
+      <a href="http://${
+        ad.adId.url
+      }" target="_blank" rel="noopener noreferrer" id="ad-link">
+        <img src="${url}" class="ad-image" alt="${ad.adId.title}" />
+      </a>
+    </div>
+
+    <div class="report-dialog" id="reportDialog">
+      <div class="dialog-content">
+        <h3>الإبلاغ عن الإعلان</h3>
+        <textarea
+          class="dialog-textarea"
+          id="reportMessage"
+          placeholder="اكتب سبب الإبلاغ أو الإغلاق هنا..."
+        ></textarea>
+        <p class="dialog-message" id="reportResult" style="display: none;"></p>
+        <div class="dialog-buttons">
+          <button class="dialog-btn submit-report-btn" id="submitReportBtn">إرسال</button>
+          <button class="dialog-btn close-btn2" id="cancelReportBtn">إلغاء</button>
+        </div>
+      </div>
     </div>
 
     <script nonce="${nonce}">
-      const impressionDuration = 20;
+      const impressionDuration = 40;
       let impressionTracked = false;
+      let isAdHidden = false;
 
-      // Track impression after 10 seconds
-      setTimeout(() => {
-        if (!impressionTracked) {
+      setInterval(() => {
+        if (!isAdHidden) {
           fetch("${process.env.URL}/track-views", {
             method: "POST",
             headers: {
@@ -120,7 +298,6 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
             }),
           }).then((response) => {
             if (response.ok) {
-              impressionTracked = true;
               window.parent.postMessage(
                 {
                   type: "bannerAdImpression",
@@ -131,9 +308,9 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
             }
           });
         }
-      }, impressionDuration * 1000);
+      }, 60000);
 
-      // Track click on image or video
+      // Track click on image
       document.getElementById("ad-link").addEventListener("click", async () => {
         try {
           const response = await fetch("${process.env.URL}/track-click", {
@@ -150,6 +327,93 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
         }
       });
 
+      // Handle close button and show report dialog
+      document.getElementById("closeBtn").addEventListener("click", () => {
+        document.getElementById("reportDialog").style.display = "flex";
+        document.getElementById("reportResult").style.display = "none";
+      });
+
+      // Handle report dialog cancel button
+      document.getElementById("cancelReportBtn").addEventListener("click", () => {
+        document.getElementById("reportDialog").style.display = "none";
+        document.getElementById("reportMessage").value = "";
+        document.getElementById("reportResult").style.display = "none";
+      });
+
+      // Handle report submission
+      document.getElementById("submitReportBtn").addEventListener("click", async () => {
+        const reportMessage = document.getElementById("reportMessage").value.trim();
+        const reportResult = document.getElementById("reportResult");
+
+        if (!reportMessage) {
+          reportResult.textContent = "يرجى كتابة سبب الإبلاغ أو الإغلاق";
+          reportResult.className = "dialog-message error";
+          reportResult.style.display = "block";
+          return;
+        }
+
+        try {
+          const response = await fetch("${process.env.URL}/report-ad", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              adId: "${ad.adId._id}",
+              userId: "${userId}",
+              message: reportMessage,
+              reportedAt: new Date().toISOString(),
+            }),
+          });
+
+          if (response.ok) {
+            reportResult.textContent = "تم إرسال البلاغ بنجاح";
+            reportResult.className = "dialog-message success";
+            reportResult.style.display = "block";
+            setTimeout(() => {
+              document.getElementById("reportDialog").style.display = "none";
+              document.getElementById("reportMessage").value = "";
+              document.getElementById("reportResult").style.display = "none";
+              // Hide the ad after successful report
+              document.querySelector(".ad-container").classList.add("hidden");
+              document.getElementById("toggleBtn").classList.add("hidden");
+              isAdHidden = true;
+              window.parent.postMessage(
+                {
+                  type: "bannerAdHidden",
+                  adId: "${ad._id}",
+                },
+                "*"
+              );
+            }, 2000);
+          } else {
+            reportResult.textContent = "فشل إرسال البلاغ، حاول مرة أخرى";
+            reportResult.className = "dialog-message error";
+            reportResult.style.display = "block";
+          }
+        } catch (error) {
+          console.error("Report error:", error);
+          reportResult.textContent = "حدث خطأ أثناء إرسال البلاغ";
+          reportResult.className = "dialog-message error";
+          reportResult.style.display = "block";
+        }
+      });
+
+      // Handle toggle button to hide/show ad
+      document.getElementById("toggleBtn").addEventListener("click", () => {
+        const adContainer = document.querySelector(".ad-container");
+        const toggleBtn = document.getElementById("toggleBtn");
+        if (isAdHidden) {
+          adContainer.classList.remove("hidden");
+          toggleBtn.classList.remove("hidden");
+          isAdHidden = false;
+   
+        } else {
+          adContainer.classList.add("hidden");
+          toggleBtn.classList.add("hidden");
+          isAdHidden = true;
+       
+        }
+      });
+
       // Send message when banner is loaded
       window.parent.postMessage(
         {
@@ -161,8 +425,6 @@ function generateBannerEmbedCode(ad, url, userId, nonce) {
     </script>
   </body>
 </html>
-
-  
   `;
 }
 
@@ -175,33 +437,39 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>إعلان مكافأة - ${ad.adId.title}</title>
-<style>
-      /* الأنماط الأصلية مع إضافة تنسيق جديد لأزرار الإجراءات */
+    <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      html {
+        width: 100vw;
+        height: 100vh;
+
+      }
       body {
         width: 100vw;
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
       }
+
       .ad-container {
-        width: fit-content;
-        height: fit-content;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         overflow: hidden;
         font-family: sans-serif;
         position: relative;
         background: rgba(0, 0, 0, 0.8);
-        border-radius: 30px;
+        border-radius: 0; /* Remove border-radius for full-screen */
       }
 
       .progress-bar {
@@ -212,12 +480,14 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         height: 5px;
         background: rgba(255, 255, 255, 0.3);
       }
+
       .progress {
         height: 100%;
         width: 10%;
         background: #4caf50;
         transition: width 1s linear;
       }
+
       .timer {
         position: absolute;
         top: 15px;
@@ -228,6 +498,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         border-radius: 20px;
         font-size: 16px;
       }
+
       .close-btn {
         position: absolute;
         top: 15px;
@@ -244,27 +515,15 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         align-items: center;
         justify-content: center;
       }
-      .confirmation-dialog {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 10000;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-      }
+
+      .confirmation-dialog,
       .report-dialog {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         background: rgba(0, 0, 0, 0.8);
         z-index: 10000;
         flex-direction: column;
@@ -272,6 +531,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         align-items: center;
         color: white;
       }
+
       .dialog-content {
         background: #404040;
         padding: 20px;
@@ -279,6 +539,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         text-align: center;
         max-width: 80%;
       }
+
       .dialog-textarea {
         width: 100%;
         min-height: 100px;
@@ -287,75 +548,101 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         border-radius: 5px;
         border: none;
         resize: vertical;
+        font-size: 16px;
       }
+
       .dialog-message {
         margin: 10px 0;
         color: #fff;
         font-size: 16px;
       }
+
       .dialog-message.success {
         color: #4caf50;
       }
+
       .dialog-message.error {
         color: #f44336;
       }
+
       .dialog-buttons {
         margin-top: 20px;
         display: flex;
         gap: 10px;
         justify-content: center;
+        flex-wrap: wrap;
       }
+
       .dialog-btn {
         padding: 8px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 16px;
       }
+
       .continue-btn {
         background: #4caf50;
         color: white;
       }
+
       .close-btn2 {
         background: #f44336;
         color: white;
       }
+
       .ad-content {
         background-color: #404040;
         color: white;
         width: 100%;
         height: 100px;
         position: absolute;
+        top: 0;
         z-index: 1;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
-        padding: 20px;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding: 20px 60px;
       }
+
       .ad-image-container {
-        color: white;
-        position: relative;
-        width: 70vw;
-        height: 90vh;
+    width: 100%;
+    height: calc(100% - 100px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
       }
+
       .ad-image {
-        object-fit: contain;
+        object-fit: cover;
         width: 100%;
         height: 100%;
-        padding-top: 100px;
       }
+
       .ad-text {
         text-align: right;
+        font-size: 18px;
       }
-      /* تحسين تنسيق أزرار الإجراءات */
+
+      .ad-text h2 {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .ad-text h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
+
       .action-buttons {
         display: flex;
         gap: 15px;
         align-items: center;
         justify-content: center;
       }
+
       .continue-btn2,
       .report-btn {
         padding: 10px 20px;
@@ -369,52 +656,109 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        min-width: 100px;
       }
+
       .continue-btn2 {
         background: #4caf50;
         color: white;
       }
+
       .continue-btn2:hover {
         background: #45a049;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transform: translateY(-2px);
       }
+
       .close-btn:hover {
-        background:rgb(255, 42, 0);
+        background: rgb(255, 42, 0);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      
       }
+
       .continue-btn2:active {
         transform: translateY(0);
         box-shadow: none;
       }
+
       .report-btn {
         background: #ff9800;
         color: white;
       }
+
       .report-btn:hover {
         background: #e68a00;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transform: translateY(-2px);
       }
+
       .report-btn:active {
         transform: translateY(0);
         box-shadow: none;
       }
-      @media only screen and (max-width: 800px) {
-        .ad-image-container {
-          width: 100%;
-          height: 80vh;
+
+      @media only screen and (max-width: 600px) {
+        .ad-container {
+          border-radius: 0;
         }
+
+        .ad-content {
+          height: 150px;
+          padding: 15px 20px;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+  
+
+        .ad-image-container {
+          height: calc(100% - 140px);
+        }
+
+        .timer {
+          top: 10px;
+          right: 10px;
+          font-size: 14px;
+          padding: 4px 8px;
+        }
+
+        .close-btn {
+          top: 10px;
+          left: 10px;
+          width: 26px;
+          height: 26px;
+          font-size: 14px;
+        }
+
         .action-buttons {
           flex-direction: column;
           gap: 10px;
         }
+
         .continue-btn2,
         .report-btn {
           width: 100%;
           max-width: 200px;
           padding: 8px 15px;
+          font-size: 14px;
+          min-width: 120px;
+        }
+
+        .dialog-content {
+          max-width: 90%;
+          padding: 15px;
+        }
+
+        .dialog-textarea {
+          min-height: 80px;
+          font-size: 14px;
+        }
+
+        .dialog-message {
+          font-size: 14px;
+        }
+
+        .dialog-btn {
+          padding: 6px 15px;
           font-size: 14px;
         }
       }
@@ -424,10 +768,10 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     <div class="ad-container" data-ad-id="${ad._id}">
       <div class="ad-content">
         <div class="ad-text">
-          <h1>${ad.adId.title}</h1>
-          <h1>${ad.adId.description}</h1>
+          <h1 class="ad-title">${ad.adId.title}</h1>
+          <h2>${ad.adId.description}</h2>
         </div>
-         <div class="action-buttons">
+        <div class="action-buttons">
           <a
             href="http://${ad.adId.url}"
             target="_blank"
@@ -439,7 +783,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
           </a>
           <button class="report-btn" id="reportBtn">إبلاغ</button>
         </div>
-       <button class="close-btn" id="closeBtn">✕</button>
+        <button class="close-btn" id="closeBtn">✕</button>
         <div class="timer" id="timer">${duration}s</div>
         <div class="progress-bar">
           <div class="progress" id="progress"></div>

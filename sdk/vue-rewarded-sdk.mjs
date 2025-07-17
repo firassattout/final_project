@@ -26,7 +26,6 @@
       iframe?.remove();
     }
     if (event.data.type === "rewardedAdCompleted") {
-      iframe?.remove();
     } else if (event.data.type === "rewardedAdClosed") {
       iframe?.remove();
     }

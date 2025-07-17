@@ -40,31 +40,20 @@ class PublisherService {
    * @returns {Promise<string>} Embed code for ad
    */
   async showAd(data) {
-    let allAds = await AdRepository.findAllMedia();
-    if (!allAds) {
-      throw new Error("الإعلان غير موجود");
+    let ad = await AdRepository.findRandomAdMedia(data?.query?.type);
+    if (!ad) {
+      return { message: "الاعلان غير موجود" };
     }
     const type = data?.query?.type;
+    const position = data?.query?.position || "top";
     if (!type) {
       throw new Error("نوع الإعلان غير موجود");
     }
 
-    allAds = allAds.filter(
-      (ad) => ad.adId.state === "active" && ad.adId.type === type
-    );
-    allAds = allAds.sort((a, b) => a.adId.unitPrice - b.adId.unitPrice);
-
-    if (allAds.length === 0) {
-      throw new Error("  غير موجود");
-    }
-
-    let rand = Math.random();
-    rand = Math.floor(Math.random() * allAds.length);
-
     let url;
-    if (allAds.at(rand)?.mediaType === "image") {
-      if (allAds.at(rand).url) {
-        const response = await axios.get(allAds.at(rand).url, {
+    if (ad?.mediaType === "image") {
+      if (ad.url) {
+        const response = await axios.get(ad.url, {
           responseType: "arraybuffer",
         });
         const base64 = Buffer.from(response.data, "binary").toString("base64");
@@ -74,11 +63,12 @@ class PublisherService {
     }
 
     const embedCode = generateEmbedCode(
-      allAds.at(rand),
+      ad,
       url,
       data.params?.userId,
       type,
-      data.nonce
+      data.nonce,
+      position
     );
     return embedCode;
   }

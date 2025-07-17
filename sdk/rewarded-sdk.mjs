@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const iframe = document.createElement("iframe");
     iframe.src = `__URL__/show-ad/${userId}?type=${type}`;
-    iframe.width = "100%";
-    iframe.height = "100%";
+    iframe.style.width = "100vw";
+    iframe.style.height = "100vh";
     iframe.style.border = "none";
     iframe.style.overflow = "hidden";
     iframe.style.position = "fixed";
