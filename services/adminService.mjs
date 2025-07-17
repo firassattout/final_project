@@ -1,15 +1,3 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import {
-  generateAccessToken,
-  generateRefreshToken,
-} from "../utils/tokenUtils.js";
-import {
-  validateFirstRegisterUser,
-  validateLoginUser,
-  validateSecondRegisterUser,
-} from "../utils/validation.js";
-import { generatePassword } from "../utils/generatePassword.js";
 import userRepository from "../repositories/userRepository.mjs";
 import logger from "../utils/logger.mjs";
 import AdRepository from "../repositories/AdRepository.mjs";

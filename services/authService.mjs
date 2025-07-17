@@ -108,7 +108,6 @@ class AuthService {
 
     const user = await userRepository.findByEmail(credentials.email);
     if (!user) throw new Error("بيانات تسجيل الدخول غير صحيحة");
-    // if (user.state !== "active") throw new Error("الحساب غير نشط");
 
     const isPasswordMatch = await bcrypt.compare(
       credentials.password,
@@ -116,7 +115,7 @@ class AuthService {
     );
     if (!isPasswordMatch) throw new Error("بيانات تسجيل الدخول غير صحيحة");
 
-    if (user.state !== "active") throw new Error("الحساب غير نشط");
+    if (!user.isActive) throw new Error("الحساب غير نشط");
 
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);

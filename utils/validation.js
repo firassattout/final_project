@@ -6,10 +6,13 @@ export const validateFirstRegisterUser = (obj) => {
       "string.email": "البريد الإلكتروني غير صالح",
       "any.required": "البريد الإلكتروني مطلوب",
     }),
-    role: Joi.string().valid("advertiser", "publisher").required().messages({
-      "any.only": "الدور يجب أن يكون إما advertiser أو publisher",
-      "any.required": "الدور مطلوب",
-    }),
+    role: Joi.string()
+      .valid("advertiser", "publisher", "merchant")
+      .required()
+      .messages({
+        "any.only": "الدور يجب أن يكون إما advertiser أو publisher او merchant",
+        "any.required": "الدور مطلوب",
+      }),
     name: Joi.string().min(3).max(50).required().messages({
       "string.min": "الاسم يجب أن يكون على الأقل 3 أحرف",
       "string.max": "الاسم يجب ألا يتجاوز 50 حرفًا",
