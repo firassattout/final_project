@@ -25,5 +25,15 @@ merchantRoutes.get(
   checkUserRole("merchant"),
   MerchantController.getMerchantApp
 );
+/**
+ * @route delete /merchant-app
+ * @desc delete merchant app
+ * @access Private (user only)
+ */
+merchantRoutes.delete(
+  "/merchant-app/:appId",
+  checkUserRole("merchant"),
+  MerchantController.deleteMerchantApp
+);
 
 export default merchantRoutes;

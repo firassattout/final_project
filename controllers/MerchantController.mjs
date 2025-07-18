@@ -28,6 +28,19 @@ class MerchantController {
       result,
     });
   });
+  /**
+   * delete merchant application
+   */
+  deleteMerchantApp = asyncHandler(async (req, res) => {
+    const result = await MerchantFacade.deleteMerchantApp({
+      userId: req.user.id,
+      appId: req.params.appId,
+    });
+
+    res.status(201).json({
+      result,
+    });
+  });
 }
 
 export default new MerchantController();

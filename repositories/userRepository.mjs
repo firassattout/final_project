@@ -22,10 +22,10 @@ class UserRepository {
    * @param {Object} userData - User data to create
    * @returns {Promise<Object>} Created user document
    */
-  async create(userData) {
+  async create(userData, session) {
     try {
       const user = new Users(userData);
-      return await user.save();
+      return await user.save(session);
     } catch (error) {
       logger.error(`Error creating user: ${error.message}`);
       throw error;

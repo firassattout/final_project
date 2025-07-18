@@ -12,6 +12,8 @@ import {
 import { generatePassword } from "../utils/generatePassword.js";
 import userRepository from "../repositories/userRepository.mjs";
 import logger from "../utils/logger.mjs";
+import ExternalApiService from "../ExternalApiService.mjs";
+import mongoose from "mongoose";
 
 class AuthService {
   /**
@@ -20,36 +22,59 @@ class AuthService {
    * @returns {Promise<Object>} User data and tokens
    */
   async firstRegister(data) {
-    const { error } = validateFirstRegisterUser(data);
-    if (error) throw new Error(error.details[0].message);
+    const session = await mongoose.startSession();
+    session.startTransaction();
 
-    const existingUser = await userRepository.findByEmail(data.email);
-    if (existingUser) throw new Error("البريد الإلكتروني موجود بالفعل");
+    try {
+      const { error } = validateFirstRegisterUser(data);
+      if (error) throw new Error(error.details[0].message);
 
-    const tempPassword = generatePassword(8);
-    const salt = await bcrypt.genSalt(10);
-    data.password = await bcrypt.hash(tempPassword, salt);
+      const existingUser = await userRepository.findByEmail(data.email);
+      if (existingUser) throw new Error("البريد الإلكتروني موجود بالفعل");
 
-    const user = await userRepository.create({
-      ...data,
-      state: "pending",
-      createdAt: new Date(),
-    });
+      const tempPassword = generatePassword(8);
+      const salt = await bcrypt.genSalt(10);
+      data.password = await bcrypt.hash(tempPassword, salt);
 
-    const accessToken = generateAccessToken(user);
-    const refreshToken = generateRefreshToken(user);
+      const user = await userRepository.create(
+        {
+          ...data,
+          state: "pending",
+          createdAt: new Date(),
+        },
+        { session }
+      );
 
-    await userRepository.updateRefreshToken(user._id, refreshToken);
-    const { password, ...userWithoutPassword } = user._doc;
+      const accessToken = generateAccessToken(user);
+      const refreshToken = generateRefreshToken(user);
 
-    logger.info(`User registered: ${user.email}`);
-    return {
-      user: userWithoutPassword,
-      tempPassword,
-      accessToken,
-      refreshToken,
-      message: "تم التسجيل بنجاح",
-    };
+      await userRepository.updateRefreshToken(user._id, refreshToken);
+
+      if (data.role === "merchant") {
+        await ExternalApiService.adMerchant({
+          merchantMSISDN: data.mobileNumber,
+        });
+      }
+
+      await session.commitTransaction();
+      session.endSession();
+
+      const { password, ...userWithoutPassword } = user._doc;
+
+      logger.info(`User registered: ${user.email}`);
+
+      return {
+        user: userWithoutPassword,
+        tempPassword,
+        accessToken,
+        refreshToken,
+        message: "تم التسجيل بنجاح",
+      };
+    } catch (err) {
+      await session.abortTransaction();
+      session.endSession();
+      throw err;
+    }
   }
 
   /**

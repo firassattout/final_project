@@ -31,6 +31,19 @@ class MerchantFacade {
       throw new Error(t(error.message));
     }
   }
+  /**
+   * delete merchant application
+   * @returns {Promise<Object>} Formatted response
+   */
+  async deleteMerchantApp(data) {
+    try {
+      const result = await MerchantService.deleteMerchantApp(data);
+      return result;
+    } catch (error) {
+      logger.error(`Create merchant application error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
 export default new MerchantFacade();
