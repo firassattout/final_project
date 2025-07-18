@@ -107,10 +107,12 @@ publisherRoutes.get(
       );
 
       res.setHeader("Content-Type", "application/javascript");
+
       res.setHeader(
         "Content-Security-Policy",
-        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:;`
+        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
       );
+
       res.setHeader("X-Content-Type-Options", "nosniff");
       res.send(finalScript);
     } catch (err) {

@@ -11,11 +11,12 @@ export function generatePublisherCode(userId, type, platform) {
   } else if (type === "rewarded") {
     if (platform === "web")
       return ` 
-    <div
-      class="auto-ad"
-      data-user="${userId}"
-      data-type="rewarded"
-    ></div>
+      <button
+        class="watch-ad-btn"
+        onclick="showAutoAd({ userId: '${userId}', type: 'rewarded' })"
+      >
+        show ad
+      </button>
     <script src="${process.env.URL}/rewarded-sdk" defer></script>
     <script>
       window.addEventListener("message", (event) => {

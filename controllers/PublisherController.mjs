@@ -48,7 +48,7 @@ class PublisherController {
       .status(200)
       .setHeader(
         "Content-Security-Policy",
-        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:;`
+        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
       )
       .setHeader("X-Content-Type-Options", "nosniff")
       .send(result);
