@@ -58,7 +58,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
 
       .ad-container.hidden {
         transform: ${
-          position == "top" ? "translateY(-100%)" : "translateY(109%)"
+          position == "top" ? "translateY(-100%)" : "translateY(100%)"
         };
       }
 

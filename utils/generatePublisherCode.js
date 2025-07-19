@@ -1,23 +1,26 @@
 export function generatePublisherCode(userId, type, platform) {
   if (type === "banner") {
-    return `<div
-  class="auto-ad"
+    return `
+<script 
+  src="${process.env.URL}/banner-sdk" 
   data-user="${userId}"
-  data-type="banner"
-  data-position="top"
-></div>
-<script src="${process.env.URL}/banner-sdk" defer></script>
+  data-position="top" 
+  defer>
+</script>
 `;
   } else if (type === "rewarded") {
     if (platform === "web")
       return ` 
       <button
         class="watch-ad-btn"
-        onclick="showAutoAd({ userId: '${userId}', type: 'rewarded' })"
+        onclick="showAutoAd()"
       >
         show ad
       </button>
-    <script src="${process.env.URL}/rewarded-sdk" defer></script>
+    <script src="${process.env.URL}/rewarded-sdk"
+    data-user="${userId}"
+    defer
+    ></script>
     <script>
       window.addEventListener("message", (event) => {
         if (event.data.type === "rewardedAdCompleted") {

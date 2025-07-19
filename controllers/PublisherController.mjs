@@ -38,20 +38,29 @@ class PublisherController {
    */
   showAd = asyncHandler(async (req, res) => {
     const nonce = generateNonce();
-    const result = await PublisherFacade.showAd({
-      params: req.params,
-      query: req.query,
-      nonce,
-    });
+    try {
+      const result = await PublisherFacade.showAd({
+        params: req.params,
+        query: req.query,
+        nonce,
+      });
 
-    res
-      .status(200)
-      .setHeader(
-        "Content-Security-Policy",
-        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
-      )
-      .setHeader("X-Content-Type-Options", "nosniff")
-      .send(result);
+      res
+        .status(200)
+        .setHeader(
+          "Content-Security-Policy",
+          `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
+        )
+        .setHeader("X-Content-Type-Options", "nosniff")
+        .send(result);
+    } catch (err) {
+      res
+        .setHeader(
+          "Content-Security-Policy",
+          `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
+        )
+        .send(getErrorHtml("حدث خطأ في تحميل الاعلان", nonce));
+    }
   });
 
   /**

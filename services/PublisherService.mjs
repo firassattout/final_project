@@ -41,8 +41,8 @@ class PublisherService {
    */
   async showAd(data) {
     let ad = await AdRepository.findRandomAdMedia(data?.query?.type);
-    if (!ad) {
-      return { message: "الاعلان غير موجود" };
+    if (!ad || !ad.url) {
+      throw new Error("الاعلان غير موجود");
     }
     const type = data?.query?.type;
     const position = data?.query?.position || "top";

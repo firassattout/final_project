@@ -1,9 +1,15 @@
-function showAutoAd({ userId, type = "banner", containerId = null }) {
-  // تحقق من عدم وجود إعلان حالي
+function showAutoAd() {
+  const currentScript = document.querySelector('script[src*="rewarded-sdk"]');
+  if (!currentScript) {
+    console.error("rewarded SDK: script tag not found.");
+    return;
+  }
+  const userId = currentScript.dataset.user;
+
   if (document.querySelector("iframe[data-auto-ad='true']")) return;
 
   const iframe = document.createElement("iframe");
-  iframe.src = `__URL__/show-ad/${userId}?type=${type}`;
+  iframe.src = `__URL__/show-ad/${userId}?type=rewarded`;
   iframe.style.width = "100vw";
   iframe.style.height = "100vh";
   iframe.style.border = "none";
@@ -15,9 +21,7 @@ function showAutoAd({ userId, type = "banner", containerId = null }) {
   iframe.setAttribute("data-auto-ad", "true");
   iframe.allow = "autoplay; fullscreen";
 
-  const container = containerId
-    ? document.getElementById(containerId)
-    : document.body;
+  const container = document.body;
   container.appendChild(iframe);
 }
 
