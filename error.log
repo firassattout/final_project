@@ -143,3 +143,9 @@
 {"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:04:31.744Z"}
 {"level":"error","message":"Error getting publisher stats: advertiserId is not defined","timestamp":"2025-06-30T10:05:28.717Z"}
 {"level":"error","message":"Publisher analytics error: analytics.stats_failed","timestamp":"2025-06-30T10:05:28.720Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:12:55.327Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:12:55.329Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:14:37.558Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:14:37.561Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:17:01.167Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:17:01.170Z"}

@@ -370,3 +370,46 @@
 {"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:06:04.261Z"}
 {"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:09:11.112Z"}
 {"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-06-30T10:09:11.114Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T20:50:39.821Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T20:51:05.540Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T20:53:42.605Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T20:55:04.763Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T20:56:45.771Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T20:57:31.351Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T20:57:36.456Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T20:57:58.826Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T20:59:41.506Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:02:01.791Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:02:26.882Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:03:20.767Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:03:57.114Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:05:05.301Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:05:55.795Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:06:45.222Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:08:03.680Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:08:26.140Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:10:01.072Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:10:40.190Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:11:05.223Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:11:29.921Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:11:37.171Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:12:55.327Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:12:55.329Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:13:17.459Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6857f65c5a675c8254d45536","timestamp":"2025-07-19T21:13:20.790Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:14:37.558Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:14:37.561Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:15:08.195Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:15:36.298Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:15:43.709Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:17:01.167Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:17:01.170Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:17:25.919Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:17:45.671Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:19:05.240Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:19:50.102Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:19:55.456Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:21:48.371Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6857f65c5a675c8254d45536","timestamp":"2025-07-19T21:22:07.166Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-19T21:22:07.606Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:22:10.612Z"}

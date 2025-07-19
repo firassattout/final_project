@@ -110,7 +110,7 @@ publisherRoutes.get(
 
       res.setHeader(
         "Content-Security-Policy",
-        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
+        `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:;`
       );
 
       res.setHeader("X-Content-Type-Options", "nosniff");

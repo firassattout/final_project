@@ -882,9 +882,20 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             adId: "${ad.adId._id}",
             userId: "${userId}",
           }),
-        }).then((response) => {
-          if (response.ok) {
-            window.parent.postMessage(
+         })
+        //.then((response) => {
+        //   if (response.ok) {
+        //     window.parent.postMessage(
+        //       {
+        //         type: "rewardedAdCompleted",
+        //         adId: "${ad.adId._id}",
+        //         rewardGranted: adCompleted,
+        //       },
+        //       "*"
+        //     );
+        //   }
+        // });
+           window.parent.postMessage(
               {
                 type: "rewardedAdCompleted",
                 adId: "${ad.adId._id}",
@@ -892,8 +903,6 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
               },
               "*"
             );
-          }
-        });
       }
 
       ${
@@ -960,11 +969,14 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
 
       // التعامل مع زر الإبلاغ
       document.getElementById("reportBtn").addEventListener("click", () => {
+             clearInterval(timerInterval);
         document.getElementById("reportDialog").style.display = "flex";
-        document.getElementById("reportResult").style.display = "none"; // إخفاء رسالة النتيجة عند فتح النافذة
+        document.getElementById("reportResult").style.display = "none"; 
       });
 
       document.getElementById("cancelReportBtn").addEventListener("click", () => {
+          timeLeft = Math.max(1, timeLeft);
+        timerInterval = setInterval(updateTimer, 1000);
         document.getElementById("reportDialog").style.display = "none";
         document.getElementById("reportMessage").value = "";
         document.getElementById("reportResult").style.display = "none";

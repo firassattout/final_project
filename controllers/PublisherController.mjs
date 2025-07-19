@@ -49,15 +49,15 @@ class PublisherController {
         .status(200)
         .setHeader(
           "Content-Security-Policy",
-          `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
+          `script-src 'self' 'nonce-${nonce}'`
         )
-        .setHeader("X-Content-Type-Options", "nosniff")
+
         .send(result);
     } catch (err) {
       res
         .setHeader(
           "Content-Security-Policy",
-          `script-src 'self' 'nonce-${nonce}'; object-src 'none'; img-src 'self' data:; frame-ancestors *`
+          `script-src 'self' 'nonce-${nonce}'`
         )
         .send(getErrorHtml("حدث خطأ في تحميل الاعلان", nonce));
     }
