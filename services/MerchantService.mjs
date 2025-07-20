@@ -6,7 +6,7 @@ import ExternalApiService from "../ExternalApiService.mjs";
 
 class MerchantService {
   async createMerchantApp(data) {
-    const { companyName, programName } = data.body;
+    const { programName } = data.body;
     const { userId } = data;
     const user = await userRepository.findById(userId);
 
@@ -19,7 +19,7 @@ class MerchantService {
 
     try {
       const code = await ExternalApiService.adAppCode({
-        companyName,
+        companyName: user.companyName,
         programmName: programName,
         merchantMSISDN: user.mobileNumber,
       });

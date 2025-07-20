@@ -415,3 +415,22 @@
 {"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:22:10.612Z"}
 {"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:22:39.405Z"}
 {"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-19T21:22:46.483Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:24:46.550Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:24:46.554Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:25:46.505Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:25:46.505Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:26:46.520Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:26:46.521Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-19T21:27:11.320Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:27:46.512Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:27:46.513Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:29:18.479Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:29:18.480Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:30:18.523Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:30:18.524Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:31:18.484Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:31:18.484Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:32:18.524Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:32:18.525Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T08:37:31.483Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-20T08:38:21.947Z"}
