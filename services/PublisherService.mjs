@@ -70,6 +70,7 @@ class PublisherService {
       data.nonce,
       position
     );
+
     return embedCode;
   }
 

@@ -17,10 +17,10 @@ import { i18nMiddleware } from "./config/i18n.mjs";
 import advertiserRoutes from "./routes/advertiserRoutes.mjs";
 import publisherRoutes from "./routes/publisherRoutes.mjs";
 import analyticsRoutes from "./routes/analyticsRoutes.mjs";
-import merchantRoutes from "./routes/MerchantRoutes.mjs";
 
 import "./cron/adStatsFlushJob.mjs";
 import "./cron/revenueJob.mjs";
+import paymentRoutes from "./routes/PaymantRoutes.mjs";
 
 const app = express();
 configDotenv();
@@ -67,7 +67,7 @@ app.use("/api/", publisherRoutes);
 app.use("/api/", advertiserRoutes);
 app.use("/api/", authRouter);
 app.use("/api/", adminRouter);
-app.use("/api/", merchantRoutes);
+app.use("/api/", paymentRoutes);
 
 app.use(notfound);
 app.use(errorHandler);

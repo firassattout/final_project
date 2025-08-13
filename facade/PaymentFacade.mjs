@@ -1,9 +1,9 @@
 import { t } from "i18next";
-import MerchantService from "../services/MerchantService.mjs";
+import PaymentService from "../services/PaymentService.mjs";
 
 import logger from "../utils/logger.mjs";
 
-class MerchantFacade {
+class PaymentFacade {
   /**
    * Create a new merchant application
    * @param {Object} data - Merchant application data
@@ -11,7 +11,7 @@ class MerchantFacade {
    */
   async createMerchantApp(data) {
     try {
-      const result = await MerchantService.createMerchantApp(data);
+      const result = await PaymentService.createMerchantApp(data);
       return result;
     } catch (error) {
       logger.error(`Create merchant application error: ${error.message}`);
@@ -24,7 +24,7 @@ class MerchantFacade {
    */
   async getMerchantApp(data) {
     try {
-      const result = await MerchantService.getMerchantApp(data);
+      const result = await PaymentService.getMerchantApp(data);
       return result;
     } catch (error) {
       logger.error(`Create merchant application error: ${error.message}`);
@@ -37,13 +37,40 @@ class MerchantFacade {
    */
   async deleteMerchantApp(data) {
     try {
-      const result = await MerchantService.deleteMerchantApp(data);
+      const result = await PaymentService.deleteMerchantApp(data);
       return result;
     } catch (error) {
       logger.error(`Create merchant application error: ${error.message}`);
       throw new Error(t(error.message));
     }
   }
+
+  /**
+   * get transaction
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getTransactionByProgram(data) {
+    try {
+      const result = await PaymentService.getTransactionByProgram(data);
+      return result;
+    } catch (error) {
+      logger.error(`Create transaction error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
+  /**
+   * get transaction
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getTransaction(data) {
+    try {
+      const result = await PaymentService.getTransaction(data);
+      return result;
+    } catch (error) {
+      logger.error(`Create transaction error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
-export default new MerchantFacade();
+export default new PaymentFacade();

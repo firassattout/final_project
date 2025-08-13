@@ -8,14 +8,12 @@ import { sanitizeInput } from "../utils/sanitizeInput.mjs";
 const upload = multer({ limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB limit
 const adminRouter = express.Router();
 
-// Rate limiter for sensitive endpoints
 const authRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000, // Limit each IP to 100 requests per window
+  max: 1000,
   message: "Too many requests, please try again later.",
 });
 
-// Apply rate limiting and sanitization to all routes
 adminRouter.use(authRateLimiter, sanitizeInput);
 
 /**

@@ -21,14 +21,14 @@ export function generateEmbedCode(ad, url, userId, type, nonce, position) {
 }
 
 function generateBannerEmbedCode(ad, url, userId, nonce, position) {
-  if (ad.adId.platform === "web")
+  if (ad.ad.platform == "web")
     return `
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>إعلان بانر - ${ad.adId.title}</title>
+    <title>إعلان بانر - ${ad.ad.title}</title>
     <style>
       * {
         margin: 0;
@@ -258,9 +258,9 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
       <button class="close-btn" id="closeBtn">✕</button>
       <button class="toggle-btn" id="toggleBtn"></button>
       <a href="http://${
-        ad.adId.url
+        ad.ad.url
       }" target="_blank" rel="noopener noreferrer" id="ad-link">
-        <img src="${url}" class="ad-image" alt="${ad.adId.title}" />
+        <img src="${url}" class="ad-image" alt="${ad.ad.title}" />
       </a>
     </div>
 
@@ -293,7 +293,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              adId: "${ad.adId._id}",
+              adId: "${ad.ad._id}",
               userId: "${userId}",
             }),
           }).then((response) => {
@@ -301,7 +301,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
               window.parent.postMessage(
                 {
                   type: "bannerAdImpression",
-                  adId: "${ad.adId._id}",
+                  adId: "${ad.ad._id}",
                 },
                 "*"
               );
@@ -317,7 +317,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              adId: "${ad.adId._id}",
+              adId: "${ad.ad._id}",
               clickedAt: new Date().toISOString(),
               userId: "${userId}",
             }),
@@ -357,7 +357,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              adId: "${ad.adId._id}",
+              adId: "${ad.ad._id}",
               userId: "${userId}",
               message: reportMessage,
               reportedAt: new Date().toISOString(),
@@ -426,17 +426,18 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
   </body>
 </html>
   `;
+  else return "none";
 }
 
 function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
-  if (ad.adId.platform === "web")
+  if (ad.ad.platform === "web")
     return `
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>إعلان مكافأة - ${ad.adId.title}</title>
+    <title>إعلان مكافأة - ${ad.ad.title}</title>
     <style>
       * {
         margin: 0;
@@ -768,12 +769,12 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     <div class="ad-container" data-ad-id="${ad._id}">
       <div class="ad-content">
         <div class="ad-text">
-          <h1 class="ad-title">${ad.adId.title}</h1>
-          <h2>${ad.adId.description}</h2>
+          <h1 class="ad-title">${ad.ad.title}</h1>
+          <h2>${ad.ad.description}</h2>
         </div>
         <div class="action-buttons">
           <a
-            href="http://${ad.adId.url}"
+            href="http://${ad.ad.url}"
             target="_blank"
             class="continue-btn2"
             id="go"
@@ -796,7 +797,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             ? `<img
           src="${mediaUrl}"
           class="ad-image"
-          alt="${ad.adId.title}"
+          alt="${ad.ad.title}"
         />`
             : `<video
           width="100%"
@@ -879,30 +880,23 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            adId: "${ad.adId._id}",
+            adId: "${ad.ad._id}",
             userId: "${userId}",
           }),
          })
-        //.then((response) => {
-        //   if (response.ok) {
-        //     window.parent.postMessage(
-        //       {
-        //         type: "rewardedAdCompleted",
-        //         adId: "${ad.adId._id}",
-        //         rewardGranted: adCompleted,
-        //       },
-        //       "*"
-        //     );
-        //   }
-        // });
-           window.parent.postMessage(
+        .then((response) => {
+          if (response.ok) {
+            window.parent.postMessage(
               {
                 type: "rewardedAdCompleted",
-                adId: "${ad.adId._id}",
+                adId: "${ad.ad._id}",
                 rewardGranted: adCompleted,
               },
               "*"
             );
+          }
+        });
+     
       }
 
       ${
@@ -957,7 +951,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              adId: "${ad.adId._id}",
+              adId: "${ad.ad._id}",
               clickedAt: new Date().toISOString(),
               userId: "${userId}",
             }),
@@ -998,7 +992,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              adId: "${ad.adId._id}",
+              adId: "${ad.ad._id}",
               userId: "${userId}",
               message: reportMessage,
               reportedAt: new Date().toISOString(),

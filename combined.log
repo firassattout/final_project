@@ -434,3 +434,273 @@
 {"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:32:18.525Z"}
 {"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T08:37:31.483Z"}
 {"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-20T08:38:21.947Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-07-20T10:11:54.579Z"}
+{"level":"info","message":"Retrieved 19 merchant applications for user: 68791c7361443e07d69212ad","timestamp":"2025-07-20T10:11:54.582Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:11:18.626Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:11:55.526Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-20T11:12:05.185Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:12:50.787Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6857f65c5a675c8254d45536","timestamp":"2025-07-20T11:12:53.777Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:13:29.775Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:14:03.020Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-20T11:14:10.297Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-20T11:15:06.059Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:15:06.760Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:15:16.299Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b34775bd4f3b5728b0f68","timestamp":"2025-07-20T11:15:20.617Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6857f65c5a675c8254d45536","timestamp":"2025-07-20T11:15:29.259Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:16:19.622Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:16:55.006Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6857f65c5a675c8254d45536","timestamp":"2025-07-20T11:17:09.259Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-20T11:17:42.845Z"}
+{"level":"info","message":"View tracked for ad: 682b149b44a26cfae2e7d3ad, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:18:49.181Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6831c27ea4f8244c749a1c31","timestamp":"2025-07-20T11:18:55.662Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:19:58.990Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:20:59.630Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:21:59.816Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:22:59.529Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:23:59.541Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:24:59.559Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:26:21.496Z"}
+{"level":"info","message":"View tracked for ad: 6831c27ea4f8244c749a1c31, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:27:21.489Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-07-20T11:50:48.093Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-07-20T11:50:48.104Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-07-20T11:52:21.524Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-07-20T11:52:21.534Z"}
+{"level":"info","message":"Retrieved random media item with adId: 682b149b44a26cfae2e7d3ad","timestamp":"2025-07-20T11:52:58.192Z"}
+{"level":"info","message":"View tracked for ad: 682b149b44a26cfae2e7d3ad, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:54:02.969Z"}
+{"level":"info","message":"View tracked for ad: 682b149b44a26cfae2e7d3ad, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:55:03.250Z"}
+{"level":"info","message":"View tracked for ad: 682b149b44a26cfae2e7d3ad, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-07-20T11:56:02.675Z"}
+{"level":"info","message":"No media items found","timestamp":"2025-07-29T06:50:27.490Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-07-29T06:50:27.495Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-07-29T06:53:46.029Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T06:55:52.922Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T06:55:52.926Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T06:56:52.859Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T06:56:52.861Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:28:01.506Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:28:01.508Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:28:02.242Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:28:02.261Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:31:15.523Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:31:15.530Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:32:23.982Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:32:23.984Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:32:56.839Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:32:56.840Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:33:56.804Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:33:56.811Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:34:56.831Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:34:56.832Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:35:56.837Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:35:56.840Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:36:56.827Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:36:56.828Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:37:56.844Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:37:56.848Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:38:56.841Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:38:56.845Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:39:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:39:56.848Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:40:56.853Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:40:56.854Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:41:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:41:56.847Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:42:56.829Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:42:56.829Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:43:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:43:56.847Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-07-29T07:44:06.910Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-07-29T07:44:48.866Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:44:56.812Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:44:56.813Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:45:56.800Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:45:56.804Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:46:10.369Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:46:10.371Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:46:56.841Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:46:56.842Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:47:56.857Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:47:56.861Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:48:56.858Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:48:56.866Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:49:56.812Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:49:56.814Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:50:56.839Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:50:56.844Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:51:56.805Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:51:56.807Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:57:40.346Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:57:40.373Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-07-29T11:25:53.210Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:28:00.870Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:28:00.877Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:29:00.880Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:29:00.881Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:52:54.582Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:52:54.583Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:52:54.832Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:52:54.833Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:53:37.468Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:53:37.470Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:54:00.816Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:54:00.817Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:55:55.821Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:55:55.823Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:56:38.309Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:56:38.311Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:57:00.820Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:57:00.823Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:58:00.860Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:58:00.863Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:19:29.730Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:19:29.734Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:19:41.376Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:19:41.376Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:20:39.238Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:20:39.242Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:21:15.999Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:21:16.003Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-07-29T12:21:26.475Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:22:00.295Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:22:00.321Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:23:33.186Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:23:33.189Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-07-29T12:24:06.391Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-07-29T12:24:20.483Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-05T18:35:24.280Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-05T18:35:24.286Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:35:49.518Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:37:06.473Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:38:00.169Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:38:04.739Z"}
+{"level":"info","message":"Click tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:38:18.284Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:39:14.746Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:39:15.129Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:40:33.042Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:41:28.292Z"}
+{"level":"info","message":"User logged in: ahmed2@gmail.com","timestamp":"2025-08-05T18:42:06.683Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:42:33.818Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:43:07.847Z"}
+{"level":"info","message":"Click tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:43:10.345Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:43:28.978Z"}
+{"level":"info","message":"View tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:43:30.729Z"}
+{"level":"info","message":"Click tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:43:40.745Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:44:28.388Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:44:42.517Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:44:48.241Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:45:28.982Z"}
+{"level":"info","message":"Click tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:45:44.124Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:45:47.424Z"}
+{"level":"info","message":"Click tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:46:01.558Z"}
+{"level":"info","message":"View tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:46:07.074Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:46:29.915Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:46:43.568Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:47:06.028Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:47:18.437Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:48:22.117Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:48:24.886Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:48:26.641Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:49:46.804Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:50:44.810Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-05T18:50:48.285Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-05T18:50:48.293Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:51:29.778Z"}
+{"level":"info","message":"Click tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:51:48.330Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:51:50.534Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:51:51.439Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:52:00.802Z"}
+{"level":"info","message":"Ad retrieved: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:52:15.898Z"}
+{"level":"info","message":"Report created for ad: 6888692854e1d720082a463a by user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:52:16.449Z"}
+{"level":"info","message":"Report submitted for ad: 6888692854e1d720082a463a by user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:52:16.451Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-05T18:52:33.691Z"}
+{"level":"info","message":"Click tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:52:53.381Z"}
+{"level":"info","message":"View tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:52:53.956Z"}
+{"level":"info","message":"View tracked for ad: 68886a8854e1d720082a464c, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:53:04.916Z"}
+{"level":"info","message":"Ad retrieved: 68886a8854e1d720082a464c","timestamp":"2025-08-05T18:53:20.361Z"}
+{"level":"info","message":"Report created for ad: 68886a8854e1d720082a464c by user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:53:20.970Z"}
+{"level":"info","message":"Report submitted for ad: 68886a8854e1d720082a464c by user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T18:53:20.971Z"}
+{"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:01:22.736Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:01:22.737Z"}
+{"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:02:57.706Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:02:57.706Z"}
+{"level":"info","message":"Retrieved 0 ads for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:05:34.879Z"}
+{"level":"info","message":"Publisher analytics retrieved for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-05T19:05:34.880Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-07T20:17:59.886Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-07T20:18:48.362Z"}
+{"level":"info","message":"Retrieved random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-07T20:18:50.643Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-07T20:20:08.164Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-07T20:20:08.168Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:10:24.550Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:10:55.433Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:12:09.797Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:12:31.900Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-13T18:12:50.737Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:14:14.569Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:15:08.403Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:16:14.780Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:16:50.971Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:18:46.785Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:19:11.182Z"}
+{"level":"info","message":"Retrieved random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:19:32.668Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:20:14.029Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:21:28.691Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:23:42.197Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:25:05.547Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:25:31.926Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:26:08.347Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-13T18:26:12.162Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-13T18:26:20.038Z"}
+{"level":"info","message":"Click tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-13T18:26:31.985Z"}
+{"level":"info","message":"View tracked for ad: 6888692854e1d720082a463a, user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-13T18:26:38.564Z"}
+{"level":"error","message":"Create transaction error: userId is not defined","timestamp":"2025-08-13T18:44:51.267Z"}
+{"level":"error","message":"Create transaction error: ExternalApiService.getTransaction is not a function","timestamp":"2025-08-13T18:46:51.774Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:14.542Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:14.545Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:20.843Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:20.844Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:26.727Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:26.728Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:12.294Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T18:48:12.297Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:42.809Z"}
+{"level":"error","message":"Create transaction error: Cannot read properties of undefined (reading 'message')","timestamp":"2025-08-13T18:48:42.811Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:55.961Z"}
+{"level":"error","message":"Create transaction error: Cannot read properties of undefined (reading 'message')","timestamp":"2025-08-13T18:48:55.962Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:49:20.625Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T18:49:20.627Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:50:45.843Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T18:50:45.846Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:51:43.842Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:51:43.845Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:52:06.966Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:52:06.969Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:57:30.977Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:57:30.980Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:57:43.943Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:57:43.944Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:58:16.595Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:58:16.598Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T18:58:41.887Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T18:59:26.274Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:00:31.483Z"}
+{"level":"error","message":"Error in createMerchantApp: Invalid character in header content [\"programmName\"]","timestamp":"2025-08-13T19:00:52.528Z"}
+{"level":"error","message":"Create transaction error: Invalid character in header content [\"programmName\"]","timestamp":"2025-08-13T19:00:52.530Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:03:00.991Z"}
+{"level":"info","message":"Merchant application submitted for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:03:00.994Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:03:01.460Z"}
+{"level":"info","message":"Merchant application submitted for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:03:01.461Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:03:09.974Z"}
+{"level":"info","message":"Retrieved 21 merchant applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:03:09.975Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:03:37.840Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 404","timestamp":"2025-08-13T19:03:37.843Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:04:19.909Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:04:19.911Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:04:55.058Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:04:55.059Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:06:51.033Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T19:06:51.036Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:07:06.063Z"}
+{"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:07:06.065Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:08:50.012Z"}
+{"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:08:50.013Z"}

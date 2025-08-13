@@ -61,5 +61,44 @@ class MerchantService {
     logger.info(`deleted ${appId} merchant applications for user: ${userId}`);
     return apps;
   }
+
+  async getTransactionByProgram(data) {
+    const { userId } = data;
+    const user = await userRepository.findById(userId);
+
+    if (!user) {
+      throw new Error(t("notFound"));
+    }
+
+    const apps = await ExternalApiService.getTransactionByProgram({
+      ...data,
+    });
+    if (!apps) {
+      throw new Error(t("notFound"));
+    }
+    logger.info(
+      `Retrieved ${apps?.length} Transaction applications for user: ${userId}`
+    );
+    return apps;
+  }
+  async getTransaction(data) {
+    const { userId } = data;
+    const user = await userRepository.findById(userId);
+
+    if (!user) {
+      throw new Error(t("notFound"));
+    }
+
+    const apps = await ExternalApiService.getTransaction({
+      ...data,
+    });
+    if (!apps) {
+      throw new Error(t("notFound"));
+    }
+    logger.info(
+      `Retrieved ${apps?.length} Transaction applications for user: ${userId}`
+    );
+    return apps;
+  }
 }
 export default new MerchantService();

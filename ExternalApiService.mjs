@@ -130,5 +130,71 @@ async function deleteMerchantApp(appId) {
     }
   }
 }
+async function getTransactionByProgram(data) {
+  try {
+    const response = await axios.get(
+      "https://payment-package-ocht.onrender.com/api/clients/transactionsByProgrammName",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...data,
+        },
+      }
+    );
 
-export default { adAppCode, adMerchant, getAppCode, deleteMerchantApp };
+    if (!response?.data) {
+      logger.warn(`External API call failed: No code returned`);
+      throw new Error(t("external_api.no_code_returned"));
+    }
+
+    logger.info(`Successfully retrieved client code from external API`);
+    return response.data;
+  } catch (error) {
+    logger.error(`Error in createMerchantApp: ${error.message}`);
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    } else if (error.request) {
+      throw new Error(error.request.message);
+    } else {
+      throw new Error(error.message);
+    }
+  }
+}
+async function getTransaction(data) {
+  try {
+    const response = await axios.get(
+      "https://payment-package-ocht.onrender.com/api/clients/get-transactions",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...data,
+        },
+      }
+    );
+
+    if (!response?.data) {
+      logger.warn(`External API call failed: No code returned`);
+      throw new Error(t("external_api.no_code_returned"));
+    }
+
+    logger.info(`Successfully retrieved client code from external API`);
+    return response.data;
+  } catch (error) {
+    logger.error(`Error in createMerchantApp: ${error.message}`);
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    } else if (error.request) {
+      throw new Error(error.request.message);
+    } else {
+      throw new Error(error.message);
+    }
+  }
+}
+export default {
+  adAppCode,
+  adMerchant,
+  getAppCode,
+  deleteMerchantApp,
+  getTransaction,
+  getTransactionByProgram,
+};

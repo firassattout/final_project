@@ -72,47 +72,53 @@ class AdRepository {
    */
   async findRandomAdMedia(type) {
     try {
-      const media = await AdMedia.aggregate([
+      const [media] = await AdMedia.aggregate([
         {
           $lookup: {
-            from: "ads", // اسم المجموعة في MongoDB لنموذج Ads
-            localField: "adId",
-            foreignField: "_id",
-            as: "adId",
+            from: "ads",
+            let: { adId: "$adId" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$_id", "$$adId"] },
+                      { $eq: ["$state", "active"] },
+                      { $eq: ["$type", type] },
+                    ],
+                  },
+                },
+              },
+              { $project: { __v: 0, createdAt: 0, updatedAt: 0 } },
+            ],
+            as: "ad",
           },
         },
+        { $unwind: "$ad" },
+
         {
-          $unwind: "$adId", // فك تجميع مصفوفة adId
+          $addFields: {
+            score: {
+              $multiply: [{ $rand: {} }, { $multiply: ["$ad.unitPrice", 10] }],
+            },
+          },
         },
-        {
-          $match: { "adId.state": "active", "adId.type": type },
-        },
-        {
-          $sort: { "adId.unitPrice": -1 }, // الفرز تنازليًا حسب unitPrice
-        },
-        {
-          $sample: { size: 1 }, // اختيار إعلان واحد عشوائي
-        },
-        {
-          $project: {
-            "adId.__v": 0,
-            "adId.createdAt": 0,
-            "adId.updatedAt": 0,
-          }, // استبعاد الحقول غير الضرورية
-        },
+
+        { $sort: { score: -1 } },
+        { $limit: 1 },
       ]).exec();
 
-      if (!media || media.length === 0) {
+      if (!media) {
         logger.info("No media items found");
         return null;
       }
 
       logger.info(
-        `Retrieved random media item with adId: ${media[0].adId._id}`
+        `Retrieved weighted random media item with adId: ${media.ad._id}`
       );
-      return media[0]; // إرجاع أول عنصر (الإعلان العشوائي)
+      return media;
     } catch (error) {
-      logger.error(`Error finding random media: ${error.message}`);
+      logger.error(`Error finding weighted random media: ${error.message}`);
       throw new Error(t("ad.media_find_failed"));
     }
   }

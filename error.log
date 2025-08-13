@@ -165,3 +165,139 @@
 {"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:31:18.484Z"}
 {"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-19T21:32:18.524Z"}
 {"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-19T21:32:18.525Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-07-20T11:50:48.093Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-07-20T11:50:48.104Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-07-20T11:52:21.524Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-07-20T11:52:21.534Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-07-29T06:50:27.495Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T06:55:52.922Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T06:55:52.926Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T06:56:52.859Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T06:56:52.861Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:28:01.506Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:28:01.508Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:28:02.242Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:28:02.261Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:31:15.523Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:31:15.530Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:32:23.982Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:32:23.984Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:32:56.839Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:32:56.840Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:33:56.804Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:33:56.811Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:34:56.831Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:34:56.832Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:35:56.837Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:35:56.840Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:36:56.827Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:36:56.828Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:37:56.844Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:37:56.848Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:38:56.841Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:38:56.845Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:39:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:39:56.848Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:40:56.853Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:40:56.854Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:41:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:41:56.847Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:42:56.829Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:42:56.829Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:43:56.846Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:43:56.847Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:44:56.812Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:44:56.813Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:45:56.800Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:45:56.804Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:46:10.369Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:46:10.371Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:46:56.841Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:46:56.842Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:47:56.857Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:47:56.861Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:48:56.858Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:48:56.866Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:49:56.812Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:49:56.814Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:50:56.839Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:50:56.844Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:51:56.805Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:51:56.807Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T07:57:40.346Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T07:57:40.373Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:28:00.870Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:28:00.877Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:29:00.880Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:29:00.881Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:52:54.582Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:52:54.583Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:52:54.832Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:52:54.833Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:53:37.468Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:53:37.470Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:54:00.816Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:54:00.817Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:55:55.821Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:55:55.823Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:56:38.309Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:56:38.311Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:57:00.820Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:57:00.823Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T11:58:00.860Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T11:58:00.863Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:19:29.730Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:19:29.734Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:19:41.376Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:19:41.376Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:20:39.238Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:20:39.242Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:21:15.999Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:21:16.003Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:22:00.295Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:22:00.321Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-07-29T12:23:33.186Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-07-29T12:23:33.189Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-05T18:35:24.280Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-05T18:35:24.286Z"}
+{"level":"error","message":"Error finding random media: Operation `admedias.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-05T18:50:48.285Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-05T18:50:48.293Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-07T20:20:08.164Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-07T20:20:08.168Z"}
+{"level":"error","message":"Create transaction error: userId is not defined","timestamp":"2025-08-13T18:44:51.267Z"}
+{"level":"error","message":"Create transaction error: ExternalApiService.getTransaction is not a function","timestamp":"2025-08-13T18:46:51.774Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:14.542Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:14.545Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:20.843Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:20.844Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:47:26.727Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:47:26.728Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:12.294Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:42.809Z"}
+{"level":"error","message":"Create transaction error: Cannot read properties of undefined (reading 'message')","timestamp":"2025-08-13T18:48:42.811Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:48:55.961Z"}
+{"level":"error","message":"Create transaction error: Cannot read properties of undefined (reading 'message')","timestamp":"2025-08-13T18:48:55.962Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T18:49:20.625Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:50:45.843Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:51:43.842Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T18:51:43.845Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:52:06.966Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:52:06.969Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:57:30.977Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:57:30.980Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:57:43.943Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:57:43.944Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T18:58:16.595Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 400","timestamp":"2025-08-13T18:58:16.598Z"}
+{"level":"error","message":"Error in createMerchantApp: Invalid character in header content [\"programmName\"]","timestamp":"2025-08-13T19:00:52.528Z"}
+{"level":"error","message":"Create transaction error: Invalid character in header content [\"programmName\"]","timestamp":"2025-08-13T19:00:52.530Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:03:37.840Z"}
+{"level":"error","message":"Create transaction error: Request failed with status code 404","timestamp":"2025-08-13T19:03:37.843Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:04:19.909Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:04:55.058Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:06:51.033Z"}
+{"level":"error","message":"Create transaction error: ","timestamp":"2025-08-13T19:06:51.036Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:07:06.063Z"}
+{"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:07:06.065Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:08:50.012Z"}
+{"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:08:50.013Z"}
