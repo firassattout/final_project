@@ -704,3 +704,13 @@
 {"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:07:06.065Z"}
 {"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-13T19:08:50.012Z"}
 {"level":"error","message":"Create transaction error: No matching transactions found","timestamp":"2025-08-13T19:08:50.013Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T19:14:45.373Z"}
+{"level":"error","message":"Create transaction error: Invalid value for paymentSuccess","timestamp":"2025-08-13T19:14:45.375Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T19:14:53.442Z"}
+{"level":"error","message":"Create transaction error: Invalid value for paymentSuccess","timestamp":"2025-08-13T19:14:53.443Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:15:05.736Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:15:05.737Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:15:27.394Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:15:27.395Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:15:38.731Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:15:38.731Z"}
