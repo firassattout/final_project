@@ -8,6 +8,7 @@ import rateLimit from "express-rate-limit";
 import { sanitizeInput } from "../utils/sanitizeInput.mjs";
 import logger from "../utils/logger.mjs";
 import { generateNonce } from "../utils/securityUtils.mjs";
+import adminController from "../controllers/adminController.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -47,11 +48,7 @@ publisherRoutes.post(
  * @desc Show advertisement for publisher
  * @access Public
  */
-publisherRoutes.get(
-  "/show-ad/:userId",
-  publicRateLimiter,
-  PublisherController.showAd
-);
+publisherRoutes.get("/show-ad", publicRateLimiter, PublisherController.showAd);
 
 /**
  * @route POST /track-views
@@ -134,5 +131,16 @@ publisherRoutes.post(
   "/report-ad",
   publicRateLimiter,
   PublisherController.reportAd
+);
+
+/**
+ * @route GET /get-companyType
+ * @desc Get company types (admin only)
+ * @access Private (admin)
+ */
+publisherRoutes.get(
+  "/companyType",
+  checkUserRole("publisher"),
+  adminController.getCompanyType
 );
 export default publisherRoutes;

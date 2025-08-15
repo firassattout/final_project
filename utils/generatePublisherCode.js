@@ -1,12 +1,13 @@
-export function generatePublisherCode(userId, type, platform) {
+export function generatePublisherCode(type, platform, compressedData) {
   if (type === "banner") {
     return `
-<script 
-  src="${process.env.URL}/banner-sdk" 
-  data-user="${userId}"
-  data-position="top" 
-  defer>
+    <script 
+      src="${process.env.URL}/banner-sdk" 
+      data-compressed-data="${compressedData}"
+      data-position="top" 
+    defer>
 </script>
+
 `;
   } else if (type === "rewarded") {
     if (platform === "web")
@@ -18,7 +19,7 @@ export function generatePublisherCode(userId, type, platform) {
         show ad
       </button>
     <script src="${process.env.URL}/rewarded-sdk"
-    data-user="${userId}"
+      data-compressed-data="${compressedData}"
     defer
     ></script>
     <script>
@@ -64,8 +65,8 @@ function RewardedAd() {
   return (
     <div
       className="auto-ad"
-      data-user=${userId}
-      data-type="rewarded"
+          data-compressed-data="${compressedData}"
+   
     ></div>
   );
 }
@@ -78,8 +79,7 @@ export default RewardedAd;
 <template>
   <div
     class="auto-ad"
-    :data-user="userId"
-    data-type="rewarded"
+    data-compressed-data="${compressedData}"
   ></div>
 </template>
 

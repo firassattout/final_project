@@ -70,7 +70,7 @@ class AdRepository {
    * @returns {Promise<Object|null>} Single media document or null if none found
    * @throws {Error} If query fails
    */
-  async findRandomAdMedia(type) {
+  async findRandomAdMedia(type, selectedType) {
     try {
       const [media] = await AdMedia.aggregate([
         {
@@ -85,6 +85,9 @@ class AdRepository {
                       { $eq: ["$_id", "$$adId"] },
                       { $eq: ["$state", "active"] },
                       { $eq: ["$type", type] },
+                      selectedType?.length > 0
+                        ? { $in: ["$AdType", selectedType] }
+                        : true,
                     ],
                   },
                 },

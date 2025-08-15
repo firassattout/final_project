@@ -8,7 +8,7 @@ import logger from "../utils/logger.mjs";
 import { t } from "i18next";
 import { isValidObjectId } from "mongoose";
 import ReportRepository from "../repositories/ReportRepository.mjs";
-
+import zlib from "zlib";
 class PublisherService {
   /**
    * Generate embed code for publisher
@@ -22,14 +22,24 @@ class PublisherService {
       throw new Error(t(error.details[0].message));
     }
 
-    const { type, platform } = data.body;
+    const { type, platform, selectedType } = data.body;
     const { userIdFromToken } = data;
     if (!isValidObjectId(userIdFromToken)) {
       logger.warn(`Invalid user ID: ${userIdFromToken}`);
       throw new Error(t("publisher.invalid_user_id"));
     }
 
-    const embedCode = generatePublisherCode(userIdFromToken, type, platform);
+    const embedData = {
+      userId: userIdFromToken,
+      type,
+      platform,
+      selectedType,
+    };
+
+    const jsonData = JSON.stringify(embedData);
+    const compressedData = zlib.deflateSync(jsonData).toString("base64");
+
+    const embedCode = generatePublisherCode(type, platform, compressedData);
     logger.info(`Embed code generated for user: ${userIdFromToken}`);
     return embedCode;
   }
@@ -40,12 +50,20 @@ class PublisherService {
    * @returns {Promise<string>} Embed code for ad
    */
   async showAd(data) {
-    let ad = await AdRepository.findRandomAdMedia(data?.query?.type);
-    if (!ad || !ad.url) {
-      throw new Error("الاعلان غير موجود");
-    }
-    const type = data?.query?.type;
+    const compressedData = data?.query?.compressedData;
+    const decompressedData = zlib
+      .inflateSync(Buffer.from(compressedData, "base64"))
+      .toString();
+    const originalData = JSON.parse(decompressedData);
+    const userId = originalData.userId;
+    const selectedType = originalData.selectedType;
+    const type = originalData.type;
     const position = data?.query?.position || "top";
+
+    let ad = await AdRepository.findRandomAdMedia(type, selectedType);
+    if (!ad || !ad.url) {
+      return false;
+    }
     if (!type) {
       throw new Error("نوع الإعلان غير موجود");
     }
@@ -65,7 +83,7 @@ class PublisherService {
     const embedCode = generateEmbedCode(
       ad,
       url,
-      data.params?.userId,
+      userId,
       type,
       data.nonce,
       position

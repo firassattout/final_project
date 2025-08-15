@@ -4,12 +4,15 @@ function showAutoAd() {
     console.error("rewarded SDK: script tag not found.");
     return;
   }
-  const userId = currentScript.dataset.user;
+
+  const compressedData = currentScript.dataset.compressedData;
 
   if (document.querySelector("iframe[data-auto-ad='true']")) return;
 
   const iframe = document.createElement("iframe");
-  iframe.src = `__URL__/show-ad/${userId}?type=rewarded`;
+  iframe.src = `__URL__/show-ad?compressedData=${encodeURIComponent(
+    compressedData
+  )}`;
   iframe.style.width = "100vw";
   iframe.style.height = "100vh";
   iframe.style.border = "none";

@@ -4,15 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Banner SDK: script tag not found.");
     return;
   }
-  const userId = currentScript.dataset.user;
-  const position = currentScript.dataset.position || "top";
+  const compressedData = currentScript.dataset.compressedData;
 
-  if (!userId) {
-    console.error("Banner SDK: Missing data-user attribute.");
+  const position = currentScript.dataset.position || "top";
+  console.log(compressedData);
+
+  if (!compressedData) {
+    console.error("Banner SDK: Missing compressedData attribute.");
     return;
   }
   const iframe = document.createElement("iframe");
-  iframe.src = `__URL__/show-ad/${userId}?type=banner&position=${position}`;
+  iframe.src = `__URL__/show-ad?compressedData=${encodeURIComponent(
+    compressedData
+  )}&position=${position}`;
   iframe.width = "100%";
   iframe.height = "80px";
   iframe.style.border = "none";

@@ -254,7 +254,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
     </style>
   </head>
   <body>
-    <div class="ad-container" data-ad-id="${ad._id}">
+    <div class="ad-container" data-ad-id="${ad.ad._id}">
       <button class="close-btn" id="closeBtn">✕</button>
       <button class="toggle-btn" id="toggleBtn"></button>
       <a href="http://${
@@ -379,7 +379,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
               window.parent.postMessage(
                 {
                   type: "bannerAdHidden",
-                  adId: "${ad._id}",
+                  adId: "${ad.ad._id}",
                 },
                 "*"
               );
@@ -418,7 +418,7 @@ function generateBannerEmbedCode(ad, url, userId, nonce, position) {
       window.parent.postMessage(
         {
           type: "bannerAdLoaded",
-          adId: "${ad._id}",
+          adId: "${ad.ad._id}",
         },
         "*"
       );
@@ -766,7 +766,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
     </style>
   </head>
   <body>
-    <div class="ad-container" data-ad-id="${ad._id}">
+    <div class="ad-container" data-ad-id="${ad.ad._id}">
       <div class="ad-content">
         <div class="ad-text">
           <h1 class="ad-title">${ad.ad.title}</h1>
@@ -916,7 +916,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
           window.parent.postMessage(
             {
               type: "rewardedAdClosed",
-              adId: "${ad._id}",
+              adId: "${ad.ad._id}",
               rewardGranted: false,
             },
             "*"
@@ -938,7 +938,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
         window.parent.postMessage(
           {
             type: "rewardedAdClosed",
-            adId: "${ad._id}",
+            adId: "${ad.ad._id}",
             rewardGranted: false,
           },
           "*"
@@ -1025,7 +1025,7 @@ function generateRewardedEmbedCode(ad, mediaUrl, userId, nonce, duration = 10) {
       window.parent.postMessage(
         {
           type: "rewardedAdLoaded",
-          adId: "${ad._id}",
+          adId: "${ad.ad._id}",
         },
         "*"
       );

@@ -267,5 +267,6 @@ export function validateEmbed(obj) {
       }),
     userIdFromToken: Joi.any().optional(),
     userRoleFromToken: Joi.any().optional(),
+    selectedType: Joi.any().optional(),
   }).validate(obj);
 }

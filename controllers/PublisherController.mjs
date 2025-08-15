@@ -40,7 +40,6 @@ class PublisherController {
     const nonce = generateNonce();
     try {
       const result = await PublisherFacade.showAd({
-        params: req.params,
         query: req.query,
         nonce,
       });

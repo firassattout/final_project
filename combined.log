@@ -714,3 +714,84 @@
 {"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:15:27.395Z"}
 {"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-13T19:15:38.731Z"}
 {"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-13T19:15:38.731Z"}
+{"level":"error","message":"Login error: البريد الإلكتروني غير صالح","timestamp":"2025-08-15T15:30:54.976Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-08-15T15:31:16.270Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-08-15T15:31:16.272Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-08-15T15:31:55.487Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-08-15T15:32:06.792Z"}
+{"level":"info","message":"User logged in: Firas_sat_97@example.com","timestamp":"2025-08-15T15:33:10.270Z"}
+{"level":"info","message":"Retrieved undefined ads for user: Firas_sat_97@example.com","timestamp":"2025-08-15T15:34:27.542Z"}
+{"level":"warn","message":"Media not found for ad: 68886b4f54e1d720082a4660","timestamp":"2025-08-15T15:34:44.285Z"}
+{"level":"warn","message":"Media not found for ad: 68886b8454e1d720082a4678","timestamp":"2025-08-15T15:34:44.305Z"}
+{"level":"info","message":"Media retrieved for ad: 6888692854e1d720082a463a","timestamp":"2025-08-15T15:34:44.547Z"}
+{"level":"info","message":"Media retrieved for ad: 68886a8854e1d720082a464c","timestamp":"2025-08-15T15:34:44.557Z"}
+{"level":"warn","message":"Media not found for ad: 6888b17f8dce7c3981653606","timestamp":"2025-08-15T15:34:45.649Z"}
+{"level":"info","message":"Retrieved undefined ads for user: Firas_sat_97@example.com","timestamp":"2025-08-15T15:34:48.511Z"}
+{"level":"warn","message":"Embed validation failed: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:22.927Z"}
+{"level":"error","message":"Embed error: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:22.932Z"}
+{"level":"warn","message":"Embed validation failed: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:48.805Z"}
+{"level":"error","message":"Embed error: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:48.807Z"}
+{"level":"error","message":"Embed error: type is not defined","timestamp":"2025-08-15T15:45:11.342Z"}
+{"level":"error","message":"Embed error: type is not defined","timestamp":"2025-08-15T15:45:42.844Z"}
+{"level":"error","message":"Embed error: platform is not defined","timestamp":"2025-08-15T15:47:18.984Z"}
+{"level":"error","message":"Embed error: userId is not defined","timestamp":"2025-08-15T15:47:43.303Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T15:48:21.216Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T15:48:34.295Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T15:52:35.194Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T15:52:54.628Z"}
+{"level":"error","message":"Error finding weighted random media: PlanExecutor error during aggregation :: caused by :: $in requires an array as a second argument, found: string","timestamp":"2025-08-15T16:00:10.231Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-15T16:00:10.239Z"}
+{"level":"warn","message":"Media not found for ad: 68886b4f54e1d720082a4660","timestamp":"2025-08-15T16:01:38.947Z"}
+{"level":"info","message":"Media retrieved for ad: 6888692854e1d720082a463a","timestamp":"2025-08-15T16:01:39.029Z"}
+{"level":"info","message":"Media retrieved for ad: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:01:39.046Z"}
+{"level":"warn","message":"Media not found for ad: 68886b8454e1d720082a4678","timestamp":"2025-08-15T16:01:39.494Z"}
+{"level":"warn","message":"Media not found for ad: 6888b17f8dce7c3981653606","timestamp":"2025-08-15T16:01:39.503Z"}
+{"level":"info","message":"Retrieved undefined ads for user: Firas_sat_97@example.com","timestamp":"2025-08-15T16:01:41.831Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:01:43.152Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:02:21.083Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:05:44.949Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:06:20.398Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:06:35.154Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:08:09.695Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:09:13.147Z"}
+{"level":"info","message":"No media items found","timestamp":"2025-08-15T16:10:20.787Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:10:20.790Z"}
+{"level":"info","message":"No media items found","timestamp":"2025-08-15T16:10:43.447Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:10:43.449Z"}
+{"level":"info","message":"No media items found","timestamp":"2025-08-15T16:11:46.511Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:12:11.013Z"}
+{"level":"info","message":"No media items found","timestamp":"2025-08-15T16:12:20.994Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:12:45.250Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:12:55.249Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:17:24.257Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:18:04.934Z"}
+{"level":"error","message":"Show ad error: incorrect header check","timestamp":"2025-08-15T16:18:34.538Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:20:14.888Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:26:13.806Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:26:41.840Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:27:23.931Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:27:32.418Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:28:23.055Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:28:32.860Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:28:52.767Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:29:05.450Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:31:12.626Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:31:12.632Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:31:19.764Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:31:22.849Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:31:51.783Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:33:24.248Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:33:58.645Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:33:58.650Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:34:46.163Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:38:58.664Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:38:58.676Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:39:49.918Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:40:50.823Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:40:57.631Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:40:57.635Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:42:57.653Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:42:57.662Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:44:18.237Z"}
+{"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:44:20.282Z"}
+{"level":"info","message":"Retrieved weighted random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-15T16:45:37.239Z"}

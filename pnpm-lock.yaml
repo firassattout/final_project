@@ -36,7 +36,7 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       express:
-        specifier: ^4.19.2
+        specifier: ^4.21.1
         version: 4.21.1
       express-async-handler:
         specifier: ^1.2.0
@@ -101,6 +101,9 @@ importers:
       winston:
         specifier: ^3.17.0
         version: 3.17.0
+      zlib:
+        specifier: ^1.0.5
+        version: 1.0.5
 
 packages:
 
@@ -1342,6 +1345,10 @@ packages:
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
+
+  zlib@1.0.5:
+    resolution: {integrity: sha512-40fpE2II+Cd3k8HWTWONfeKE2jL+P42iWJ1zzps5W51qcTsOUKM5Q5m2PFb0CLxlmFAaUuUdJGc3OfZy947v0w==}
+    engines: {node: '>=0.2.0'}
 
 snapshots:
 
@@ -2647,3 +2654,5 @@ snapshots:
   xmlbuilder@10.1.1: {}
 
   xtend@4.0.2: {}
+
+  zlib@1.0.5: {}

@@ -305,3 +305,30 @@
 {"level":"error","message":"Create transaction error: Invalid value for paymentSuccess","timestamp":"2025-08-13T19:14:45.375Z"}
 {"level":"error","message":"Error in createMerchantApp: Request failed with status code 400","timestamp":"2025-08-13T19:14:53.442Z"}
 {"level":"error","message":"Create transaction error: Invalid value for paymentSuccess","timestamp":"2025-08-13T19:14:53.443Z"}
+{"level":"error","message":"Login error: البريد الإلكتروني غير صالح","timestamp":"2025-08-15T15:30:54.976Z"}
+{"level":"error","message":"Error finding user by email: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-08-15T15:31:16.270Z"}
+{"level":"error","message":"Login error: Operation `users.findOne()` buffering timed out after 10000ms","timestamp":"2025-08-15T15:31:16.272Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-08-15T15:31:55.487Z"}
+{"level":"error","message":"Login error: بيانات تسجيل الدخول غير صحيحة","timestamp":"2025-08-15T15:32:06.792Z"}
+{"level":"error","message":"Embed error: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:22.932Z"}
+{"level":"error","message":"Embed error: \"selectedType\" is not allowed","timestamp":"2025-08-15T15:44:48.807Z"}
+{"level":"error","message":"Embed error: type is not defined","timestamp":"2025-08-15T15:45:11.342Z"}
+{"level":"error","message":"Embed error: type is not defined","timestamp":"2025-08-15T15:45:42.844Z"}
+{"level":"error","message":"Embed error: platform is not defined","timestamp":"2025-08-15T15:47:18.984Z"}
+{"level":"error","message":"Embed error: userId is not defined","timestamp":"2025-08-15T15:47:43.303Z"}
+{"level":"error","message":"Error finding weighted random media: PlanExecutor error during aggregation :: caused by :: $in requires an array as a second argument, found: string","timestamp":"2025-08-15T16:00:10.231Z"}
+{"level":"error","message":"Show ad error: ad.media_find_failed","timestamp":"2025-08-15T16:00:10.239Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:09:13.147Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:10:20.790Z"}
+{"level":"error","message":"Show ad error: الاعلان غير موجود","timestamp":"2025-08-15T16:10:43.449Z"}
+{"level":"error","message":"Show ad error: incorrect header check","timestamp":"2025-08-15T16:18:34.538Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:31:12.626Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:31:12.632Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:33:58.645Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:33:58.650Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:38:58.664Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:38:58.676Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:40:57.631Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:40:57.635Z"}
+{"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:42:57.653Z"}
+{"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:42:57.662Z"}
