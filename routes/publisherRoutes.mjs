@@ -133,14 +133,4 @@ publisherRoutes.post(
   PublisherController.reportAd
 );
 
-/**
- * @route GET /get-companyType
- * @desc Get company types (admin only)
- * @access Private (admin)
- */
-publisherRoutes.get(
-  "/companyType",
-  checkUserRole("publisher"),
-  adminController.getCompanyType
-);
 export default publisherRoutes;

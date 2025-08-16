@@ -40,14 +40,10 @@ adminRouter.get(
 
 /**
  * @route GET /get-companyType
- * @desc Get company types (admin only)
+ * @desc Get company types
  * @access Private (admin)
  */
-adminRouter.get(
-  "/get-companyType",
-  checkUserRole("admin"),
-  adminController.getCompanyType
-);
+adminRouter.get("/get-companyType", adminController.getCompanyType);
 
 /**
  * @route post /get-ad-admin
