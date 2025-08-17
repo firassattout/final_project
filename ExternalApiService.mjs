@@ -151,6 +151,7 @@ async function getTransactionByProgram(data) {
     return response.data;
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
+    return error;
     if (error.response) {
       throw new Error(error.response.data);
     } else if (error.request) {
@@ -181,7 +182,7 @@ async function getTransaction(data) {
     return response.data;
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
-    return error;
+
     if (error.response) {
       throw new Error(error.response.data);
     } else if (error.request) {
