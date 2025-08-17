@@ -182,11 +182,11 @@ async function getTransaction(data) {
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
     if (error.response) {
-      throw new Error(error.response);
+      throw new Error(error.response.data);
     } else if (error.request) {
-      throw new Error(error.request);
+      throw new Error(error.request.data);
     } else {
-      throw new Error(error);
+      throw new Error(error.message);
     }
   }
 }
