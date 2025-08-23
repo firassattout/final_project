@@ -1,14 +1,50 @@
 export function generatePublisherCode(type, platform, compressedData) {
   if (type === "banner") {
-    return `
-    <script 
-      src="${process.env.URL}/banner-sdk" 
-      data-compressed-data="${compressedData}"
-      data-position="top" 
-    defer>
-</script>
+    if (platform === "web")
+      return `
+      <script 
+        src="${process.env.URL}/banner-sdk" 
+        data-compressed-data="${compressedData}"
+        data-position="top" 
+       defer>
+      </script>`;
+    else if (platform === "mobile")
+      return `import React from 'react';
+      import { View, StyleSheet, Dimensions } from 'react-native';
+      import { WebView } from 'react-native-webview';
 
-`;
+      const BannerSDK = ({ "${process.env.URL}/show-ad?compressedData=${compressedData}&position=top" }) => {
+        return (
+          <View style={styles.container}>
+            <WebView
+              source={{ uri: sdkUrl }}
+              style={styles.webview}
+              javaScriptEnabled
+              domStorageEnabled
+              scrollEnabled={false}
+              automaticallyAdjustContentInsets={false}
+              allowsInlineMediaPlayback
+              mediaPlaybackRequiresUserAction={false}
+            />
+          </View>
+        );
+      };
+
+      const styles = StyleSheet.create({
+        container: {
+          position: 'absolute',
+          bottom: 0,
+          width: Dimensions.get('window').width,
+          height: 80,
+          zIndex: 9999,
+        },
+        webview: {
+          flex: 1,
+          backgroundColor: 'transparent',
+        },
+      });
+
+      export default BannerSDK;`;
   } else if (type === "rewarded") {
     if (platform === "web")
       return ` 
@@ -32,7 +68,7 @@ export function generatePublisherCode(type, platform, compressedData) {
       });
     </script>
     `;
-    if (platform === "react")
+    else if (platform === "react")
       return ` 
 import { useEffect } from "react";
 
@@ -74,7 +110,7 @@ function RewardedAd() {
 export default RewardedAd;
 
     `;
-    if (platform === "vue3")
+    else if (platform === "vue3")
       return ` 
 <template>
   <div
@@ -113,6 +149,15 @@ onUnmounted(() => {
 
 
     `;
+    else if (platform === "mobile")
+      return `
+        <RewardedAd
+      sdkUrl={"${process.env.URL}/show-ad?compressedData=${compressedData}"}
+      onLoaded={() => console.log('Ad Loaded')}
+      onCompleted={() => console.log('Ad Completed')}
+      onClosed={() => console.log('Ad Closed')}
+      onError={() => console.log('Ad Error')}
+    />
+     `;
   }
-  return "";
 }

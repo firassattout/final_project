@@ -38,8 +38,11 @@ class PublisherService {
 
     const jsonData = JSON.stringify(embedData);
     const compressedData = zlib.deflateSync(jsonData).toString("base64");
-
-    const embedCode = generatePublisherCode(type, platform, compressedData);
+    const embedCode = generatePublisherCode(
+      type,
+      platform,
+      encodeURIComponent(compressedData)
+    );
     logger.info(`Embed code generated for user: ${userIdFromToken}`);
     return embedCode;
   }
@@ -54,7 +57,8 @@ class PublisherService {
     const decompressedData = zlib
       .inflateSync(Buffer.from(compressedData, "base64"))
       .toString();
-    const originalData = JSON.parse(decompressedData);
+
+    const originalData = JSON.parse(decodeURIComponent(decompressedData));
     const userId = originalData.userId;
     const selectedType = originalData.selectedType;
     const type = originalData.type;
