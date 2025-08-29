@@ -62,9 +62,9 @@ async function adAppCode({ companyName, programmName, merchantMSISDN }) {
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
@@ -92,9 +92,9 @@ async function getAppCode(merchantMSISDN) {
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
@@ -122,9 +122,9 @@ async function deleteMerchantApp(appId) {
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
@@ -151,11 +151,11 @@ async function getTransactionByProgram(data) {
     return response.data;
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
-    return error;
+
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
@@ -184,9 +184,9 @@ async function getTransaction(data) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
 
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
@@ -214,9 +214,9 @@ async function getBalance(customerMSISDN, balanceToAdd) {
   } catch (error) {
     logger.error(`Error in createMerchantApp: ${error.message}`);
     if (error.response) {
-      throw new Error(error.response.data);
+      throw new Error(error.response.data.message);
     } else if (error.request) {
-      throw new Error(error.request.data);
+      throw new Error(error.request.data.message);
     } else {
       throw new Error(error.message);
     }
