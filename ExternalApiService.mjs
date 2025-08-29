@@ -15,6 +15,7 @@ async function adMerchant({ merchantMSISDN }) {
         headers: {
           "Content-Type": "application/json",
         },
+        timeout: 50000,
       }
     );
 
@@ -49,6 +50,7 @@ async function adAppCode({ companyName, programmName, merchantMSISDN }) {
         headers: {
           "Content-Type": "application/json",
         },
+        timeout: 50000,
       }
     );
 
@@ -79,6 +81,7 @@ async function getAppCode(merchantMSISDN) {
           "Content-Type": "application/json",
           merchantMSISDN,
         },
+        timeout: 50000,
       }
     );
 
@@ -109,6 +112,7 @@ async function deleteMerchantApp(appId) {
         headers: {
           "Content-Type": "application/json",
         },
+        timeout: 50000,
       }
     );
 
@@ -139,6 +143,7 @@ async function getTransactionByProgram(data) {
           "Content-Type": "application/json",
           ...data,
         },
+        timeout: 50000,
       }
     );
 
@@ -170,6 +175,7 @@ async function getTransaction(data) {
           "Content-Type": "application/json",
           ...data,
         },
+        timeout: 50000,
       }
     );
 
@@ -201,6 +207,7 @@ async function getBalance(customerMSISDN, balanceToAdd) {
         headers: {
           "Content-Type": "application/json",
         },
+        timeout: 50000,
       }
     );
 
@@ -222,6 +229,7 @@ async function getBalance(customerMSISDN, balanceToAdd) {
     }
   }
 }
+
 export default {
   adAppCode,
   adMerchant,

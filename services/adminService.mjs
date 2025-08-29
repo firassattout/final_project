@@ -44,6 +44,7 @@ class AdminService {
   async getCompanyType() {
     const companyTypes = await userRepository.findCompanyType();
     if (!companyTypes.length) throw new Error("لا توجد أنواع شركات متاحة");
+
     return { companyTypes };
   }
 

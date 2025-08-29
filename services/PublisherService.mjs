@@ -184,7 +184,6 @@ class PublisherService {
    */
   async getEarnings(data) {
     const { userId, page = 1, limit = 10 } = data;
-    console.log(userId);
 
     if (!Number.isInteger(page) || page < 1) {
       logger.warn(`Invalid page number: ${page}`);
