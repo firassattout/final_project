@@ -10,6 +10,7 @@ import mongoose, { isValidObjectId } from "mongoose";
 import ReportRepository from "../repositories/ReportRepository.mjs";
 import zlib from "zlib";
 import { Earnings } from "../models/EarningsModel.mjs";
+import ExternalApiService from "../ExternalApiService.mjs";
 class PublisherService {
   /**
    * Generate embed code for publisher
@@ -273,6 +274,84 @@ class PublisherService {
       withdrawableEarnings:
         withdrawableEarnings.length > 0 ? withdrawableEarnings[0].total : 0,
     };
+  }
+  /**
+   * Request withdrawal of earnings
+   * @param {Object} data - Request data containing userId, amount, and paymentLink
+   * @returns {Promise<Object>} Withdrawal confirmation
+   */
+  async requestWithdrawal(data) {
+    const { userId, paymentLink } = data;
+
+    if (!userId || !paymentLink) {
+      logger.warn("Missing required fields for withdrawal");
+      throw new Error(t("withdrawal.missing_fields"));
+    }
+
+    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000; // 14 يوم بالمللي ثانية
+    const withdrawalDate = new Date(Date.now() - withdrawalPeriod);
+
+    const withdrawableEarnings = await Earnings.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(userId),
+          date: { $lte: withdrawalDate },
+          isPaid: false,
+        },
+      },
+      { $group: { _id: null, total: { $sum: "$earnings" } } },
+    ]);
+
+    const availableAmount =
+      withdrawableEarnings.length > 0 ? withdrawableEarnings[0].total : 0;
+
+    let response;
+    const session = await mongoose.startSession();
+    try {
+      await session.withTransaction(async () => {
+        // تحديث الأرباح إلى حالة "مسحوب"
+        const updateResult = await Earnings.updateMany(
+          {
+            userId: new mongoose.Types.ObjectId(userId),
+            date: { $lte: withdrawalDate },
+            isPaid: false,
+          },
+          {
+            $set: {
+              isPaid: true,
+              paymentDate: new Date(),
+            },
+          },
+          { session }
+        );
+
+        if (updateResult.modifiedCount === 0) {
+          logger.warn(`No withdrawable earnings found for user: ${userId}`);
+          throw new Error(t("withdrawal.no_earnings"));
+        }
+
+        response = await ExternalApiService.getBalance(
+          paymentLink,
+          availableAmount
+        );
+
+        logger.info(
+          `Withdrawal of ${availableAmount} requested for user: ${userId} via ${paymentLink}`
+        );
+      });
+
+      return {
+        message: t("withdrawal.success"),
+        availableAmount,
+        response,
+        paymentLink,
+      };
+    } catch (error) {
+      logger.error(`Withdrawal error for user ${userId}: ${error.message}`);
+      throw new Error(t(error.message));
+    } finally {
+      session.endSession();
+    }
   }
 }
 

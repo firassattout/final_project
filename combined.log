@@ -806,3 +806,16 @@
 {"level":"error","message":"Get earnings error: mongoose is not defined","timestamp":"2025-08-29T11:39:36.856Z"}
 {"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:39:59.730Z"}
 {"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:41:36.806Z"}
+{"level":"warn","message":"Missing required fields for withdrawal","timestamp":"2025-08-29T12:11:38.810Z"}
+{"level":"error","message":"Withdrawal error: withdrawal.missing_fields","timestamp":"2025-08-29T12:11:38.816Z"}
+{"level":"warn","message":"Missing required fields for withdrawal","timestamp":"2025-08-29T12:11:54.119Z"}
+{"level":"error","message":"Withdrawal error: withdrawal.missing_fields","timestamp":"2025-08-29T12:11:54.130Z"}
+{"level":"error","message":"Withdrawal error for user 6856ddc7fa10fb4b488145b1: getBalance is not a function","timestamp":"2025-08-29T12:12:17.063Z"}
+{"level":"error","message":"Withdrawal error: getBalance is not a function","timestamp":"2025-08-29T12:12:17.073Z"}
+{"level":"error","message":"Error in createMerchantApp: Request failed with status code 404","timestamp":"2025-08-29T12:12:57.149Z"}
+{"level":"error","message":"Withdrawal error for user 6856ddc7fa10fb4b488145b1: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/customers/add-balance</pre>\n</body>\n</html>\n","timestamp":"2025-08-29T12:12:58.115Z"}
+{"level":"error","message":"Withdrawal error: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/customers/add-balance</pre>\n</body>\n</html>\n","timestamp":"2025-08-29T12:12:58.121Z"}
+{"level":"info","message":"Successfully send mony","timestamp":"2025-08-29T12:14:31.950Z"}
+{"level":"info","message":"Withdrawal of 180 requested for user: 6856ddc7fa10fb4b488145b1 via 0987654321","timestamp":"2025-08-29T12:14:31.952Z"}
+{"level":"error","message":"Withdrawal error for user 6856ddc7fa10fb4b488145b1: updateResult is not defined","timestamp":"2025-08-29T12:14:32.481Z"}
+{"level":"error","message":"Withdrawal error: updateResult is not defined","timestamp":"2025-08-29T12:14:32.482Z"}

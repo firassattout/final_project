@@ -111,6 +111,20 @@ class PublisherFacade {
       throw new Error(t(error.message));
     }
   }
+  /**
+   * Request withdrawal of earnings
+   * @param {Object} data - Request data
+   * @returns {Promise<Object>} Withdrawal confirmation
+   */
+  async requestWithdrawal(data) {
+    try {
+      const result = await PublisherService.requestWithdrawal(data);
+      return result;
+    } catch (error) {
+      logger.error(`Withdrawal error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
 export default new PublisherFacade();

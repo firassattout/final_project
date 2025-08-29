@@ -156,4 +156,16 @@ publisherRoutes.get(
   publicRateLimiter,
   PublisherController.getTotalEarnings
 );
+
+/**
+ * @route POST /earnings/withdraw
+ * @desc Request withdrawal of earnings
+ * @access Private
+ */
+publisherRoutes.post(
+  "/earnings/withdraw",
+  checkUserRole("publisher"),
+  publicRateLimiter,
+  PublisherController.requestWithdrawal
+);
 export default publisherRoutes;

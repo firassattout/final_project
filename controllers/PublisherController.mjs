@@ -138,6 +138,25 @@ class PublisherController {
       data: result,
     });
   });
+  /**
+   * Request withdrawal of earnings
+   */
+  requestWithdrawal = asyncHandler(async (req, res) => {
+    const result = await PublisherFacade.requestWithdrawal({
+      userId: req.user?.id,
+
+      paymentLink: req.body.paymentLink,
+    });
+
+    res.status(200).json({
+      status: "success",
+      message: result.message,
+      data: {
+        paymentLink: result.paymentLink,
+        updatedRecords: result.updatedRecords,
+      },
+    });
+  });
 }
 
 export default new PublisherController();

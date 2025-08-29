@@ -192,6 +192,36 @@ async function getTransaction(data) {
     }
   }
 }
+async function getBalance(customerMSISDN, balanceToAdd) {
+  try {
+    const response = await axios.post(
+      "https://projectone-wqlf.onrender.com/api/customers/add-balance",
+      { customerMSISDN, balanceToAdd },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response?.status !== 200) {
+      logger.warn(`External API call failed: No code returned`);
+      throw new Error(t("external_api.no_code_returned"));
+    }
+
+    logger.info(`Successfully send mony`);
+    return response.data;
+  } catch (error) {
+    logger.error(`Error in createMerchantApp: ${error.message}`);
+    if (error.response) {
+      throw new Error(error.response.data);
+    } else if (error.request) {
+      throw new Error(error.request.data);
+    } else {
+      throw new Error(error.message);
+    }
+  }
+}
 export default {
   adAppCode,
   adMerchant,
@@ -199,4 +229,5 @@ export default {
   deleteMerchantApp,
   getTransaction,
   getTransactionByProgram,
+  getBalance,
 };
