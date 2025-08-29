@@ -798,3 +798,11 @@
 {"level":"info","message":"Embed code generated for user: 6856ddc7fa10fb4b488145b1","timestamp":"2025-08-15T16:46:19.433Z"}
 {"level":"info","message":"Retrieved weighted random media item with adId: 68886a8854e1d720082a464c","timestamp":"2025-08-15T16:46:30.444Z"}
 {"level":"info","message":"Retrieved weighted random media item with adId: 6888692854e1d720082a463a","timestamp":"2025-08-15T16:46:35.547Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-29T11:09:19.992Z"}
+{"level":"info","message":"Retrieved undefined Transaction applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-29T11:09:19.997Z"}
+{"level":"info","message":"Successfully retrieved client code from external API","timestamp":"2025-08-29T11:11:43.230Z"}
+{"level":"info","message":"Retrieved 21 merchant applications for user: 68791c7361443e07d69212ad","timestamp":"2025-08-29T11:11:43.231Z"}
+{"level":"error","message":"Get earnings error: Earnings.paginate is not a function","timestamp":"2025-08-29T11:34:52.993Z"}
+{"level":"error","message":"Get earnings error: mongoose is not defined","timestamp":"2025-08-29T11:39:36.856Z"}
+{"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:39:59.730Z"}
+{"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:41:36.806Z"}

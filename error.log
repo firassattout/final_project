@@ -332,3 +332,7 @@
 {"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:40:57.635Z"}
 {"level":"error","message":"Error tracking view: fetch failed","timestamp":"2025-08-15T16:42:57.653Z"}
 {"level":"error","message":"Track views error: publisher.track_view_failed","timestamp":"2025-08-15T16:42:57.662Z"}
+{"level":"error","message":"Get earnings error: Earnings.paginate is not a function","timestamp":"2025-08-29T11:34:52.993Z"}
+{"level":"error","message":"Get earnings error: mongoose is not defined","timestamp":"2025-08-29T11:39:36.856Z"}
+{"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:39:59.730Z"}
+{"level":"error","message":"Get earnings error: Operation `earnings.aggregate()` buffering timed out after 10000ms","timestamp":"2025-08-29T11:41:36.806Z"}

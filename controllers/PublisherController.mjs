@@ -107,6 +107,37 @@ class PublisherController {
       message: result.message,
     });
   });
+  /**
+   * Get all earnings for publisher with pagination
+   */
+  getEarnings = asyncHandler(async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;
+    const result = await PublisherFacade.getEarnings({
+      userId: req.user?.id,
+      page: parseInt(page),
+      limit: parseInt(limit),
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: result.earnings,
+      pagination: result.pagination,
+    });
+  });
+
+  /**
+   * Get total earnings and withdrawable earnings
+   */
+  getTotalEarnings = asyncHandler(async (req, res) => {
+    const result = await PublisherFacade.getTotalEarnings({
+      userId: req.user?.id,
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  });
 }
 
 export default new PublisherController();

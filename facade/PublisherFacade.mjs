@@ -76,6 +76,41 @@ class PublisherFacade {
       throw new Error(t(error.message));
     }
   }
+  /**
+   * Get all earnings for publisher with pagination
+   * @param {Object} data - Request data
+   * @returns {Promise<Object>} Formatted response
+   */
+  async getEarnings(data) {
+    try {
+      const { userId, page, limit } = data;
+      const result = await PublisherService.getEarnings({
+        userId,
+        page,
+        limit,
+      });
+      return result;
+    } catch (error) {
+      logger.error(`Get earnings error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
+
+  /**
+   * Get total earnings and withdrawable earnings
+   * @param {Object} data - Request data
+   * @returns {Promise<Object>} Earnings summary
+   */
+  async getTotalEarnings(data) {
+    try {
+      const { userId } = data;
+      const result = await PublisherService.getTotalEarnings({ userId });
+      return result;
+    } catch (error) {
+      logger.error(`Get total earnings error: ${error.message}`);
+      throw new Error(t(error.message));
+    }
+  }
 }
 
 export default new PublisherFacade();

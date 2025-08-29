@@ -6,9 +6,10 @@ import redis from "../utils/redisClient.mjs";
 import { generatePublisherCode } from "../utils/generatePublisherCode.js";
 import logger from "../utils/logger.mjs";
 import { t } from "i18next";
-import { isValidObjectId } from "mongoose";
+import mongoose, { isValidObjectId } from "mongoose";
 import ReportRepository from "../repositories/ReportRepository.mjs";
 import zlib from "zlib";
+import { Earnings } from "../models/EarningsModel.mjs";
 class PublisherService {
   /**
    * Generate embed code for publisher
@@ -173,6 +174,104 @@ class PublisherService {
     return {
       message: t("report.success"),
       reportId: report._id,
+    };
+  }
+  /**
+   * Get all earnings for publisher with pagination
+   * @param {Object} data - Request data
+   * @returns {Promise<Object>} Earnings with pagination
+   */
+  async getEarnings(data) {
+    const { userId, page = 1, limit = 10 } = data;
+    console.log(userId);
+
+    if (!Number.isInteger(page) || page < 1) {
+      logger.warn(`Invalid page number: ${page}`);
+      throw new Error(t("earnings.invalid_page"));
+    }
+    if (!Number.isInteger(limit) || limit < 1 || limit > 100) {
+      logger.warn(`Invalid limit: ${limit}`);
+      throw new Error(t("earnings.invalid_limit"));
+    }
+    const skip = (page - 1) * limit;
+
+    const matchStage = { userId: new mongoose.Types.ObjectId(userId) };
+
+    const [results, countResult] = await Promise.all([
+      Earnings.aggregate([
+        { $match: matchStage },
+        { $sort: { date: -1 } },
+        {
+          $lookup: {
+            from: "users",
+            localField: "userId",
+            foreignField: "_id",
+            as: "user",
+          },
+        },
+        { $unwind: "$user" },
+        { $skip: skip },
+        { $limit: limit },
+
+        {
+          $project: {
+            user: 0,
+            __v: 0,
+          },
+        },
+      ]),
+      Earnings.aggregate([
+        { $match: matchStage },
+        {
+          $count: "total",
+        },
+      ]),
+    ]);
+
+    const totalItems = countResult[0]?.total || 0;
+    const totalPages = Math.ceil(totalItems / limit);
+
+    return {
+      earnings: results,
+      pagination: {
+        totalItems,
+        totalPages,
+        currentPage: page,
+        limit,
+      },
+    };
+  }
+
+  /**
+   * Get total earnings and withdrawable earnings
+   * @param {Object} data - Request data
+   * @returns {Promise<Object>} Earnings summary
+   */
+  async getTotalEarnings(data) {
+    const { userId } = data;
+    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000; // 14 يوم بالمللي ثانية
+    const withdrawalDate = new Date(Date.now() - withdrawalPeriod);
+
+    const totalEarnings = await Earnings.aggregate([
+      { $match: { userId: new mongoose.Types.ObjectId(userId) } },
+      { $group: { _id: null, total: { $sum: "$earnings" } } },
+    ]);
+
+    const withdrawableEarnings = await Earnings.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(userId),
+          date: { $lte: withdrawalDate },
+          isPaid: false,
+        },
+      },
+      { $group: { _id: null, total: { $sum: "$earnings" } } },
+    ]);
+
+    return {
+      totalEarnings: totalEarnings.length > 0 ? totalEarnings[0].total : 0,
+      withdrawableEarnings:
+        withdrawableEarnings.length > 0 ? withdrawableEarnings[0].total : 0,
     };
   }
 }

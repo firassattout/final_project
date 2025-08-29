@@ -133,4 +133,27 @@ publisherRoutes.post(
   PublisherController.reportAd
 );
 
+/**
+ * @route GET /earnings
+ * @desc Get all earnings for publisher with pagination
+ * @access Private
+ */
+publisherRoutes.get(
+  "/earnings",
+  checkUserRole("publisher"),
+  publicRateLimiter,
+  PublisherController.getEarnings
+);
+
+/**
+ * @route GET /earnings/total
+ * @desc Get total earnings and withdrawable earnings for publisher
+ * @access Private
+ */
+publisherRoutes.get(
+  "/earnings/total",
+  checkUserRole("publisher"),
+  publicRateLimiter,
+  PublisherController.getTotalEarnings
+);
 export default publisherRoutes;

@@ -1,6 +1,7 @@
 import cron from "node-cron";
 import { AdDisplays } from "../models/AdDisplaysModel.mjs";
 import { Earnings } from "../models/EarningsModel.mjs";
+import { publisherBudget } from "../utils/price.js";
 
 cron.schedule("0 * * * *", async () => {
   const today = new Date();
@@ -44,7 +45,7 @@ cron.schedule("0 * * * *", async () => {
         await Earnings.create({
           userId,
           date: startDate,
-          earnings: earningsMap[userId],
+          earnings: publisherBudget(earningsMap[userId]),
         });
       }
     }
