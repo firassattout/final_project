@@ -133,7 +133,7 @@ async function deleteMerchantApp(appId) {
 async function getTransactionByProgram(data) {
   try {
     const response = await axios.get(
-      "https://payment-package-4jxy.onrender.com/api/clients/transactionsByProgrammName",
+      "https://payment-package-1.onrender.com/api/clients/transactionsByProgrammName",
       {
         headers: {
           "Content-Type": "application/json",
@@ -164,7 +164,7 @@ async function getTransactionByProgram(data) {
 async function getTransaction(data) {
   try {
     const response = await axios.get(
-      "https://payment-package-4jxy.onrender.com/api/clients/get-transactions",
+      "https://payment-package-1.onrender.com/api/clients/get-transactions",
       {
         headers: {
           "Content-Type": "application/json",
