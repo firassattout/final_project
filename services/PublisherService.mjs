@@ -249,7 +249,7 @@ class PublisherService {
    */
   async getTotalEarnings(data) {
     const { userId } = data;
-    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000; // 14 يوم بالمللي ثانية
+    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000;
     const withdrawalDate = new Date(Date.now() - withdrawalPeriod);
 
     const totalEarnings = await Earnings.aggregate([
@@ -287,7 +287,7 @@ class PublisherService {
       throw new Error(t("withdrawal.missing_fields"));
     }
 
-    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000; // 14 يوم بالمللي ثانية
+    const withdrawalPeriod = 14 * 24 * 60 * 60 * 1000;
     const withdrawalDate = new Date(Date.now() - withdrawalPeriod);
 
     const withdrawableEarnings = await Earnings.aggregate([

@@ -40,7 +40,7 @@ paymentRoutes.delete(
  * @desc get merchant application
  * @access Private (user only)
  */
-paymentRoutes.get(
+paymentRoutes.post(
   "/get-transaction-by-program",
   checkUserRole("merchant"),
   PaymentController.getTransactionByProgram
@@ -50,7 +50,7 @@ paymentRoutes.get(
  * @desc get merchant application
  * @access Private (user only)
  */
-paymentRoutes.get(
+paymentRoutes.post(
   "/get-transaction",
   checkUserRole("merchant"),
   PaymentController.getTransaction
